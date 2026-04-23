@@ -1,153 +1,504 @@
-
+``html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thoughts @ 2AM</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thoughts @2am</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-        margin: 0;
-        font-family: 'Georgia', serif;
-        background-color: #caa2d4;
-        color: #000;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #d9a3e8;
+      color: #1f1126;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     header {
-        display: flex;
-        justify-content: space-between;
-        padding: 20px 40px;
-        font-size: 20px;
+      padding: 24px 0 10px;
+      position: relative;
     }
 
-    header a {
-        margin-right: 20px;
-        text-decoration: none;
-        color: black;
-        font-weight: bold;
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #2e1537;
+      padding-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .nav-left {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .nav-left a:hover {
+      opacity: 0.75;
+    }
+
+    .brand-title {
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      text-align: center;
+      margin: 30px 0 10px;
+      font-weight: 500;
+      line-height: 1.05;
     }
 
     .hero {
-        text-align: center;
-        margin-top: 20px;
+      padding: 40px 0 60px;
+      position: relative;
     }
 
-    .hero h1 {
-        font-size: 60px;
-        font-weight: 500;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
     }
 
-    .start-btn {
-        margin-top: 30px;
-        padding: 20px 60px;
-        background-color: #7f77a8;
-        border: none;
-        border-radius: 25px;
-        font-size: 24px;
-        cursor: pointer;
+    .hero-icon {
+      font-size: 10rem;
+      color: #8b4d97;
+      text-align: center;
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .signup-btn,
+    .search-box {
+      background: #8278bc;
+      color: #111;
+      border: none;
+      border-radius: 28px;
+      padding: 22px 40px;
+      font-size: 1.4rem;
+      min-width: 280px;
+      text-align: center;
+      box-shadow: 0 8px 18px rgba(77, 43, 93, 0.15);
+    }
+
+    .signup-btn {
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .signup-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
     }
 
     .tagline {
-        margin-top: 20px;
-        font-size: 24px;
+      text-align: center;
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      font-weight: 700;
+      margin: 30px 0 20px;
     }
 
-    .section {
-        display: flex;
-        justify-content: space-around;
-        margin: 60px 40px;
-        align-items: center;
+    .sub-copy {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+      margin: 30px 0 60px;
     }
 
-    .text-block {
-        font-size: 40px;
-        font-weight: bold;
-        max-width: 400px;
+    .sub-copy-text {
+      font-size: clamp(2rem, 4vw, 4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      padding-left: 10px;
+    }
+
+    .search-wrap {
+      display: flex;
+      justify-content: center;
     }
 
     .search-box {
-        background-color: #7f77a8;
-        padding: 20px 50px;
-        border-radius: 25px;
-        font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      max-width: 360px;
+      width: 100%;
+      padding: 18px 28px;
+      font-size: 1.1rem;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 1.8rem;
+      width: 100%;
+      color: #111;
+    }
+
+    .search-icon {
+      font-size: 2rem;
     }
 
     .categories {
-        display: flex;
-        justify-content: space-around;
-        margin: 50px 40px;
-        text-align: center;
+      padding: 20px 0 80px;
+    }
+
+    .category-header {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
     }
 
     .card {
-        width: 250px;
+      text-align: center;
     }
 
     .card img {
-        width: 100%;
-        border-radius: 10px;
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 4px;
+      box-shadow: 0 10px 20px rgba(33, 12, 42, 0.12);
     }
 
     .card h3 {
-        margin-top: 10px;
-        font-size: 24px;
+      margin-top: 16px;
+      font-size: 2rem;
+      font-weight: 700;
     }
 
-    .more {
-        text-align: right;
-        margin-right: 50px;
-        font-size: 24px;
-        font-weight: bold;
+    .footer-banner {
+      background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(134,102,194,0.35));
+      padding: 70px 0;
+      min-height: 500px;
     }
-</style>
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+      font-weight: 700;
+      font-size: clamp(1.6rem, 3vw, 3rem);
+      line-height: 1.2;
+    }
+
+    .footer-small {
+      font-size: clamp(1.4rem, 2vw, 2.4rem);
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      min-height: 100%;
+    }
+
+    .app-icon {
+      width: 220px;
+      height: 220px;
+      border-radius: 48px;
+      background: #aa82b7;
+      position: relative;
+      box-shadow: inset -12px -12px 0 rgba(64, 22, 74, 0.25);
+    }
+
+    .app-icon::before {
+      content: "";
+      position: absolute;
+      width: 28px;
+      height: 130px;
+      background: white;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(-2deg);
+      border-radius: 4px;
+    }
+
+    .app-name {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    .copyright {
+      margin-top: 30px;
+      font-size: clamp(1.2rem, 2vw, 2rem);
+    }
+
+    .bg-circle,
+    .bg-star,
+    .bg-swirl {
+      position: absolute;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    .bg-circle.one {
+      width: 220px;
+      height: 220px;
+      border: 5px solid #6a63a8;
+      border-radius: 50%;
+      top: 30px;
+      right: -60px;
+    }
+
+    .bg-circle.two {
+      width: 180px;
+      height: 180px;
+      border: 4px solid #7d76b4;
+      border-radius: 50%;
+      top: 55px;
+      right: -20px;
+    }
+
+    .bg-star.one {
+      width: 90px;
+      height: 90px;
+      background: #6b538b;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      left: 20px;
+      top: 520px;
+    }
+
+    .bg-star.two {
+      width: 50px;
+      height: 50px;
+      background: #6b538b;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      left: 145px;
+      top: 470px;
+    }
+
+    .bg-flower {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, #8f5da9 15%, transparent 16%),
+                  radial-gradient(circle at 30% 30%, rgba(139,93,169,0.45) 22%, transparent 23%),
+                  radial-gradient(circle at 70% 30%, rgba(139,93,169,0.45) 22%, transparent 23%),
+                  radial-gradient(circle at 30% 70%, rgba(139,93,169,0.45) 22%, transparent 23%),
+                  radial-gradient(circle at 70% 70%, rgba(139,93,169,0.45) 22%, transparent 23%);
+      opacity: 0.35;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .flower-one {
+      top: 270px;
+      left: 390px;
+    }
+
+    .flower-two {
+      top: 710px;
+      left: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .sub-copy,
+      .footer-content,
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-icon {
+        font-size: 7rem;
+      }
+
+      .sub-copy-text {
+        text-align: center;
+        padding-left: 0;
+      }
+
+      .category-header {
+        justify-content: center;
+      }
+
+      .footer-left {
+        gap: 40px;
+      }
+
+      .app-name {
+        font-size: 2.3rem;
+      }
+
+      .bg-circle.one,
+      .bg-circle.two,
+      .bg-star,
+      .bg-flower {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-left {
+        gap: 16px;
+        font-size: 1rem;
+      }
+
+      .signup-btn,
+      .search-box {
+        min-width: 100%;
+      }
+
+      .card img {
+        height: 200px;
+      }
+
+      .footer-banner {
+        padding: 50px 0;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="bg-circle one"></div>
+  <div class="bg-circle two"></div>
+  <div class="bg-star one"></div>
+  <div class="bg-star two"></div>
+  <div class="bg-flower flower-one"></div>
+  <div class="bg-flower flower-two"></div>
 
-<header>
-    <div>
-        <a href="#">Home</a>
-        <a href="#">Search</a>
-        <a href="#">Info</a>
-    </div>
-</header>
+  <header class="container">
+    <nav>
+      <div class="nav-left">
+        <a href="#home">Home</a>
+        <a href="#search">Search</a>
+        <a href="#info">Info</a>
+      </div>
+    </nav>
 
-<div class="hero">
-    <h1>Welcome to “thoughts @2am”</h1>
-    <button class="start-btn">START</button>
-    <p class="tagline">Where your secrets transform to stories</p>
-</div>
+    <h1 class="brand-title">Welcome to “thoughts @2am”</h1>
+  </header>
 
-<div class="section">
-    <div class="text-block">
-        <p>All the drama.<br>All the troupes.<br>Its all YOU!</p>
-    </div>
+  <main>
+    <section class="hero container" id="home">
+      <div class="hero-grid">
+        <div class="hero-icon">👥</div>
 
-    <div class="search-box">
-        search 🔍
-    </div>
-</div>
+        <div class="hero-right">
+          <button class="signup-btn">Sign up for free</button>
+        </div>
+      </div>
 
-<div class="categories">
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7" alt="Romance">
-        <h3>Romance</h3>
-    </div>
+      <h2 class="tagline">Where your secrets transform to stories</h2>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Thriller">
-        <h3>Thriller</h3>
-    </div>
+      <div class="sub-copy">
+        <div class="sub-copy-text">
+          <p>All the drama.</p>
+          <p>All the troupes.</p>
+          <p>Its all YOU!</p>
+        </div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" alt="Fantasy">
-        <h3>Fantasy</h3>
-    </div>
-</div>
+        <div class="search-wrap" id="search">
+          <div class="search-box">
+            <input type="text" placeholder="search" />
+            <span class="search-icon">⌕</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="more">
-    MORE...
-</div>
+    <section class="categories container">
+      <div class="category-header">MORE...</div>
 
+      <div class="category-grid">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1516589091380-5d8e87df6999?auto=format&fit=crop&w=800&q=80" alt="Romance category" />
+          <h3>Romance</h3>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Thriller category" />
+          <h3>Thriller</h3>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=800&q=80" alt="Fantasy category" />
+          <h3>Fantasy</h3>
+        </article>
+      </div>
+    </section>
+
+    <section class="footer-banner" id="info">
+      <div class="container footer-content">
+        <div class="footer-left">
+          <div>
+            <p>for more information</p>
+            <p>download our app</p>
+          </div>
+
+          <div class="footer-small">
+            <p>or reach out at</p>
+            <p>thoughtsat2am@gmail.com</p>
+          </div>
+
+          <div class="copyright">
+            <p>+76894532</p>
+            <p>all rights reserved</p>
+          </div>
+        </div>
+
+        <div class="footer-right">
+          <div class="app-icon"></div>
+          <div class="app-name">inreadably</div>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
+``
+
+A couple of quick fixes from the design text if you want it to read more naturally:
+
+• “All the troupes.” → probably “All the tropes.”
+• “Its all YOU!” → “It’s all YOU!”
+
+A logical next step would be to split this into HTML + CSS + JavaScript files and make the Search and Sign up button actually work.
