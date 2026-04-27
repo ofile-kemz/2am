@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>thoughts @2am — your secrets transform to stories</title>
-    <!-- Using system fonts to match screenshot aesthetic: SF Pro / Helvetica / Inter-like neutral sans -->
+    <title>thoughts @2am — purple whispers | stories at midnight</title>
+    <!-- Google Fonts: elegant modern look + purple palette -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,146 +13,201 @@
             box-sizing: border-box;
         }
 
-        /* exactly matching background and mood: light cream with a tiny bit of warmth */
         body {
-            background-color: #faf7f2;   /* soft off-white / cream as per "Lov.png" vibe */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: #1c1c1e;
+            background: linear-gradient(145deg, #f8f3ff 0%, #f1eaff 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #2d1b36;
             line-height: 1.4;
+            position: relative;
+        }
+
+        /* dreamy animated gradient orb background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: -30%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(circle at 30% 40%, rgba(160, 120, 220, 0.12), rgba(210, 180, 255, 0.05) 70%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
             padding: 2rem 2rem 3rem;
+            position: relative;
+            z-index: 2;
         }
 
-        /* --- HEADER SECTION: Home Search QInfo + Welcome + Signup exactly as described --- */
+        /* --- refined header with purple glow --- */
         .top-flex {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
+            align-items: center;
             flex-wrap: wrap;
             gap: 1.5rem;
             margin-bottom: 3rem;
-            border-bottom: 1px solid #e4dbd1;
             padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(128, 90, 180, 0.25);
+            backdrop-filter: blur(2px);
         }
 
         .nav-left {
             display: flex;
-            gap: 2.2rem;
-            font-weight: 450;
-            font-size: 0.95rem;
-            letter-spacing: -0.2px;
+            gap: 2.5rem;
         }
 
         .nav-left a {
             text-decoration: none;
-            color: #2c2a29;
+            font-weight: 550;
             font-size: 0.95rem;
-            transition: 0.2s;
+            color: #3c2a4a;
+            transition: 0.25s ease;
+            letter-spacing: -0.2px;
+            position: relative;
         }
 
         .nav-left a:hover {
-            color: #b84c6f;
+            color: #9b4dca;
+            transform: translateY(-1px);
+        }
+
+        .nav-left a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #b77ce0;
+            transition: 0.2s;
+        }
+
+        .nav-left a:hover::after {
+            width: 100%;
         }
 
         .right-welcome {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1.8rem;
             flex-wrap: wrap;
         }
 
         .welcome-badge {
             font-size: 0.85rem;
-            color: #4a3b3b;
-            background: transparent;
+            background: rgba(210, 180, 255, 0.3);
+            padding: 0.3rem 1rem;
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+            font-weight: 500;
+            color: #4b2e62;
             letter-spacing: -0.2px;
         }
 
         .signup-btn {
-            background: #1f1a1c;
-            color: white;
+            background: linear-gradient(105deg, #6c3f9e, #9b4dca);
             border: none;
-            padding: 0.45rem 1.6rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 500;
+            padding: 0.55rem 1.9rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: white;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s;
+            box-shadow: 0 4px 10px rgba(108, 63, 158, 0.3);
             font-family: inherit;
         }
 
         .signup-btn:hover {
-            background: #b84c6f;
+            transform: scale(0.96);
+            background: linear-gradient(105deg, #7b4bb3, #b668e0);
+            box-shadow: 0 8px 20px rgba(108, 63, 158, 0.4);
         }
 
-        /* --- Hero: "Where your secrets transform to stories" --- */
+        /* hero section: purple dream */
         .hero-title {
             text-align: center;
-            margin: 2.8rem 0 1.2rem;
+            margin: 2.5rem 0 1rem;
         }
 
         .hero-title h1 {
-            font-size: 3.4rem;
-            font-weight: 600;
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #4a2768, #ab6ed1, #6b3fa0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
             letter-spacing: -0.02em;
-            color: #1f1a1c;
-            max-width: 850px;
+            max-width: 900px;
             margin: 0 auto;
             line-height: 1.2;
+            text-shadow: 0 2px 5px rgba(128, 0, 255, 0.08);
         }
 
         .hero-sub {
             text-align: center;
-            font-size: 0.85rem;
-            color: #7d6a62;
-            margin-top: 0.5rem;
-            letter-spacing: -0.1px;
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: #6b5190;
+            font-weight: 450;
         }
 
-        /* --- Drama / Tropes box: exactly the vibe --- */
+        /* drama & tropes card — elegant purple glassmorphism */
         .drama-card {
-            background: #ffffff;
-            border-radius: 24px;
-            padding: 2rem 1.5rem;
+            background: rgba(255, 248, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 48px;
+            padding: 2.2rem 1.8rem;
             margin: 2.8rem 0 2rem;
             text-align: center;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
-            border: 1px solid #f0e6df;
+            border: 1px solid rgba(185, 135, 235, 0.4);
+            box-shadow: 0 20px 35px -12px rgba(78, 42, 112, 0.2);
+            transition: all 0.3s;
+        }
+
+        .drama-card:hover {
+            border-color: #c49ef0;
+            box-shadow: 0 25px 40px -14px rgba(108, 63, 158, 0.25);
         }
 
         .drama-line {
-            font-size: 1.8rem;
-            font-weight: 500;
-            color: #2c2a29;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2d1b3e;
         }
 
         .drama-line span {
-            background: #fceaeff2;
-            padding: 0.1rem 0.3rem;
-            border-radius: 20px;
+            background: linear-gradient(120deg, #efe3ff, #e8d6ff);
+            padding: 0.1rem 0.7rem;
+            border-radius: 50px;
+            display: inline-block;
         }
 
         .big-you {
-            font-size: 2.6rem;
-            font-weight: 700;
-            margin-top: 0.4rem;
-            color: #c24a6e;
-            letter-spacing: -0.5px;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-top: 0.6rem;
+            background: linear-gradient(125deg, #b77ce0, #8b5cc9);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -1px;
         }
 
         .small-credit {
-            font-size: 0.7rem;
-            margin-top: 0.5rem;
-            color: #b1948a;
+            font-size: 0.75rem;
+            margin-top: 0.8rem;
+            color: #9a7bba;
+            font-weight: 500;
         }
 
-        /* --- SEARCH SECTION (exactly as described: search + Romance/Thriller/Fantasy + MORE...) --- */
+        /* search section + purple magic */
         .search-section-compact {
-            margin: 2rem 0 2rem;
+            margin: 2rem 0 2.5rem;
         }
 
         .search-bar-container {
@@ -163,109 +219,128 @@
         .search-input-group {
             display: flex;
             align-items: center;
-            background: white;
-            border-radius: 100px;
-            padding: 0.3rem 0.3rem 0.3rem 1.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 80px;
+            padding: 0.3rem 0.3rem 0.3rem 1.8rem;
             width: 100%;
-            max-width: 460px;
-            border: 1px solid #e5d8cf;
-            transition: 0.2s;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+            max-width: 520px;
+            border: 1px solid #d6beff;
+            transition: all 0.25s;
+            box-shadow: 0 6px 14px rgba(128, 90, 180, 0.1);
+            backdrop-filter: blur(2px);
+        }
+
+        .search-input-group:focus-within {
+            border-color: #b47ce4;
+            box-shadow: 0 8px 22px rgba(128, 90, 210, 0.2);
+            transform: scale(1.01);
         }
 
         .search-input-group input {
             flex: 1;
             border: none;
-            padding: 0.7rem 0;
-            font-size: 0.9rem;
+            padding: 0.8rem 0;
+            font-size: 0.95rem;
             background: transparent;
             outline: none;
-            font-family: inherit;
-            color: #2c2a29;
+            font-family: 'Inter', monospace;
+            color: #2e1c3a;
         }
 
         .search-input-group input::placeholder {
-            color: #bcaea3;
+            color: #b59ad6;
             font-weight: 400;
         }
 
         .search-input-group button {
-            background: #c24a6e;
+            background: linear-gradient(95deg, #8b5cc9, #b578e3);
             border: none;
-            border-radius: 50px;
-            padding: 0.45rem 1.5rem;
+            border-radius: 60px;
+            padding: 0.55rem 1.8rem;
             color: white;
-            font-weight: 500;
-            font-size: 0.8rem;
+            font-weight: 600;
+            font-size: 0.85rem;
             cursor: pointer;
-            font-family: inherit;
             transition: 0.2s;
+            font-family: inherit;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         .search-input-group button:hover {
-            background: #a13e5d;
+            background: linear-gradient(95deg, #9f6bd9, #c58cf5);
+            transform: scale(0.96);
         }
 
         .genre-row {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1.2rem;
-            margin: 1.2rem 0 0.8rem;
+            gap: 1.3rem;
+            margin: 1.6rem 0 0.8rem;
         }
 
         .genre-badge {
-            background: white;
-            padding: 0.45rem 1.8rem;
+            background: rgba(255, 248, 255, 0.8);
+            padding: 0.55rem 2rem;
             border-radius: 60px;
             font-size: 0.9rem;
-            font-weight: 500;
-            color: #3d3330;
-            border: 1px solid #ecdacf;
+            font-weight: 600;
+            color: #4a2e6b;
+            border: 1px solid #ddccff;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.25s;
+            backdrop-filter: blur(2px);
             letter-spacing: -0.2px;
         }
 
         .genre-badge:hover {
-            background: #c24a6e;
+            background: #b77ce0;
             color: white;
-            border-color: #c24a6e;
+            border-color: #b77ce0;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(128, 90, 200, 0.3);
         }
 
         .more-row {
             text-align: right;
-            margin-top: 0.8rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #b55878;
-            letter-spacing: -0.1px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #9b6bcf;
         }
 
         .more-click {
-            border-bottom: 1px dashed #c27c96;
+            border-bottom: 2px dashed #c09be8;
             cursor: pointer;
+            transition: 0.2s;
+            display: inline-block;
+        }
+
+        .more-click:hover {
+            color: #754bb3;
+            border-bottom-color: #aa7ad6;
         }
 
         .feedback-message {
-            margin-top: 1rem;
-            font-size: 0.8rem;
-            color: #8f7266;
+            margin-top: 1.4rem;
+            font-size: 0.85rem;
+            color: #684f8b;
             text-align: center;
-            background: #fffaf5;
-            padding: 0.4rem 1rem;
-            border-radius: 60px;
-            display: inline-block;
-            width: auto;
-            width: 100%;
-            text-align: center;
+            background: rgba(225, 205, 255, 0.5);
+            padding: 0.65rem 1rem;
+            border-radius: 70px;
+            backdrop-filter: blur(4px);
+            font-weight: 500;
+            letter-spacing: -0.2px;
+            border: 1px solid rgba(190, 150, 240, 0.4);
+            transition: all 0.2s;
         }
 
-        /* --- FOOTER: download app / email / inreadably & rights --- */
+        /* footer: purple elegance */
         .footer-info {
             margin-top: 4rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #e7dfd8;
+            padding-top: 1.8rem;
+            border-top: 1px solid #dac5ff;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -274,38 +349,48 @@
         }
 
         .download-block {
-            background: #ffffffd9;
-            border-radius: 28px;
-            padding: 0.6rem 1.3rem;
+            background: rgba(252, 247, 255, 0.85);
+            backdrop-filter: blur(4px);
+            border-radius: 36px;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #decbff;
         }
 
         .download-block p {
             font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 0.3rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #472e62;
         }
 
         .badge-demo {
-            background: #1f1a1c;
+            background: linear-gradient(110deg, #6f43a3, #9b5ad0);
             color: white;
-            padding: 0.25rem 1rem;
+            padding: 0.3rem 1.2rem;
             border-radius: 50px;
             font-size: 0.7rem;
             display: inline-block;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .contact-email {
-            background: #faf3ed;
-            padding: 0.5rem 1.3rem;
-            border-radius: 32px;
+            background: rgba(240, 230, 255, 0.8);
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
             font-size: 0.85rem;
+            font-weight: 500;
         }
 
         .contact-email a {
-            color: #c24a6e;
+            color: #9b4dca;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .contact-email a:hover {
+            color: #7647b0;
+            text-decoration: underline;
         }
 
         .rights-side {
@@ -313,23 +398,26 @@
         }
 
         .inreadably-word {
-            font-family: monospace;
+            font-family: 'Courier New', monospace;
             font-size: 1rem;
-            font-weight: 600;
-            background: #efe4dc;
+            font-weight: 700;
+            background: linear-gradient(145deg, #dcc9ff, #efe3ff);
             display: inline-block;
-            padding: 0.2rem 1rem;
-            border-radius: 30px;
-            letter-spacing: -0.3px;
+            padding: 0.25rem 1.2rem;
+            border-radius: 40px;
+            letter-spacing: -0.2px;
+            color: #5a3791;
+            border: 1px solid #cfb4f5;
         }
 
         .copyright-line {
             font-size: 0.7rem;
-            color: #9b8278;
-            margin-top: 0.4rem;
+            color: #8f6eb0;
+            margin-top: 0.5rem;
+            font-weight: 500;
         }
 
-        /* modal style for signup same family */
+        /* elegant purple modal */
         .modal-pop {
             display: none;
             position: fixed;
@@ -337,38 +425,50 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(50, 30, 70, 0.7);
+            backdrop-filter: blur(6px);
             align-items: center;
             justify-content: center;
             z-index: 1000;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         .modal-card {
-            background: #fefaf7;
-            max-width: 360px;
+            background: #fffbfe;
+            max-width: 380px;
             width: 90%;
-            border-radius: 2rem;
-            padding: 2rem 1.5rem;
+            border-radius: 48px;
+            padding: 2rem 1.8rem;
             text-align: center;
-            box-shadow: 0 20px 35px rgba(0,0,0,0.2);
-            border: 1px solid #eedbcb;
+            box-shadow: 0 30px 45px rgba(68, 34, 102, 0.3);
+            border: 1px solid #d9befa;
         }
 
         .modal-card h3 {
-            font-weight: 600;
-            font-size: 1.4rem;
-            color: #2c2522;
+            font-weight: 800;
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, #8055b5, #b87de0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .modal-card p {
+            color: #4f3a6b;
         }
 
         .modal-card input {
             width: 100%;
-            padding: 0.7rem;
+            padding: 0.8rem;
             border-radius: 60px;
-            border: 1px solid #eddacf;
-            margin: 1rem 0;
+            border: 1px solid #e3d2ff;
+            margin: 1.2rem 0;
             font-family: inherit;
             background: white;
+            outline: none;
+        }
+
+        .modal-card input:focus {
+            border-color: #b77ce0;
         }
 
         .modal-buttons {
@@ -378,35 +478,36 @@
         }
 
         .modal-buttons button {
-            padding: 0.45rem 1.2rem;
-            border-radius: 40px;
-            border: none;
-            font-weight: 500;
+            padding: 0.55rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 600;
             cursor: pointer;
+            border: none;
+            transition: 0.2s;
         }
 
         .close-modal-btn {
-            background: #ddd2ca;
+            background: #ede3ff;
+            color: #593a83;
         }
 
         .confirm-modal-btn {
-            background: #c24a6e;
+            background: linear-gradient(95deg, #8b5cc9, #b075df);
             color: white;
         }
 
-        /* responsive touches */
         @media (max-width: 760px) {
             .container {
                 padding: 1.2rem;
             }
             .hero-title h1 {
-                font-size: 2.2rem;
+                font-size: 2.4rem;
             }
             .drama-line {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
             }
             .big-you {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             .footer-info {
                 flex-direction: column;
@@ -420,7 +521,7 @@
 </head>
 <body>
 <div class="container">
-    <!-- top navigation: exactly Home | Search | QInfo + Welcome to “thoughts @2am” + signup -->
+    <!-- navigation exactly as required: Home Search QInfo + Welcome + signup for free -->
     <div class="top-flex">
         <div class="nav-left">
             <a href="#">Home</a>
@@ -428,29 +529,29 @@
             <a href="#">QInfo</a>
         </div>
         <div class="right-welcome">
-            <div class="welcome-badge">Welcome to “thoughts @2am”</div>
+            <div class="welcome-badge">✨ Welcome to “thoughts @2am” ✨</div>
             <button class="signup-btn" id="openSignupModalBtn">Sign up for free</button>
         </div>
     </div>
 
-    <!-- main hero line where your secrets transform to stories -->
+    <!-- main catchphrase: where your secrets transform to stories -->
     <div class="hero-title">
         <h1>Where your secrets transform to stories</h1>
-        <div class="hero-sub"></div>
+        <div class="hero-sub">purple echoes · midnight confessions · raw pages</div>
     </div>
 
-    <!-- drama & troupes block identical to the brief: "All the drama. All the troupes. Its all YOU!" -->
+    <!-- All the drama / All the troupes / It's all YOU! -->
     <div class="drama-card">
         <div class="drama-line">All the drama. <span>All the troupes.</span></div>
         <div class="big-you">Its all YOU!</div>
-        <div class="small-credit">✶ unapologetically yours ✶</div>
+        <div class="small-credit">✧ your truth, your stage, your purple hour ✧</div>
     </div>
 
-    <!-- search + genre pills + more... -->
+    <!-- search + romance/thriller/fantasy pills + more.. -->
     <div class="search-section-compact">
         <div class="search-bar-container">
             <div class="search-input-group">
-                <input type="text" id="searchInputField" placeholder="search">
+                <input type="text" id="searchInputField" placeholder="search midnight whispers...">
                 <button id="searchActionBtn">search</button>
             </div>
         </div>
@@ -462,17 +563,17 @@
         <div class="more-row">
             <span class="more-click" id="moreTrigger">MORE...</span>
         </div>
-        <div id="dynamicFeedback" class="feedback-message">✨ type a whisper or pick a genre ✨</div>
+        <div id="dynamicFeedback" class="feedback-message">🌙 purple thoughts — pick a genre or search your soul</div>
     </div>
 
-    <!-- footer: download our app / reach out / inreadably + all rights reserved -->
+    <!-- footer area: download app / reach out / inreadably + all rights reserved -->
     <div class="footer-info">
         <div class="download-block">
-            <p>for more information <strong>download our app</strong></p>
-            <div class="badge-demo">📱 available soon</div>
+            <p>📱 for more information <strong>download our app</strong></p>
+            <div class="badge-demo">coming soon on iOS & Android</div>
         </div>
         <div class="contact-email">
-            or reach out at <a href="mailto:thoughtsat2am@gmail.com">thoughtsat2am@gmail.com</a>
+            ✉️ or reach out at <a href="mailto:thoughtsat2am@gmail.com">thoughtsat2am@gmail.com</a>
         </div>
         <div class="rights-side">
             <div class="inreadably-word">inreadably</div>
@@ -481,185 +582,157 @@
     </div>
 </div>
 
-<!-- signup modal (free) -->
+<!-- signup modal purple elegance -->
 <div id="signupModalOverlay" class="modal-pop">
     <div class="modal-card">
-        <h3>🖤 join the 2am circle</h3>
-        <p style="font-size: 0.85rem; margin: 0.5rem 0;">your secrets → stories, no judgment, only ink & dreams.</p>
-        <input type="email" id="modalEmailInput" placeholder="your email address">
+        <h3>💜 join the 2am coven</h3>
+        <p style="margin: 0.6rem 0;">turn your secrets into spellbinding stories.</p>
+        <input type="email" id="modalEmailInput" placeholder="your email">
         <div class="modal-buttons">
             <button class="close-modal-btn" id="closeModalButton">Close</button>
             <button class="confirm-modal-btn" id="confirmModalSignup">Sign up free</button>
         </div>
-        <p style="font-size: 0.65rem; margin-top: 1rem;">we protect your late night thoughts.</p>
+        <p style="font-size: 0.65rem; margin-top: 1rem;">we guard your moonlit words with care.</p>
     </div>
 </div>
 
 <script>
-    // perfect replica logic: same interactive mood but keeping identical colors and functionality
+    // modal functionality
     const modalOverlay = document.getElementById('signupModalOverlay');
-    const openSignupBtn = document.getElementById('openSignupModalBtn');
-    const closeModalBtn = document.getElementById('closeModalButton');
-    const confirmSignup = document.getElementById('confirmModalSignup');
-    const emailInputModal = document.getElementById('modalEmailInput');
+    const openSignup = document.getElementById('openSignupModalBtn');
+    const closeModal = document.getElementById('closeModalButton');
+    const confirmSign = document.getElementById('confirmModalSignup');
+    const emailModal = document.getElementById('modalEmailInput');
 
     function openModalFunc() { modalOverlay.style.display = 'flex'; }
     function closeModalFunc() { modalOverlay.style.display = 'none'; }
-
-    openSignupBtn.addEventListener('click', openModalFunc);
-    closeModalBtn.addEventListener('click', closeModalFunc);
+    openSignup.addEventListener('click', openModalFunc);
+    closeModal.addEventListener('click', closeModalFunc);
     window.addEventListener('click', (e) => { if(e.target === modalOverlay) closeModalFunc(); });
-    confirmSignup.addEventListener('click', () => {
-        const email = emailInputModal.value.trim();
-        if(email === "") {
-            alert("✨ drop your email to start your journey ✨");
-        } else {
-            alert(`thank you ${email}! your stories matter at thoughts @2am.`);
-        }
-        emailInputModal.value = "";
+    confirmSign.addEventListener('click', () => {
+        let email = emailModal.value.trim();
+        if(email === "") alert("💜 drop your email — your story is waiting.");
+        else { alert(`Thank you ${email}! Your secrets find a home at thoughts @2am 💜`); }
+        emailModal.value = "";
         closeModalFunc();
     });
 
-    // ---------- story simulation that feels authentic but doesn't break UI ----------
-    const storyBank = {
+    // story pool purple themed but same structure
+    const storyCollection = {
         romance: [
-            "The unsent letter that lived under my pillow for 3 years.",
-            "We never kissed, but I wrote our ending 17 times.",
-            "Romance trope: enemies to bed sheets & messy confessions at 2am."
+            "In every timeline, I find you. But this one, I finally write it down.",
+            "The love letter I burned at 2am — the smoke smelled like forgiveness.",
+            "Romance trope: enemies to lovers in a purple-lit library."
         ],
         thriller: [
-            "The voicemail i left myself: 'dont trust the mirror'.",
-            "Someone rewatches my stories. But I never posted any. ",
-            "Thriller twist: my best friend's journal predicted last week."
+            "Someone left a note under my pillow: 'I know your 2am thoughts'.",
+            "The mirror whispers my secrets before I do. Tonight, it smiled.",
+            "Thriller: my reflection started writing stories without me."
         ],
         fantasy: [
-            "The library where you can borrow other people's dreams.",
-            "Fantasy: my shadow whispered a prophecy: 'your truth will set them free'.",
-            "Moonlit portal behind the coffee shop — I saw my future self writing this."
+            "The purple moon grants one wish: to remember every forgotten dream.",
+            "Fantasy: ink that writes itself, stories that bleed violets.",
+            "I borrowed magic from the night market — now my secrets have wings."
         ],
         general: [
-            "Secret: I fake sleep at 2am just to listen to the city breathe.",
-            "Maybe i don't miss you, i miss who i was when i wrote about you.",
-            "the story of the night i almost said everything."
+            "maybe the story we needed was the one we never dared to tell.",
+            "Purple hour: between regret and release, we become art.",
+            "Secret: i write down all the things i'll never say, just so they exist."
         ]
     };
 
     const feedbackDiv = document.getElementById('dynamicFeedback');
     const searchField = document.getElementById('searchInputField');
     const searchBtn = document.getElementById('searchActionBtn');
-    const genrePills = document.querySelectorAll('.genre-badge');
+    const genreChips = document.querySelectorAll('.genre-badge');
 
-    function getRandomFromCategory(category) {
-        const arr = storyBank[category];
+    function getRandomEntry(categoryKey) {
+        let arr = storyCollection[categoryKey];
         if(arr && arr.length) return arr[Math.floor(Math.random() * arr.length)];
-        return "A secret story waiting to unfold...";
+        return "A hidden story pulses in the dark...";
     }
 
-    function updateFeedback(text, isGenreMode = false, genreName = "") {
+    function updatePurpleFeedback(text) {
         feedbackDiv.innerHTML = text;
-        feedbackDiv.style.opacity = "1";
+        feedbackDiv.style.transition = "0.2s";
     }
 
-    function handleSearchOrGenre(query, genreOverride = null) {
-        let lowerQuery = (query || "").toLowerCase().trim();
-        let selectedGenre = genreOverride;
-
-        if (!selectedGenre && lowerQuery !== "") {
-            if (lowerQuery.includes("romance") || lowerQuery.includes("love") || lowerQuery.includes("crush")) {
-                selectedGenre = "romance";
-            } else if (lowerQuery.includes("thrill") || lowerQuery.includes("mystery") || lowerQuery.includes("dark") || lowerQuery.includes("suspen")) {
-                selectedGenre = "thriller";
-            } else if (lowerQuery.includes("fantasy") || lowerQuery.includes("magic") || lowerQuery.includes("dream") || lowerQuery.includes("dragon")) {
-                selectedGenre = "fantasy";
-            }
+    function handleSearchOrGenre(rawQuery, forcedGenre = null) {
+        let query = (rawQuery || "").trim().toLowerCase();
+        let selectedGenre = forcedGenre;
+        if (!selectedGenre && query !== "") {
+            if (query.includes("romance") || query.includes("love") || query.includes("crush") || query.includes("heart")) selectedGenre = "romance";
+            else if (query.includes("thrill") || query.includes("mystery") || query.includes("dark") || query.includes("fear")) selectedGenre = "thriller";
+            else if (query.includes("fantasy") || query.includes("magic") || query.includes("dream") || query.includes("witch")) selectedGenre = "fantasy";
         }
-
-        let storyResult = "";
+        
         if (selectedGenre) {
-            if (selectedGenre === "Romance") storyResult = getRandomFromCategory("romance");
-            else if (selectedGenre === "Thriller") storyResult = getRandomFromCategory("thriller");
-            else if (selectedGenre === "Fantasy") storyResult = getRandomFromCategory("fantasy");
-            else storyResult = getRandomFromCategory("general");
-            if (query && query !== "" && !genreOverride) {
-                updateFeedback(`🔎 “${query}” → ${selectedGenre} whisper: “${storyResult}”`);
+            let genreKey = "";
+            if (selectedGenre === "Romance") genreKey = "romance";
+            else if (selectedGenre === "Thriller") genreKey = "thriller";
+            else if (selectedGenre === "Fantasy") genreKey = "fantasy";
+            else genreKey = "general";
+            const story = getRandomEntry(genreKey);
+            if (rawQuery && rawQuery.trim() !== "" && !forcedGenre) {
+                updatePurpleFeedback(`💜 “${rawQuery}” · ${selectedGenre} whisper: “${story}”`);
             } else {
-                updateFeedback(`✨ ${selectedGenre} secret: “${storyResult}”`);
+                updatePurpleFeedback(`✨ ${selectedGenre} secret: “${story}” ✨`);
             }
         } 
-        else if (lowerQuery !== "") {
-            // fallback general
-            storyResult = getRandomFromCategory("general");
-            updateFeedback(`🌙 for “${query}”: ${storyResult}`);
-        }
+        else if (query !== "") {
+            const fallbackStory = getRandomEntry("general");
+            updatePurpleFeedback(`🪄 for “${rawQuery}”: ${fallbackStory}`);
+        } 
         else {
-            updateFeedback("✍️ type a midnight thought or pick Romance, Thriller, Fantasy…");
+            updatePurpleFeedback("🌙 type a secret, a word, or tap a genre — purple stories await.");
         }
-    }
-
-    function getGenreFromPill(genreText) {
-        if (genreText === "Romance") return "Romance";
-        if (genreText === "Thriller") return "Thriller";
-        if (genreText === "Fantasy") return "Fantasy";
-        return null;
     }
 
     searchBtn.addEventListener('click', () => {
-        const val = searchField.value;
-        if(val === "") {
-            updateFeedback("💭 whisper something into the search... secrets become stories.");
-        } else {
-            handleSearchOrGenre(val, null);
-        }
+        let value = searchField.value;
+        if(!value.trim()) updatePurpleFeedback("💜 whisper something into the purple void...");
+        else handleSearchOrGenre(value, null);
     });
-
     searchField.addEventListener('keypress', (e) => {
         if(e.key === 'Enter') {
-            const val = searchField.value;
-            if(val === "") updateFeedback("💭 midnight search — try a word, an emotion.");
+            let val = searchField.value;
+            if(!val.trim()) updatePurpleFeedback("✨ midnight search — let the ink flow ✨");
             else handleSearchOrGenre(val, null);
         }
     });
 
-    genrePills.forEach(pill => {
-        pill.addEventListener('click', () => {
-            const genreRaw = pill.getAttribute('data-genre');
+    genreChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            const genreAttr = chip.getAttribute('data-genre');
             const currentQuery = searchField.value;
-            if (currentQuery && currentQuery.trim() !== "") {
-                handleSearchOrGenre(currentQuery, genreRaw);
+            if(currentQuery && currentQuery.trim() !== "") {
+                handleSearchOrGenre(currentQuery, genreAttr);
             } else {
-                let storyText = "";
-                if (genreRaw === "Romance") storyText = getRandomFromCategory("romance");
-                else if (genreRaw === "Thriller") storyText = getRandomFromCategory("thriller");
-                else storyText = getRandomFromCategory("fantasy");
-                updateFeedback(`📖 ${genreRaw} vibe: “${storyText}”`);
+                let storyResult = "";
+                if (genreAttr === "Romance") storyResult = getRandomEntry("romance");
+                else if (genreAttr === "Thriller") storyResult = getRandomEntry("thriller");
+                else storyResult = getRandomEntry("fantasy");
+                updatePurpleFeedback(`💜 ${genreAttr} magic: “${storyResult}”`);
             }
-            // subtle visual feedback
-            pill.style.transform = "scale(0.96)";
-            setTimeout(() => { pill.style.transform = ""; }, 130);
+            chip.style.transform = "scale(0.96)";
+            setTimeout(() => chip.style.transform = "", 120);
         });
     });
 
-    // MORE... interactive: shows extended genres line (non-intrusive)
-    const moreElement = document.getElementById('moreTrigger');
-    if(moreElement) {
-        moreElement.addEventListener('click', () => {
-            feedbackDiv.innerHTML = "MORE... dark academia · gothic romance · psychological · slice of life · letters unsent. every story finds home @2am.";
-            setTimeout(() => {
-                if(feedbackDiv.innerHTML.includes("MORE...")) {
-                    setTimeout(() => {
-                        if(!searchField.value && !document.querySelector('.genre-badge:hover')) {
-                            feedbackDiv.innerHTML = "✨ type a whisper or pick a genre ✨";
-                        }
-                    }, 2800);
-                }
-            }, 100);
-        });
-    }
-
-    // additional subtle: show that it's all identical: the 'inreadably' and rights match exact numbers
-    // Also mirror necessary hover states and border colors
-    // ensure that initial message matches warm minimal
-    feedbackDiv.innerHTML = "search for romance, thriller, fantasy — or just let your secret out.";
+    const moreButton = document.getElementById('moreTrigger');
+    moreButton.addEventListener('click', () => {
+        updatePurpleFeedback("🌌 MORE genres: dark academia · gothic romance · magical realism · noir confessions. every purple thought becomes prose.");
+        setTimeout(() => {
+            if(feedbackDiv.innerHTML.includes("MORE genres") && !searchField.value && !document.querySelector('.genre-badge:hover')) {
+                setTimeout(() => {
+                    if(feedbackDiv.innerHTML.includes("MORE genres"))
+                        updatePurpleFeedback("💜 pick a genre or pour your heart into search.");
+                }, 3200);
+            }
+        }, 100);
+    });
+    // initial mood
+    updatePurpleFeedback("💜 purple dreams & midnight ink — let your secret bloom.");
 </script>
 </body>
 </html>
