@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>UniHeader | Modern Platform</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(145deg, #f9fafc 0%, #eef2f5 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: #1a2c3e;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ========= UNIFIED HEADER (identical across all pages) ========= */
+    .site-header {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(2px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02), 0 1px 0 rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 18px 0;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      background: #2b6e4f;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 12px -6px rgba(43, 110, 79, 0.25);
+    }
+
+    .logo-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: white;
+    }
+
+    .logo-text {
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      background: linear-gradient(135deg, #1f5e45, #2b9e6e);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #2c4b3a;
+      transition: all 0.2s ease;
+      font-size: 1rem;
+      padding: 6px 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: #1b6e4c;
+      border-bottom-color: #2b9e6e;
+    }
+
+    .nav-links a.active {
+      color: #1b6e4c;
+      border-bottom-color: #2b9e6e;
+      font-weight: 600;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 14px;
+    }
+
+    .btn-outline-light {
+      background: transparent;
+      border: 1.5px solid #cbdcd2;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #2c5a46;
+      cursor: pointer;
+      transition: 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-outline-light:hover {
+      border-color: #2b9e6e;
+      background: #eef7f2;
+      color: #136b48;
+    }
+
+    .btn-primary-sm {
+      background: #2b6e4f;
+      border: none;
+      padding: 8px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-primary-sm:hover {
+      background: #1f5a41;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px -8px rgba(43, 110, 79, 0.4);
+    }
+
+    main {
+      flex: 1;
+      padding: 48px 0 72px;
+    }
+
+    /* Hero section */
+    .hero {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #1e4d39, #2b8b62, #44b78b);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #4a6b5c;
+      max-width: 680px;
+      margin: 16px auto 0;
+    }
+
+    /* Feature cards */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      margin: 48px 0;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 28px;
+      padding: 32px 24px;
+      box-shadow: 0 12px 28px -8px rgba(0, 32, 20, 0.08);
+      transition: all 0.25s ease;
+      text-align: center;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 36px -12px rgba(43, 110, 79, 0.2);
+    }
+
+    .feature-icon {
+      background: #e9f5ef;
+      width: 64px;
+      height: 64px;
+      border-radius: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .feature-icon svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: #1f4536;
+    }
+
+    .feature-card p {
+      color: #557568;
+      line-height: 1.5;
+    }
+
+    .cta-section {
+      background: linear-gradient(115deg, #eef9f3 0%, #e2f0ea 100%);
+      border-radius: 48px;
+      padding: 48px 32px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .cta-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #164e3a;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: #2b6e4f;
+      padding: 12px 32px;
+      border-radius: 44px;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      transition: 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: #1f5a41;
+      transform: scale(0.98);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1.5px solid #2b6e4f;
+      padding: 12px 32px;
+      border-radius: 44px;
+      font-weight: 700;
+      color: #2b6e4f;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: #eef7f2;
+    }
+
+    footer {
+      background: white;
+      border-top: 1px solid #e9f0ec;
+      padding: 28px 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #6e8f7e;
+    }
+
+    @media (max-width: 680px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+      }
+      .nav-links {
+        justify-content: center;
+      }
+      .header-actions {
+        justify-content: center;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================== UNIFIED HEADER ================== -->
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="logo-area">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <span class="logo-text">UniHeader</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html" id="nav-home" class="active">Home</a>
+      <a href="signup.html" id="nav-signup">Sign Up</a>
+      <a href="QInfo.html" id="nav-qinfo">QInfo</a>
+      <a href="#" id="nav-features">Features</a>
+      <a href="#" id="nav-about">About</a>
+    </div>
+    <div class="header-actions">
+      <a href="#" class="btn-outline-light">Log in</a>
+      <a href="signup.html" class="btn-primary-sm">Get started</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="hero">
+      <h1>Build smarter, faster 🚀</h1>
+      <p>Unified platform with intelligent insights, seamless sign-up, and deep analytics — all under one header.</p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2b6e4f" stroke-width="1.8">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <h3>Seamless Navigation</h3>
+        <p>Unified header across Home, Sign Up, and QInfo pages. Consistent experience every time.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2b6e4f" stroke-width="1.8">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <h3>QInfo Analytics</h3>
+        <p>Deep insights, real-time metrics, and intelligent Q&A to empower your decisions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2b6e4f" stroke-width="1.8">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </div>
+        <h3>Secure Sign-up</h3>
+        <p>Simple, validated registration flow. Join our growing community with ease.</p>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <h2>Ready to explore QInfo?</h2>
+      <p style="margin-top: 12px; color: #3e6b58;">Get detailed analytics, live dashboards, and expert insights.</p>
+      <div class="cta-buttons">
+        <a href="signup.html" class="btn-primary">Create free account</a>
+        <a href="QInfo.html" class="btn-secondary">Explore QInfo →</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2025 UniHeader — Seamless experience across Home, Sign Up, and QInfo. Modern & responsive.</p>
+  </div>
+</footer>
+
+<script>
+  // Ensure active link state is consistent (though we set manually, just for robustness)
+  console.log('Index page loaded — unified header ready');
+</script>
+</body>
+</html>
