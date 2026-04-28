@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>UniHeader | Modern Platform</title>
+  <title>Nexify | Platform & QInfo</title>
+  <!-- Google Fonts & modern CSS reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -12,38 +14,33 @@
     }
 
     body {
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background: linear-gradient(145deg, #f9fafc 0%, #eef2f5 100%);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(145deg, #f9fafc 0%, #f1f4f9 100%);
       color: #1a2c3e;
+      line-height: 1.4;
+      min-height: 100vh;
     }
 
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* ========= UNIFIED HEADER (identical across all pages) ========= */
-    .site-header {
+    /* ========= GLOBAL HEADER STYLES (shared across all pages) ========= */
+    .global-header {
       background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(2px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02), 0 1px 0 rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.03);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
       position: sticky;
       top: 0;
       z-index: 100;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
-    .header-inner {
+    .header-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 16px;
-      padding: 18px 0;
+      gap: 1rem;
     }
 
     .logo-area {
@@ -53,35 +50,35 @@
     }
 
     .logo-icon {
-      background: #2b6e4f;
-      width: 38px;
-      height: 38px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      width: 36px;
+      height: 36px;
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 6px 12px -6px rgba(43, 110, 79, 0.25);
+      box-shadow: 0 6px 12px -6px rgba(59, 130, 246, 0.3);
     }
 
-    .logo-icon svg {
-      width: 22px;
-      height: 22px;
-      fill: white;
+    .logo-icon span {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: white;
     }
 
     .logo-text {
-      font-size: 1.7rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      letter-spacing: -0.3px;
-      background: linear-gradient(135deg, #1f5e45, #2b9e6e);
+      background: linear-gradient(120deg, #1e293b, #2d3a4b);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
+      letter-spacing: -0.3px;
     }
 
     .nav-links {
       display: flex;
-      gap: 28px;
+      gap: 1.8rem;
       align-items: center;
       flex-wrap: wrap;
     }
@@ -89,211 +86,339 @@
     .nav-links a {
       text-decoration: none;
       font-weight: 500;
-      color: #2c4b3a;
+      color: #334155;
       transition: all 0.2s ease;
       font-size: 1rem;
-      padding: 6px 0;
+      padding: 0.4rem 0;
       border-bottom: 2px solid transparent;
     }
 
     .nav-links a:hover {
-      color: #1b6e4c;
-      border-bottom-color: #2b9e6e;
+      color: #2563eb;
+      border-bottom-color: #2563eb;
     }
 
-    .nav-links a.active {
-      color: #1b6e4c;
-      border-bottom-color: #2b9e6e;
+    .nav-links .active-link {
+      color: #2563eb;
+      border-bottom-color: #2563eb;
       font-weight: 600;
     }
 
-    .header-actions {
-      display: flex;
-      gap: 14px;
-    }
-
-    .btn-outline-light {
-      background: transparent;
-      border: 1.5px solid #cbdcd2;
-      padding: 8px 18px;
+    .cta-button {
+      background: #2563eb;
+      color: white !important;
+      padding: 0.5rem 1.2rem !important;
       border-radius: 40px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #2c5a46;
-      cursor: pointer;
-      transition: 0.2s;
-      text-decoration: none;
-      display: inline-block;
+      border-bottom: none !important;
+      transition: all 0.2s;
+      box-shadow: 0 2px 5px rgba(37, 99, 235, 0.2);
     }
 
-    .btn-outline-light:hover {
-      border-color: #2b9e6e;
-      background: #eef7f2;
-      color: #136b48;
-    }
-
-    .btn-primary-sm {
-      background: #2b6e4f;
-      border: none;
-      padding: 8px 24px;
-      border-radius: 40px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: white;
-      cursor: pointer;
-      transition: 0.2s;
-      text-decoration: none;
-      display: inline-block;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    }
-
-    .btn-primary-sm:hover {
-      background: #1f5a41;
+    .cta-button:hover {
+      background: #1d4ed8;
       transform: translateY(-1px);
-      box-shadow: 0 8px 18px -8px rgba(43, 110, 79, 0.4);
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+      border-bottom: none !important;
     }
 
-    main {
+    /* main wrapper */
+    .page-wrapper {
+      max-width: 1300px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    /* home specific styles */
+    .hero-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .hero-content {
       flex: 1;
-      padding: 48px 0 72px;
     }
 
-    /* Hero section */
-    .hero {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-
-    .hero h1 {
+    .hero-content h1 {
       font-size: 3.2rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #1e4d39, #2b8b62, #44b78b);
+      font-weight: 700;
+      background: linear-gradient(135deg, #0f172a, #2563eb);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
     }
 
-    .hero p {
+    .hero-content p {
       font-size: 1.2rem;
-      color: #4a6b5c;
-      max-width: 680px;
-      margin: 16px auto 0;
+      color: #475569;
+      margin-bottom: 2rem;
+      max-width: 500px;
     }
 
-    /* Feature cards */
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 32px;
-      margin: 48px 0;
+    .hero-cta {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .hero-cta:hover {
+      background: #1e40af;
+      transform: translateY(-2px);
+    }
+
+    .hero-image {
+      flex: 1;
+      background: linear-gradient(135deg, #e0e7ff, #cbd5e1);
+      border-radius: 32px;
+      padding: 2rem;
+      text-align: center;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+    }
+
+    .features {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin: 3rem 0;
     }
 
     .feature-card {
       background: white;
       border-radius: 28px;
-      padding: 32px 24px;
-      box-shadow: 0 12px 28px -8px rgba(0, 32, 20, 0.08);
-      transition: all 0.25s ease;
-      text-align: center;
+      padding: 1.8rem;
+      flex: 1;
+      min-width: 200px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02), 0 2px 4px rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      transition: all 0.2s;
     }
 
     .feature-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 24px 36px -12px rgba(43, 110, 79, 0.2);
+      transform: translateY(-4px);
+      border-color: #e2e8f0;
+      box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.08);
     }
 
     .feature-icon {
-      background: #e9f5ef;
-      width: 64px;
-      height: 64px;
-      border-radius: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-    }
-
-    .feature-icon svg {
-      width: 32px;
-      height: 32px;
-    }
-
-    .feature-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 12px;
-      color: #1f4536;
-    }
-
-    .feature-card p {
-      color: #557568;
-      line-height: 1.5;
-    }
-
-    .cta-section {
-      background: linear-gradient(115deg, #eef9f3 0%, #e2f0ea 100%);
-      border-radius: 48px;
-      padding: 48px 32px;
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .cta-section h2 {
       font-size: 2rem;
-      font-weight: 700;
-      color: #164e3a;
+      margin-bottom: 1rem;
     }
 
-    .cta-buttons {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      margin-top: 28px;
-      flex-wrap: wrap;
+    /* signup page specific */
+    .signup-container {
+      max-width: 560px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 2rem;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2);
+      padding: 2rem 2.2rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
     }
 
-    .btn-primary {
-      background: #2b6e4f;
-      padding: 12px 32px;
-      border-radius: 44px;
+    .signup-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .signup-header h2 {
+      font-size: 1.9rem;
       font-weight: 700;
+      color: #0f172a;
+    }
+
+    .signup-header p {
+      color: #5b6e8c;
+      margin-top: 0.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.4rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: #1e293b;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border-radius: 1.2rem;
+      border: 1px solid #e2e8f0;
+      font-size: 1rem;
+      transition: all 0.2s;
+      background: #fefefe;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .form-group input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+
+    .signup-btn {
+      width: 100%;
+      background: #2563eb;
       color: white;
-      text-decoration: none;
-      transition: 0.2s;
-      display: inline-block;
+      border: none;
+      padding: 0.9rem;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 0.5rem;
     }
 
-    .btn-primary:hover {
-      background: #1f5a41;
+    .signup-btn:hover {
+      background: #1e40af;
       transform: scale(0.98);
     }
 
-    .btn-secondary {
-      background: transparent;
-      border: 1.5px solid #2b6e4f;
-      padding: 12px 32px;
-      border-radius: 44px;
-      font-weight: 700;
-      color: #2b6e4f;
-      text-decoration: none;
-      transition: 0.2s;
+    .login-note {
+      text-align: center;
+      margin-top: 1.8rem;
+      font-size: 0.9rem;
+      color: #5b6e8c;
     }
 
-    .btn-secondary:hover {
-      background: #eef7f2;
+    .login-note a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .message-toast {
+      margin-top: 1rem;
+      padding: 0.8rem;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 0.85rem;
+      background: #eef2ff;
+      color: #1e3a8a;
+      display: none;
+    }
+
+    /* QInfo page custom styles */
+    .qinfo-container {
+      max-width: 1000px;
+      margin: 2rem auto;
+    }
+    .qinfo-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .qinfo-header h1 {
+      font-size: 2.8rem;
+      background: linear-gradient(135deg, #1e293b, #2563eb);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .qinfo-header p {
+      color: #5b6e8c;
+      font-size: 1.1rem;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .info-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 1.8rem;
+      transition: all 0.2s;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+    }
+    .info-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+      border-color: #e0e7ff;
+    }
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .info-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: #0f172a;
+    }
+    .info-card p {
+      color: #4b5563;
+      line-height: 1.5;
+    }
+    .qa-section {
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem;
+      margin-top: 2rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    }
+    .qa-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: #0f172a;
+      border-left: 5px solid #3b82f6;
+      padding-left: 1rem;
+    }
+    .qa-item {
+      margin-bottom: 1.8rem;
+      border-bottom: 1px solid #eef2ff;
+      padding-bottom: 1rem;
+    }
+    .qa-question {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #2563eb;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .qa-answer {
+      color: #475569;
+      padding-left: 1.8rem;
+      line-height: 1.5;
     }
 
     footer {
-      background: white;
-      border-top: 1px solid #e9f0ec;
-      padding: 28px 0;
       text-align: center;
-      font-size: 0.8rem;
-      color: #6e8f7e;
+      padding: 2rem;
+      margin-top: 3rem;
+      color: #6c7a91;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      font-size: 0.85rem;
     }
 
-    @media (max-width: 680px) {
-      .header-inner {
+    @media (max-width: 700px) {
+      .header-container {
         flex-direction: column;
         align-items: stretch;
         text-align: center;
@@ -301,101 +426,277 @@
       .nav-links {
         justify-content: center;
       }
-      .header-actions {
-        justify-content: center;
+      .hero-section {
+        flex-direction: column;
       }
-      .hero h1 {
-        font-size: 2.2rem;
+      .hero-content h1 {
+        font-size: 2.3rem;
+      }
+      .signup-container {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+      .qinfo-header h1 {
+        font-size: 2rem;
       }
     }
   </style>
 </head>
 <body>
 
-<!-- ================== UNIFIED HEADER ================== -->
-<header class="site-header">
-  <div class="container header-inner">
+<!-- ======================== GLOBAL HEADER ======================== -->
+<header class="global-header" id="mainHeader">
+  <div class="header-container">
     <div class="logo-area">
-      <div class="logo-icon">
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-        </svg>
-      </div>
-      <span class="logo-text">UniHeader</span>
+      <div class="logo-icon"><span>✦</span></div>
+      <span class="logo-text">Nexify</span>
     </div>
-    <div class="nav-links">
-      <a href="index.html" id="nav-home" class="active">Home</a>
-      <a href="signup.html" id="nav-signup">Sign Up</a>
-      <a href="QInfo.html" id="nav-qinfo">QInfo</a>
-      <a href="#" id="nav-features">Features</a>
-      <a href="#" id="nav-about">About</a>
-    </div>
-    <div class="header-actions">
-      <a href="#" class="btn-outline-light">Log in</a>
-      <a href="signup.html" class="btn-primary-sm">Get started</a>
-    </div>
+    <nav class="nav-links" id="dynamicNav">
+      <!-- Navigation will be present statically per page, but we will keep dynamic approach for robustness -->
+    </nav>
   </div>
 </header>
 
-<main>
-  <div class="container">
-    <div class="hero">
-      <h1>Build smarter, faster 🚀</h1>
-      <p>Unified platform with intelligent insights, seamless sign-up, and deep analytics — all under one header.</p>
-    </div>
-
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#2b6e4f" stroke-width="1.8">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-          </svg>
-        </div>
-        <h3>Seamless Navigation</h3>
-        <p>Unified header across Home, Sign Up, and QInfo pages. Consistent experience every time.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#2b6e4f" stroke-width="1.8">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 6v6l4 2"/>
-          </svg>
-        </div>
-        <h3>QInfo Analytics</h3>
-        <p>Deep insights, real-time metrics, and intelligent Q&A to empower your decisions.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#2b6e4f" stroke-width="1.8">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
-        </div>
-        <h3>Secure Sign-up</h3>
-        <p>Simple, validated registration flow. Join our growing community with ease.</p>
-      </div>
-    </div>
-
-    <div class="cta-section">
-      <h2>Ready to explore QInfo?</h2>
-      <p style="margin-top: 12px; color: #3e6b58;">Get detailed analytics, live dashboards, and expert insights.</p>
-      <div class="cta-buttons">
-        <a href="signup.html" class="btn-primary">Create free account</a>
-        <a href="QInfo.html" class="btn-secondary">Explore QInfo →</a>
-      </div>
-    </div>
-  </div>
+<main class="page-wrapper" id="pageContent">
+  <!-- Each page (index / signup / QInfo) will have its own content, but we provide fallback.
+       For final answer we deliver three separate HTML files: index.html, signup.html, QInfo.html 
+       This single container is just a wrapper — we will output clean separate documents below -->
 </main>
 
 <footer>
-  <div class="container">
-    <p>© 2025 UniHeader — Seamless experience across Home, Sign Up, and QInfo. Modern & responsive.</p>
-  </div>
+  <p>© 2026 Nexify — Intelligent platform for modern builders</p>
 </footer>
 
+</body>
+</html>
+
+<!-- ===================================================================== -->
+<!-- 1) INDEX.HTML (homepage) - updated with link to QInfo.html            -->
+<!-- ===================================================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexify | Modern Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(145deg, #f9fafc 0%, #f1f4f9 100%);
+      color: #1a2c3e;
+      line-height: 1.4;
+      min-height: 100vh;
+    }
+    .global-header {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(2px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo-area { display: flex; align-items: center; gap: 12px; }
+    .logo-icon {
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      width: 36px; height: 36px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 12px -6px rgba(59,130,246,0.3);
+    }
+    .logo-icon span { font-size: 1.5rem; font-weight: 600; color: white; }
+    .logo-text {
+      font-size: 1.5rem; font-weight: 700;
+      background: linear-gradient(120deg, #1e293b, #2d3a4b);
+      background-clip: text; -webkit-background-clip: text; color: transparent;
+    }
+    .nav-links { display: flex; gap: 1.8rem; align-items: center; flex-wrap: wrap; }
+    .nav-links a {
+      text-decoration: none; font-weight: 500; color: #334155;
+      transition: all 0.2s; padding: 0.4rem 0; border-bottom: 2px solid transparent;
+    }
+    .nav-links a:hover { color: #2563eb; border-bottom-color: #2563eb; }
+    .nav-links .active-link { color: #2563eb; border-bottom-color: #2563eb; font-weight: 600; }
+    .cta-button {
+      background: #2563eb; color: white !important; padding: 0.5rem 1.2rem !important;
+      border-radius: 40px; border-bottom: none !important; box-shadow: 0 2px 5px rgba(37,99,235,0.2);
+    }
+    .cta-button:hover { background: #1d4ed8; transform: translateY(-1px); border-bottom: none !important; }
+    .page-wrapper { max-width: 1300px; margin: 2rem auto; padding: 0 2rem; }
+    .hero-section { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 3rem; margin-bottom: 4rem; }
+    .hero-content { flex: 1; }
+    .hero-content h1 { font-size: 3.2rem; font-weight: 700; background: linear-gradient(135deg,#0f172a,#2563eb); background-clip: text; -webkit-background-clip: text; color: transparent; line-height: 1.2; margin-bottom: 1rem; }
+    .hero-content p { font-size: 1.2rem; color: #475569; margin-bottom: 2rem; max-width: 500px; }
+    .hero-cta { background: #2563eb; color: white; padding: 0.9rem 2rem; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-block; box-shadow: 0 4px 8px rgba(0,0,0,0.05); transition: 0.2s; }
+    .hero-cta:hover { background: #1e40af; transform: translateY(-2px); }
+    .hero-image { flex:1; background: linear-gradient(135deg,#e0e7ff,#cbd5e1); border-radius: 32px; padding: 2rem; text-align: center; min-height: 280px; display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+    .features { display: flex; gap: 2rem; flex-wrap: wrap; margin: 3rem 0; }
+    .feature-card { background: white; border-radius: 28px; padding: 1.8rem; flex:1; min-width: 200px; transition: 0.2s; border: 1px solid rgba(0,0,0,0.03); }
+    .feature-card:hover { transform: translateY(-4px); border-color: #e2e8f0; }
+    .feature-icon { font-size: 2rem; margin-bottom: 1rem; }
+    footer { text-align: center; padding: 2rem; margin-top: 3rem; color: #6c7a91; border-top: 1px solid rgba(0,0,0,0.05); font-size: 0.85rem; }
+    @media (max-width:700px){ .header-container{flex-direction:column; text-align:center;} .nav-links{justify-content:center;} .hero-content h1{font-size:2.3rem;} }
+  </style>
+</head>
+<body>
+<header class="global-header">
+  <div class="header-container">
+    <div class="logo-area"><div class="logo-icon"><span>✦</span></div><span class="logo-text">Nexify</span></div>
+    <nav class="nav-links">
+      <a href="index.html" class="active-link">Home</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="QInfo.html">QInfo</a>
+      <a href="#" class="cta-button">Get Early Access</a>
+    </nav>
+  </div>
+</header>
+<main class="page-wrapper">
+  <div class="hero-section">
+    <div class="hero-content">
+      <h1>Build ideas faster<br>with Nexify</h1>
+      <p>Modern platform for creators, developers, and dreamers. Join thousands and start your journey today.</p>
+      <a href="signup.html" class="hero-cta">Create free account →</a>
+      <div style="margin-top: 1rem;"><a href="QInfo.html" style="color:#2563eb; font-weight:500;">📘 Read QInfo →</a></div>
+    </div>
+    <div class="hero-image">🚀✨</div>
+  </div>
+  <div class="features">
+    <div class="feature-card"><div class="feature-icon">⚡</div><h3>Lightning fast</h3><p>Blazing performance and intuitive workflows.</p></div>
+    <div class="feature-card"><div class="feature-icon">🔒</div><h3>Secure by default</h3><p>Enterprise-grade security for your data.</p></div>
+    <div class="feature-card"><div class="feature-icon">🌍</div><h3>Global scale</h3><p>Built for teams around the world.</p></div>
+  </div>
+</main>
+<footer>© 2026 Nexify — All rights reserved. <a href="QInfo.html" style="color:#2563eb; text-decoration:none;">Explore QInfo</a> | <a href="signup.html" style="color:#2563eb; text-decoration:none;">Sign up</a></footer>
+</body>
+</html>
+
+
+<!-- ===================================================================== -->
+<!-- 2) SIGNUP.HTML (dedicated sign up page with header + sign up form)    -->
+<!-- ===================================================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexify | Create your account</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: linear-gradient(145deg, #f9fafc 0%, #f1f4f9 100%); color: #1a2c3e; min-height: 100vh; }
+    .global-header { background: rgba(255,255,255,0.96); backdrop-filter: blur(2px); box-shadow: 0 4px 20px rgba(0,0,0,0.02); border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top:0; z-index:100; }
+    .header-container { max-width:1300px; margin:0 auto; padding:1rem 2rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+    .logo-area { display:flex; align-items:center; gap:12px; }
+    .logo-icon { background:linear-gradient(135deg,#3b82f6,#8b5cf6); width:36px; height:36px; border-radius:12px; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 12px -6px rgba(59,130,246,0.3); }
+    .logo-icon span { font-size:1.5rem; font-weight:600; color:white; }
+    .logo-text { font-size:1.5rem; font-weight:700; background:linear-gradient(120deg,#1e293b,#2d3a4b); background-clip:text; -webkit-background-clip:text; color:transparent; }
+    .nav-links { display:flex; gap:1.8rem; align-items:center; flex-wrap:wrap; }
+    .nav-links a { text-decoration:none; font-weight:500; color:#334155; transition:all 0.2s; padding:0.4rem 0; border-bottom:2px solid transparent; }
+    .nav-links a:hover { color:#2563eb; border-bottom-color:#2563eb; }
+    .nav-links .active-link { color:#2563eb; border-bottom-color:#2563eb; font-weight:600; }
+    .cta-button { background:#2563eb; color:white !important; padding:0.5rem 1.2rem !important; border-radius:40px; border-bottom:none !important; box-shadow:0 2px 5px rgba(37,99,235,0.2); }
+    .cta-button:hover { background:#1d4ed8; transform:translateY(-1px); }
+    .signup-container { max-width:560px; margin:2.5rem auto; background:white; border-radius:2rem; box-shadow:0 25px 45px -12px rgba(0,0,0,0.2); padding:2rem 2.2rem; }
+    .signup-header { text-align:center; margin-bottom:2rem; }
+    .signup-header h2 { font-size:1.9rem; font-weight:700; color:#0f172a; }
+    .signup-header p { color:#5b6e8c; margin-top:0.5rem; }
+    .form-group { margin-bottom:1.4rem; }
+    .form-group label { display:block; font-weight:500; margin-bottom:0.5rem; color:#1e293b; }
+    .form-group input { width:100%; padding:0.9rem 1rem; border-radius:1.2rem; border:1px solid #e2e8f0; font-size:1rem; transition:0.2s; background:#fefefe; outline:none; }
+    .form-group input:focus { border-color:#3b82f6; box-shadow:0 0 0 3px rgba(59,130,246,0.2); }
+    .signup-btn { width:100%; background:#2563eb; color:white; border:none; padding:0.9rem; font-weight:600; border-radius:2rem; cursor:pointer; transition:0.2s; margin-top:0.5rem; }
+    .signup-btn:hover { background:#1e40af; transform:scale(0.98); }
+    .login-note { text-align:center; margin-top:1.8rem; font-size:0.9rem; color:#5b6e8c; }
+    .login-note a { color:#2563eb; text-decoration:none; font-weight:500; }
+    .message-toast { margin-top:1rem; padding:0.8rem; border-radius:50px; text-align:center; font-size:0.85rem; background:#eef2ff; color:#1e3a8a; display:none; }
+    footer { text-align:center; padding:2rem; margin-top:2rem; color:#6c7a91; border-top:1px solid rgba(0,0,0,0.05); font-size:0.85rem; }
+    @media (max-width:700px){ .header-container{flex-direction:column;text-align:center;} .nav-links{justify-content:center;} .signup-container{margin:1rem;padding:1.5rem;} }
+  </style>
+</head>
+<body>
+<header class="global-header">
+  <div class="header-container">
+    <div class="logo-area"><div class="logo-icon"><span>✦</span></div><span class="logo-text">Nexify</span></div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="signup.html" class="active-link">Sign Up</a>
+      <a href="QInfo.html">QInfo</a>
+      <a href="#" class="cta-button">Contact</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="signup-container">
+    <div class="signup-header"><h2>Create an account</h2><p>Join Nexify and start your journey 🚀</p></div>
+    <form id="signupForm">
+      <div class="form-group"><label>Full name</label><input type="text" id="fullname" placeholder="Alex Johnson" required></div>
+      <div class="form-group"><label>Email address</label><input type="email" id="email" placeholder="hello@nexify.com" required></div>
+      <div class="form-group"><label>Password</label><input type="password" id="password" placeholder="••••••••" required></div>
+      <div class="form-group"><label>Confirm password</label><input type="password" id="confirmPassword" placeholder="••••••••" required></div>
+      <button type="submit" class="signup-btn">Sign up →</button>
+      <div id="formMessage" class="message-toast"></div>
+      <div class="login-note">Already have an account? <a href="index.html">Log in</a></div>
+    </form>
+  </div>
+</main>
+<footer>© 2026 Nexify — Secure signup. <a href="QInfo.html" style="color:#2563eb;">QInfo</a></footer>
 <script>
-  // Ensure active link state is consistent (though we set manually, just for robustness)
-  console.log('Index page loaded — unified header ready');
+  const form = document.getElementById('signupForm');
+  const msgDiv = document.getElementById('formMessage');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fullname = document.getElementById('fullname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const pwd = document.getElementById('password').value;
+    const confirmPwd = document.getElementById('confirmPassword').value;
+    if (!fullname || !email || !pwd || !confirmPwd) {
+      msgDiv.style.display = 'block'; msgDiv.textContent = '⚠️ Please fill in all fields.'; msgDiv.style.background = '#fee2e2'; msgDiv.style.color = '#b91c1c';
+      return;
+    }
+    if (pwd !== confirmPwd) {
+      msgDiv.style.display = 'block'; msgDiv.textContent = '❌ Passwords do not match.'; msgDiv.style.background = '#fee2e2'; msgDiv.style.color = '#b91c1c';
+      return;
+    }
+    if (pwd.length < 6) {
+      msgDiv.style.display = 'block'; msgDiv.textContent = '🔒 Password must be at least 6 characters.'; msgDiv.style.background = '#fff3e3'; msgDiv.style.color = '#b45309';
+      return;
+    }
+    msgDiv.style.display = 'block'; msgDiv.style.background = '#dcfce7'; msgDiv.style.color = '#15803d';
+    msgDiv.textContent = `✨ Welcome ${fullname}! Account created (demo). Redirecting...`;
+    setTimeout(() => { window.location.href = 'index.html'; }, 1800);
+  });
 </script>
 </body>
 </html>
+
+
+<!-- ===================================================================== -->
+<!-- 3) QINFO.HTML (brand new Q&A / Information page with header)          -->
+<!-- ===================================================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexify | QInfo - Questions & Insights</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: linear-gradient(145deg, #f9fafc 0%, #f1f4f9 100%); color: #1a2c3e; min-height: 100vh; }
+    .global-header { background: rgba(255,255,255,0.96); backdrop-filter: blur(2px); box-shadow: 0 4px 20px rgba(0,0,0,0.02); border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top:0; z-index:100; }
+    .header-container { max-width:1300px; margin:0 auto; padding:1rem 2rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+    .logo-area { display:flex; align-items:center; gap:12px; }
+    .logo-icon { background:linear-gradient(135deg,#3b82f6,#8b5cf6); width:36px; height:36px; border-radius:12px; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 12px -6px rgba(59,130,246,0.3); }
+    .logo-icon span { font-size:1.5rem; font-weight:600; color:white; }
+    .logo-text { font-size:1.5rem; font-weight:700; background:
