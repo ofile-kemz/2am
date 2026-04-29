@@ -1,10 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>thoughts @2am — purple whispers | stories at midnight</title>
-    <!-- Google Fonts: elegant modern look + purple palette -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <style>
         * {
@@ -21,7 +21,6 @@
             position: relative;
         }
 
-        /* dreamy animated gradient orb background */
         body::before {
             content: "";
             position: fixed;
@@ -42,7 +41,6 @@
             z-index: 2;
         }
 
-        /* --- refined header with purple glow --- */
         .top-flex {
             display: flex;
             justify-content: space-between;
@@ -68,6 +66,7 @@
             transition: 0.25s ease;
             letter-spacing: -0.2px;
             position: relative;
+            cursor: pointer;
         }
 
         .nav-left a:hover {
@@ -128,7 +127,6 @@
             box-shadow: 0 8px 20px rgba(108, 63, 158, 0.4);
         }
 
-        /* hero section: purple dream */
         .hero-title {
             text-align: center;
             margin: 2.5rem 0 1rem;
@@ -156,7 +154,6 @@
             font-weight: 450;
         }
 
-        /* drama & tropes card — elegant purple glassmorphism */
         .drama-card {
             background: rgba(255, 248, 255, 0.85);
             backdrop-filter: blur(8px);
@@ -205,7 +202,6 @@
             font-weight: 500;
         }
 
-        /* search section + purple magic */
         .search-section-compact {
             margin: 2rem 0 2.5rem;
         }
@@ -269,6 +265,131 @@
         .search-input-group button:hover {
             background: linear-gradient(95deg, #9f6bd9, #c58cf5);
             transform: scale(0.96);
+        }
+
+        .genre-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+            margin: 1rem 0 1.5rem;
+        }
+        
+        .tab-button {
+            background: rgba(255, 248, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border: 1px solid #ddccff;
+            padding: 0.7rem 2rem;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #4a2e6b;
+            cursor: pointer;
+            transition: all 0.25s;
+            font-family: inherit;
+            letter-spacing: -0.2px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        
+        .tab-button:hover {
+            background: #b77ce0;
+            color: white;
+            border-color: #b77ce0;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(128, 90, 200, 0.25);
+        }
+        
+        .tab-button.active {
+            background: linear-gradient(105deg, #8b5cc9, #b578e3);
+            color: white;
+            border-color: #c09bef;
+            box-shadow: 0 6px 14px rgba(108, 63, 158, 0.3);
+        }
+
+        .story-showcase {
+            background: rgba(255, 248, 255, 0.75);
+            backdrop-filter: blur(6px);
+            border-radius: 48px;
+            padding: 1.8rem 2rem;
+            margin: 1rem 0 1.4rem;
+            border: 1px solid rgba(185, 135, 235, 0.5);
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .story-showcase:hover {
+            border-color: #c49ef0;
+            box-shadow: 0 12px 28px rgba(108, 63, 158, 0.15);
+        }
+        
+        .story-category-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .story-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6c3f9e, #b07bd6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        .story-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .story-card-item {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 28px;
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-left: 6px solid #b77ce0;
+            transition: 0.2s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+        
+        .story-card-item:hover {
+            transform: translateX(6px);
+            background: rgba(255, 252, 255, 0.9);
+            border-left-color: #dfb5ff;
+        }
+        
+        .story-quote {
+            font-size: 0.95rem;
+            line-height: 1.45;
+            color: #2d1b40;
+            font-weight: 500;
+        }
+        
+        .story-meta {
+            font-size: 0.7rem;
+            color: #9b7abb;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .refresh-tab {
+            display: inline-block;
+            margin-top: 1.2rem;
+            font-size: 0.75rem;
+            background: rgba(210, 180, 255, 0.5);
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: 600;
+            color: #5d3a85;
+        }
+        
+        .refresh-tab:hover {
+            background: #c8a8f0;
+            color: #2a173b;
         }
 
         .genre-row {
@@ -336,7 +457,6 @@
             transition: all 0.2s;
         }
 
-        /* footer: purple elegance */
         .footer-info {
             margin-top: 4rem;
             padding-top: 1.8rem;
@@ -417,7 +537,6 @@
             font-weight: 500;
         }
 
-        /* elegant purple modal */
         .modal-pop {
             display: none;
             position: fixed;
@@ -496,58 +615,58 @@
             color: white;
         }
 
+        .info-content {
+            text-align: left;
+            margin: 1rem 0;
+            max-height: 280px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+            font-size: 0.85rem;
+            color: #2d1b3e;
+        }
+        
+        .info-content p {
+            margin-bottom: 0.6rem;
+            line-height: 1.5;
+        }
+
         @media (max-width: 760px) {
-            .container {
-                padding: 1.2rem;
-            }
-            .hero-title h1 {
-                font-size: 2.4rem;
-            }
-            .drama-line {
-                font-size: 1.4rem;
-            }
-            .big-you {
-                font-size: 2rem;
-            }
-            .footer-info {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .rights-side {
-                text-align: left;
-            }
+            .container { padding: 1.2rem; }
+            .hero-title h1 { font-size: 2.4rem; }
+            .drama-line { font-size: 1.4rem; }
+            .big-you { font-size: 2rem; }
+            .footer-info { flex-direction: column; align-items: flex-start; }
+            .rights-side { text-align: left; }
+            .story-title { font-size: 1.2rem; }
+            .tab-button { padding: 0.5rem 1.2rem; font-size: 0.85rem; }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <!-- navigation exactly as required: Home Search QInfo + Welcome + signup for free -->
     <div class="top-flex">
         <div class="nav-left">
-            <a href="#">Home.html</a>
-            <a href="#">Search.html</a>
-            <a href="#">QInfo.html</a>
+            <a href="#" id="homeNavLink">Home</a>
+            <a href="#" id="searchNavLink">Search</a>
+            <a href="#" id="qInfoNavLink">QInfo</a>
         </div>
         <div class="right-welcome">
-            <div class="welcome-badge">✨ Welcome to “thoughts @2am” ✨</div>
+            <div class="welcome-badge">✨ Welcome to "thoughts @2am" ✨</div>
             <button class="signup-btn" id="openSignupModalBtn">Sign up for free</button>
         </div>
     </div>
 
-    <!-- main catchphrase: where your secrets transform to stories -->
     <div class="hero-title">
         <h1>Where your secrets transform to stories</h1>
         <div class="hero-sub">purple echoes · midnight confessions · raw pages</div>
     </div>
 
-    <!-- All the drama / All the troupes / It's all YOU! -->
     <div class="drama-card">
-        <div class="drama-line">All the drama. <span>All the troupes.</span></div>
+        <div class="drama-line">All the drama. <span>All the tropes.</span></div>
         <div class="big-you">Its all YOU!</div>
         <div class="small-credit">✧ your truth, your stage, your purple hour ✧</div>
     </div>
 
-    <!-- search + romance/thriller/fantasy pills + more.. -->
     <div class="search-section-compact">
         <div class="search-bar-container">
             <div class="search-input-group">
@@ -555,6 +674,20 @@
                 <button id="searchActionBtn">search</button>
             </div>
         </div>
+        
+        <div class="genre-tabs">
+            <button class="tab-button active" data-tab="fantasy">✨ Fantasy</button>
+            <button class="tab-button" data-tab="thriller">🌙 Thriller</button>
+            <button class="tab-button" data-tab="romance">💜 Romance</button>
+        </div>
+
+        <div id="storyShowcase" class="story-showcase">
+            <div class="story-category-icon" id="categoryIcon">✨</div>
+            <div class="story-title" id="categoryTitle">Fantasy Realms</div>
+            <div id="storyListContainer" class="story-grid"></div>
+            <div class="refresh-tab" id="refreshTabBtn">⟳ refresh stories</div>
+        </div>
+
         <div class="genre-row">
             <div class="genre-badge" data-genre="Romance">Romance</div>
             <div class="genre-badge" data-genre="Thriller">Thriller</div>
@@ -566,7 +699,6 @@
         <div id="dynamicFeedback" class="feedback-message">🌙 purple thoughts — pick a genre or search your soul</div>
     </div>
 
-    <!-- footer area: download app / reach out / inreadably + all rights reserved -->
     <div class="footer-info">
         <div class="download-block">
             <p>📱 for more information <strong>download our app</strong></p>
@@ -582,7 +714,6 @@
     </div>
 </div>
 
-<!-- signup modal purple elegance -->
 <div id="signupModalOverlay" class="modal-pop">
     <div class="modal-card">
         <h3>💜 join the 2am coven</h3>
@@ -596,19 +727,183 @@
     </div>
 </div>
 
+<div id="infoModalOverlay" class="modal-pop">
+    <div class="modal-card" style="max-width: 480px;">
+        <h3>📖 QInfo · purple archives</h3>
+        <div class="info-content">
+            <p><strong>thoughts @2am</strong> is a sanctuary for untold secrets, half‑lit confessions, and stories born from the hollow hours.</p>
+            <p><strong>✦ how it works ✦</strong><br>→ Use Fantasy, Thriller, Romance tabs for curated story collections.<br>→ Search any word or tap genre badges for random whispers.<br>→ Click MORE... to discover hidden genres.<br>→ Sign up to join the coven.</p>
+            <p><strong>🌙 why purple?</strong> Purple bridges waking and dreaming — where real stories begin.</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="close-modal-btn" id="closeInfoModalBtn">return to whispers</button>
+        </div>
+    </div>
+</div>
+
 <script>
-    // modal functionality
+    const genreStories = {
+        fantasy: [
+            "📖 The lavender moon whispered my true name, and suddenly I could see the hidden door behind the bookshelf.",
+            "✨ In a realm of forgotten ink, every secret written at 2am turns into a constellation.",
+            "🐉 The last dreamer of the purple hour tamed a dragon made of midnight regret.",
+            "🔮 I found a quill that writes stories before they happen — my future is a romance and a mystery.",
+            "🌙 The ghost of a story not yet told offered me a deal: one wish for one honest tear."
+        ],
+        thriller: [
+            "🔪 My reflection blinked a second too late — now I know something else lives inside the glass.",
+            "🕯️ At 2:00 AM, a note appeared: 'Stop writing about me.' The ink was still wet.",
+            "🌑 Every deleted draft reappears under my pillow, each version darker than the last.",
+            "📜 The librarian at the midnight archive handed me a book with my name on it — and it's still being written.",
+            "🎭 Someone is editing my memories: last night I forgot the color purple, but I remember the scream."
+        ],
+        romance: [
+            "💌 We never met, but his voice echoes in my 2am poetry. One day, I'll read it to him.",
+            "💜 Two strangers, purple rain, and a confession scribbled on a napkin.",
+            "🌹 The love letter I never sent turned into a wildflower blooming under the moonlight.",
+            "✨ 'I dreamt of you again' — that's how every chapter of our unwritten story begins.",
+            "🥀 He said 'see you in the next timeline' and I've been writing him back ever since."
+        ]
+    };
+
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const storyListContainer = document.getElementById('storyListContainer');
+    const categoryTitle = document.getElementById('categoryTitle');
+    const categoryIcon = document.getElementById('categoryIcon');
+    const refreshBtn = document.getElementById('refreshTabBtn');
+    const feedbackDiv = document.getElementById('dynamicFeedback');
+    const searchField = document.getElementById('searchInputField');
+    const searchBtn = document.getElementById('searchActionBtn');
+    const genreChips = document.querySelectorAll('.genre-badge');
+    const moreButton = document.getElementById('moreTrigger');
+    
+    let currentActiveTab = 'fantasy';
+
+    function renderStoriesForTab(tabId) {
+        const storiesArray = genreStories[tabId] || genreStories.fantasy;
+        storyListContainer.innerHTML = '';
+        storiesArray.forEach((storyText, idx) => {
+            const storyDiv = document.createElement('div');
+            storyDiv.className = 'story-card-item';
+            storyDiv.innerHTML = `
+                <div class="story-quote">“${storyText}”</div>
+                <div class="story-meta">✦ purple whisper #${idx+1} ✦</div>
+            `;
+            storyListContainer.appendChild(storyDiv);
+        });
+        
+        if(tabId === 'fantasy') {
+            categoryIcon.innerText = '✨';
+            categoryTitle.innerText = 'Fantasy Realms';
+        } else if(tabId === 'thriller') {
+            categoryIcon.innerText = '🌙';
+            categoryTitle.innerText = 'Thriller Veil';
+        } else if(tabId === 'romance') {
+            categoryIcon.innerText = '💜';
+            categoryTitle.innerText = 'Romance Echoes';
+        }
+    }
+
+    function setActiveTab(tabId) {
+        tabButtons.forEach(btn => {
+            if(btn.getAttribute('data-tab') === tabId) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+        currentActiveTab = tabId;
+        renderStoriesForTab(tabId);
+        updatePurpleFeedback(`💫 exploring ${tabId} whispers — stories from the purple dimension.`);
+    }
+
+    function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+    
+    function refreshCurrentTab() {
+        const shuffled = shuffleArray([...genreStories[currentActiveTab]]);
+        genreStories[currentActiveTab] = shuffled;
+        renderStoriesForTab(currentActiveTab);
+        updatePurpleFeedback(`🔄 ${currentActiveTab} stories refreshed — new midnight echoes appear.`);
+    }
+    
+    function updatePurpleFeedback(text) { 
+        feedbackDiv.innerHTML = text; 
+    }
+
+    function getRandomStory(genre) {
+        const stories = genreStories[genre.toLowerCase()] || genreStories.fantasy;
+        return stories[Math.floor(Math.random() * stories.length)];
+    }
+
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabValue = btn.getAttribute('data-tab');
+            setActiveTab(tabValue);
+        });
+    });
+
+    refreshBtn.addEventListener('click', refreshCurrentTab);
+
+    searchBtn.addEventListener('click', () => {
+        let value = searchField.value.trim();
+        if(!value) {
+            updatePurpleFeedback("💜 whisper something into the purple void...");
+        } else {
+            let lowerValue = value.toLowerCase();
+            if(lowerValue.includes("romance") || lowerValue.includes("love") || lowerValue.includes("crush")) {
+                updatePurpleFeedback(`💜 Romance whisper: “${getRandomStory('romance')}”`);
+            } else if(lowerValue.includes("thrill") || lowerValue.includes("mystery") || lowerValue.includes("dark")) {
+                updatePurpleFeedback(`🌙 Thriller whisper: “${getRandomStory('thriller')}”`);
+            } else if(lowerValue.includes("fantasy") || lowerValue.includes("magic") || lowerValue.includes("dream")) {
+                updatePurpleFeedback(`✨ Fantasy whisper: “${getRandomStory('fantasy')}”`);
+            } else {
+                updatePurpleFeedback(`🪄 for “${value}”: ${getRandomStory('fantasy')}`);
+            }
+        }
+    });
+
+    searchField.addEventListener('keypress', (e) => {
+        if(e.key === 'Enter') searchBtn.click();
+    });
+
+    genreChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            const genre = chip.getAttribute('data-genre');
+            updatePurpleFeedback(`✨ ${genre} secret: “${getRandomStory(genre)}” ✨`);
+            chip.style.transform = "scale(0.96)";
+            setTimeout(() => chip.style.transform = "", 120);
+        });
+    });
+
+    moreButton.addEventListener('click', () => {
+        updatePurpleFeedback("🌌 MORE genres: dark academia · gothic romance · magical realism · noir confessions. every purple thought becomes prose.");
+    });
+
+    // Modal functionality
     const modalOverlay = document.getElementById('signupModalOverlay');
     const openSignup = document.getElementById('openSignupModalBtn');
     const closeModal = document.getElementById('closeModalButton');
     const confirmSign = document.getElementById('confirmModalSignup');
     const emailModal = document.getElementById('modalEmailInput');
+    const infoModal = document.getElementById('infoModalOverlay');
+    const qInfoLink = document.getElementById('qInfoNavLink');
+    const closeInfoBtn = document.getElementById('closeInfoModalBtn');
+    const homeLink = document.getElementById('homeNavLink');
+    const searchNav = document.getElementById('searchNavLink');
 
     function openModalFunc() { modalOverlay.style.display = 'flex'; }
     function closeModalFunc() { modalOverlay.style.display = 'none'; }
+    function openInfoModal() { infoModal.style.display = 'flex'; }
+    function closeInfoModal() { infoModal.style.display = 'none'; }
+
     openSignup.addEventListener('click', openModalFunc);
     closeModal.addEventListener('click', closeModalFunc);
-    window.addEventListener('click', (e) => { if(e.target === modalOverlay) closeModalFunc(); });
     confirmSign.addEventListener('click', () => {
         let email = emailModal.value.trim();
         if(email === "") alert("💜 drop your email — your story is waiting.");
@@ -616,122 +911,27 @@
         emailModal.value = "";
         closeModalFunc();
     });
-
-    // story pool purple themed but same structure
-    const storyCollection = {
-        romance: [
-            "In every timeline, I find you. But this one, I finally write it down.",
-            "The love letter I burned at 2am — the smoke smelled like forgiveness.",
-            "Romance trope: enemies to lovers in a purple-lit library."
-        ],
-        thriller: [
-            "Someone left a note under my pillow: 'I know your 2am thoughts'.",
-            "The mirror whispers my secrets before I do. Tonight, it smiled.",
-            "Thriller: my reflection started writing stories without me."
-        ],
-        fantasy: [
-            "The purple moon grants one wish: to remember every forgotten dream.",
-            "Fantasy: ink that writes itself, stories that bleed violets.",
-            "I borrowed magic from the night market — now my secrets have wings."
-        ],
-        general: [
-            "maybe the story we needed was the one we never dared to tell.",
-            "Purple hour: between regret and release, we become art.",
-            "Secret: i write down all the things i'll never say, just so they exist."
-        ]
-    };
-
-    const feedbackDiv = document.getElementById('dynamicFeedback');
-    const searchField = document.getElementById('searchInputField');
-    const searchBtn = document.getElementById('searchActionBtn');
-    const genreChips = document.querySelectorAll('.genre-badge');
-
-    function getRandomEntry(categoryKey) {
-        let arr = storyCollection[categoryKey];
-        if(arr && arr.length) return arr[Math.floor(Math.random() * arr.length)];
-        return "A hidden story pulses in the dark...";
-    }
-
-    function updatePurpleFeedback(text) {
-        feedbackDiv.innerHTML = text;
-        feedbackDiv.style.transition = "0.2s";
-    }
-
-    function handleSearchOrGenre(rawQuery, forcedGenre = null) {
-        let query = (rawQuery || "").trim().toLowerCase();
-        let selectedGenre = forcedGenre;
-        if (!selectedGenre && query !== "") {
-            if (query.includes("romance") || query.includes("love") || query.includes("crush") || query.includes("heart")) selectedGenre = "romance";
-            else if (query.includes("thrill") || query.includes("mystery") || query.includes("dark") || query.includes("fear")) selectedGenre = "thriller";
-            else if (query.includes("fantasy") || query.includes("magic") || query.includes("dream") || query.includes("witch")) selectedGenre = "fantasy";
-        }
-        
-        if (selectedGenre) {
-            let genreKey = "";
-            if (selectedGenre === "Romance") genreKey = "romance";
-            else if (selectedGenre === "Thriller") genreKey = "thriller";
-            else if (selectedGenre === "Fantasy") genreKey = "fantasy";
-            else genreKey = "general";
-            const story = getRandomEntry(genreKey);
-            if (rawQuery && rawQuery.trim() !== "" && !forcedGenre) {
-                updatePurpleFeedback(`💜 “${rawQuery}” · ${selectedGenre} whisper: “${story}”`);
-            } else {
-                updatePurpleFeedback(`✨ ${selectedGenre} secret: “${story}” ✨`);
-            }
-        } 
-        else if (query !== "") {
-            const fallbackStory = getRandomEntry("general");
-            updatePurpleFeedback(`🪄 for “${rawQuery}”: ${fallbackStory}`);
-        } 
-        else {
-            updatePurpleFeedback("🌙 type a secret, a word, or tap a genre — purple stories await.");
-        }
-    }
-
-    searchBtn.addEventListener('click', () => {
-        let value = searchField.value;
-        if(!value.trim()) updatePurpleFeedback("💜 whisper something into the purple void...");
-        else handleSearchOrGenre(value, null);
+    qInfoLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        openInfoModal();
     });
-    searchField.addEventListener('keypress', (e) => {
-        if(e.key === 'Enter') {
-            let val = searchField.value;
-            if(!val.trim()) updatePurpleFeedback("✨ midnight search — let the ink flow ✨");
-            else handleSearchOrGenre(val, null);
-        }
+    closeInfoBtn.addEventListener('click', closeInfoModal);
+    homeLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        updatePurpleFeedback("🏠 home — back to the purple doorway.");
+    });
+    searchNav.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('searchInputField').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        document.getElementById('searchInputField').focus();
+    });
+    window.addEventListener('click', (e) => { 
+        if(e.target === modalOverlay) closeModalFunc();
+        if(e.target === infoModal) closeInfoModal();
     });
 
-    genreChips.forEach(chip => {
-        chip.addEventListener('click', () => {
-            const genreAttr = chip.getAttribute('data-genre');
-            const currentQuery = searchField.value;
-            if(currentQuery && currentQuery.trim() !== "") {
-                handleSearchOrGenre(currentQuery, genreAttr);
-            } else {
-                let storyResult = "";
-                if (genreAttr === "Romance") storyResult = getRandomEntry("romance");
-                else if (genreAttr === "Thriller") storyResult = getRandomEntry("thriller");
-                else storyResult = getRandomEntry("fantasy");
-                updatePurpleFeedback(`💜 ${genreAttr} magic: “${storyResult}”`);
-            }
-            chip.style.transform = "scale(0.96)";
-            setTimeout(() => chip.style.transform = "", 120);
-        });
-    });
-
-    const moreButton = document.getElementById('moreTrigger');
-    moreButton.addEventListener('click', () => {
-        updatePurpleFeedback("🌌 MORE genres: dark academia · gothic romance · magical realism · noir confessions. every purple thought becomes prose.");
-        setTimeout(() => {
-            if(feedbackDiv.innerHTML.includes("MORE genres") && !searchField.value && !document.querySelector('.genre-badge:hover')) {
-                setTimeout(() => {
-                    if(feedbackDiv.innerHTML.includes("MORE genres"))
-                        updatePurpleFeedback("💜 pick a genre or pour your heart into search.");
-                }, 3200);
-            }
-        }, 100);
-    });
-    // initial mood
+    renderStoriesForTab('fantasy');
     updatePurpleFeedback("💜 purple dreams & midnight ink — let your secret bloom.");
 </script>
 </body>
