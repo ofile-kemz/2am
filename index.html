@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>thoughts @2am — purple whispers | dreamy storyland</title>
+    <title>thoughts @2am — purple whispers | stories at midnight</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -14,294 +13,202 @@
         }
 
         body {
-            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 25%, #f1e5ff 50%, #faf0ff 100%);
+            background: linear-gradient(145deg, #f8f3ff 0%, #f1eaff 100%);
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             color: #2d1b36;
             line-height: 1.4;
             position: relative;
-            overflow-x: hidden;
         }
 
-        /* Floating animated orbs */
-        .orb {
+        body::before {
+            content: "";
             position: fixed;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.4;
+            top: -30%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(circle at 30% 40%, rgba(160, 120, 220, 0.12), rgba(210, 180, 255, 0.05) 70%);
             pointer-events: none;
             z-index: 0;
-            animation: float 20s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(30px, -20px) scale(1.1); }
-        }
-
-        .orb-1 { width: 400px; height: 400px; background: #c8a8f0; top: -100px; left: -100px; animation-duration: 18s; }
-        .orb-2 { width: 500px; height: 500px; background: #e0b0ff; bottom: -150px; right: -100px; animation-duration: 22s; opacity: 0.3; }
-        .orb-3 { width: 300px; height: 300px; background: #b87de0; top: 50%; left: 70%; animation-duration: 25s; opacity: 0.25; }
-        .orb-4 { width: 250px; height: 250px; background: #d9b8ff; bottom: 20%; left: 10%; animation-duration: 15s; opacity: 0.35; }
-
-        /* Sparkle stars */
-        .star {
-            position: fixed;
-            color: rgba(183, 124, 224, 0.5);
-            font-size: 12px;
-            pointer-events: none;
-            animation: twinkle 3s infinite;
-            z-index: 0;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.2); }
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 1.5rem 2rem 3rem;
+            padding: 2rem 2rem 3rem;
             position: relative;
             z-index: 2;
         }
 
-        /* Dreamy header */
         .top-flex {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 1.5rem;
-            margin-bottom: 2rem;
-            padding: 0.8rem 1.5rem;
-            background: rgba(255, 248, 255, 0.6);
-            backdrop-filter: blur(12px);
-            border-radius: 80px;
-            border: 1px solid rgba(183, 124, 224, 0.3);
-            box-shadow: 0 4px 20px rgba(128, 90, 180, 0.08);
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(128, 90, 180, 0.25);
+            backdrop-filter: blur(2px);
         }
 
         .nav-left {
             display: flex;
-            gap: 2rem;
-            align-items: center;
+            gap: 2.5rem;
         }
 
         .nav-left a {
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 550;
             font-size: 0.95rem;
-            color: #5a3a7a;
-            transition: all 0.3s ease;
+            color: #3c2a4a;
+            transition: 0.25s ease;
+            letter-spacing: -0.2px;
+            position: relative;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
-
-        .nav-left a i { font-size: 1rem; }
 
         .nav-left a:hover {
             color: #9b4dca;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
-        .logo-icon {
-            font-size: 1.5rem;
-            margin-right: 0.5rem;
+        .nav-left a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #b77ce0;
+            transition: 0.2s;
+        }
+
+        .nav-left a:hover::after {
+            width: 100%;
         }
 
         .right-welcome {
             display: flex;
             align-items: center;
-            gap: 1.2rem;
+            gap: 1.8rem;
+            flex-wrap: wrap;
         }
 
         .welcome-badge {
             font-size: 0.85rem;
-            background: linear-gradient(135deg, rgba(210, 180, 255, 0.5), rgba(183, 124, 224, 0.3));
-            padding: 0.4rem 1.2rem;
+            background: rgba(210, 180, 255, 0.3);
+            padding: 0.3rem 1rem;
             border-radius: 60px;
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(2px);
             font-weight: 500;
-            color: #6b3fa0;
+            color: #4b2e62;
             letter-spacing: -0.2px;
-            border: 1px solid rgba(183, 124, 224, 0.4);
         }
 
-        .auth-btn {
-            background: linear-gradient(105deg, #9b4dca, #c48aff);
+        .signup-btn {
+            background: linear-gradient(105deg, #6c3f9e, #9b4dca);
             border: none;
-            padding: 0.55rem 1.8rem;
+            padding: 0.55rem 1.9rem;
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 600;
             color: white;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(155, 77, 202, 0.3);
+            transition: all 0.25s;
+            box-shadow: 0 4px 10px rgba(108, 63, 158, 0.3);
+            font-family: inherit;
         }
 
-        .auth-btn:hover {
-            transform: scale(0.95);
-            box-shadow: 0 6px 20px rgba(155, 77, 202, 0.4);
-        }
-
-        /* Hero section */
-        .hero-section {
-            text-align: center;
-            padding: 2.5rem 1rem 1.5rem;
-            position: relative;
-        }
-
-        .hero-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(183, 124, 224, 0.15), transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
+        .signup-btn:hover {
+            transform: scale(0.96);
+            background: linear-gradient(105deg, #7b4bb3, #b668e0);
+            box-shadow: 0 8px 20px rgba(108, 63, 158, 0.4);
         }
 
         .hero-title {
-            font-size: 4.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #4a2768, #b87de0, #9b4dca, #e0b0ff);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: gradientShift 8s ease infinite;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
-            position: relative;
+            text-align: center;
+            margin: 2.5rem 0 1rem;
         }
 
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        .hero-title h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #4a2768, #ab6ed1, #6b3fa0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.2;
+            text-shadow: 0 2px 5px rgba(128, 0, 255, 0.08);
         }
 
         .hero-sub {
-            font-size: 1.1rem;
-            color: #8b6cb0;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-
-        .floating-quote {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(4px);
-            padding: 0.3rem 1.2rem;
-            border-radius: 60px;
-            font-size: 0.85rem;
-            margin-top: 1rem;
-            border: 1px solid rgba(183, 124, 224, 0.4);
-        }
-
-        /* Artistic drama card */
-        .drama-card {
-            background: linear-gradient(135deg, rgba(255, 248, 255, 0.85), rgba(245, 235, 255, 0.7));
-            backdrop-filter: blur(12px);
-            border-radius: 64px;
-            padding: 2.5rem 2rem;
-            margin: 2rem 0;
             text-align: center;
-            border: 1px solid rgba(183, 124, 224, 0.5);
-            box-shadow: 0 20px 40px -12px rgba(78, 42, 112, 0.2);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: #6b5190;
+            font-weight: 450;
+        }
+
+        .drama-card {
+            background: rgba(255, 248, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 48px;
+            padding: 2.2rem 1.8rem;
+            margin: 2.8rem 0 2rem;
+            text-align: center;
+            border: 1px solid rgba(185, 135, 235, 0.4);
+            box-shadow: 0 20px 35px -12px rgba(78, 42, 112, 0.2);
+            transition: all 0.3s;
         }
 
         .drama-card:hover {
-            transform: translateY(-8px);
             border-color: #c49ef0;
-            box-shadow: 0 30px 50px -18px rgba(108, 63, 158, 0.3);
+            box-shadow: 0 25px 40px -14px rgba(108, 63, 158, 0.25);
         }
 
         .drama-line {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 700;
             color: #2d1b3e;
         }
 
         .drama-line span {
-            background: linear-gradient(120deg, #e8d6ff, #f0e4ff);
-            padding: 0.2rem 0.8rem;
+            background: linear-gradient(120deg, #efe3ff, #e8d6ff);
+            padding: 0.1rem 0.7rem;
             border-radius: 50px;
             display: inline-block;
         }
 
         .big-you {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
-            margin-top: 0.8rem;
-            background: linear-gradient(125deg, #c79aff, #9b6bcf);
-            -webkit-background-clip: text;
+            margin-top: 0.6rem;
+            background: linear-gradient(125deg, #b77ce0, #8b5cc9);
             background-clip: text;
+            -webkit-background-clip: text;
             color: transparent;
-            letter-spacing: -2px;
+            letter-spacing: -1px;
         }
 
         .small-credit {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             margin-top: 0.8rem;
-            color: #aa8acf;
+            color: #9a7bba;
             font-weight: 500;
         }
 
-        /* Cute category cards */
-        .category-showcase {
+        .search-section-compact {
+            margin: 2rem 0 2.5rem;
+        }
+
+        .search-bar-container {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin: 2.5rem 0;
-        }
-
-        .category-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(8px);
-            border-radius: 48px;
-            padding: 1.5rem;
-            width: 200px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 1px solid rgba(183, 124, 224, 0.4);
-        }
-
-        .category-card:hover {
-            transform: translateY(-10px) rotate(2deg);
-            background: white;
-            border-color: #c48aff;
-            box-shadow: 0 15px 30px rgba(108, 63, 158, 0.2);
-        }
-
-        .category-icon {
-            font-size: 3rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .category-name {
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .category-desc {
-            font-size: 0.7rem;
-            color: #8b6cb0;
-        }
-
-        /* Search bar */
-        .search-wrapper {
-            max-width: 550px;
-            margin: 1rem auto;
+            margin-bottom: 1.6rem;
         }
 
         .search-input-group {
@@ -310,96 +217,326 @@
             background: rgba(255, 255, 255, 0.9);
             border-radius: 80px;
             padding: 0.3rem 0.3rem 0.3rem 1.8rem;
-            border: 1px solid #decbff;
-            transition: all 0.3s;
-            box-shadow: 0 8px 20px rgba(128, 90, 180, 0.1);
+            width: 100%;
+            max-width: 520px;
+            border: 1px solid #d6beff;
+            transition: all 0.25s;
+            box-shadow: 0 6px 14px rgba(128, 90, 180, 0.1);
+            backdrop-filter: blur(2px);
         }
 
         .search-input-group:focus-within {
-            border-color: #b87de0;
-            transform: scale(1.02);
-            box-shadow: 0 10px 25px rgba(128, 90, 180, 0.2);
+            border-color: #b47ce4;
+            box-shadow: 0 8px 22px rgba(128, 90, 210, 0.2);
+            transform: scale(1.01);
         }
 
         .search-input-group input {
             flex: 1;
             border: none;
-            padding: 0.9rem 0;
+            padding: 0.8rem 0;
             font-size: 0.95rem;
             background: transparent;
             outline: none;
             font-family: 'Inter', monospace;
+            color: #2e1c3a;
+        }
+
+        .search-input-group input::placeholder {
+            color: #b59ad6;
+            font-weight: 400;
         }
 
         .search-input-group button {
-            background: linear-gradient(95deg, #b87de0, #d9a5ff);
+            background: linear-gradient(95deg, #8b5cc9, #b578e3);
             border: none;
             border-radius: 60px;
-            padding: 0.6rem 1.8rem;
+            padding: 0.55rem 1.8rem;
             color: white;
             font-weight: 600;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: 0.2s;
+            font-family: inherit;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
-        /* Cute feedback message */
-        .feedback-message {
-            margin: 1.5rem auto;
-            max-width: 600px;
+        .search-input-group button:hover {
+            background: linear-gradient(95deg, #9f6bd9, #c58cf5);
+            transform: scale(0.96);
+        }
+
+        .genre-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+            margin: 1rem 0 1.5rem;
+        }
+        
+        .tab-button {
+            background: rgba(255, 248, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border: 1px solid #ddccff;
+            padding: 0.7rem 2rem;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #4a2e6b;
+            cursor: pointer;
+            transition: all 0.25s;
+            font-family: inherit;
+            letter-spacing: -0.2px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        
+        .tab-button:hover {
+            background: #b77ce0;
+            color: white;
+            border-color: #b77ce0;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(128, 90, 200, 0.25);
+        }
+        
+        .tab-button.active {
+            background: linear-gradient(105deg, #8b5cc9, #b578e3);
+            color: white;
+            border-color: #c09bef;
+            box-shadow: 0 6px 14px rgba(108, 63, 158, 0.3);
+        }
+
+        .story-showcase {
+            background: rgba(255, 248, 255, 0.75);
+            backdrop-filter: blur(6px);
+            border-radius: 48px;
+            padding: 1.8rem 2rem;
+            margin: 1rem 0 1.4rem;
+            border: 1px solid rgba(185, 135, 235, 0.5);
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .story-showcase:hover {
+            border-color: #c49ef0;
+            box-shadow: 0 12px 28px rgba(108, 63, 158, 0.15);
+        }
+        
+        .story-category-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .story-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6c3f9e, #b07bd6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        .story-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .story-card-item {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 28px;
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-left: 6px solid #b77ce0;
+            transition: 0.2s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+        
+        .story-card-item:hover {
+            transform: translateX(6px);
+            background: rgba(255, 252, 255, 0.9);
+            border-left-color: #dfb5ff;
+        }
+        
+        .story-quote {
+            font-size: 0.95rem;
+            line-height: 1.45;
+            color: #2d1b40;
+            font-weight: 500;
+        }
+        
+        .story-meta {
+            font-size: 0.7rem;
+            color: #9b7abb;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .refresh-tab {
+            display: inline-block;
+            margin-top: 1.2rem;
+            font-size: 0.75rem;
+            background: rgba(210, 180, 255, 0.5);
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: 600;
+            color: #5d3a85;
+        }
+        
+        .refresh-tab:hover {
+            background: #c8a8f0;
+            color: #2a173b;
+        }
+
+        .genre-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.3rem;
+            margin: 1.6rem 0 0.8rem;
+        }
+
+        .genre-badge {
+            background: rgba(255, 248, 255, 0.8);
+            padding: 0.55rem 2rem;
+            border-radius: 60px;
             font-size: 0.9rem;
+            font-weight: 600;
+            color: #4a2e6b;
+            border: 1px solid #ddccff;
+            cursor: pointer;
+            transition: all 0.25s;
+            backdrop-filter: blur(2px);
+            letter-spacing: -0.2px;
+        }
+
+        .genre-badge:hover {
+            background: #b77ce0;
+            color: white;
+            border-color: #b77ce0;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(128, 90, 200, 0.3);
+        }
+
+        .more-row {
+            text-align: right;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #9b6bcf;
+        }
+
+        .more-click {
+            border-bottom: 2px dashed #c09be8;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-block;
+        }
+
+        .more-click:hover {
+            color: #754bb3;
+            border-bottom-color: #aa7ad6;
+        }
+
+        .feedback-message {
+            margin-top: 1.4rem;
+            font-size: 0.85rem;
             color: #684f8b;
             text-align: center;
-            background: linear-gradient(135deg, rgba(225, 205, 255, 0.6), rgba(245, 235, 255, 0.6));
-            padding: 0.8rem 1.5rem;
+            background: rgba(225, 205, 255, 0.5);
+            padding: 0.65rem 1rem;
             border-radius: 70px;
             backdrop-filter: blur(4px);
             font-weight: 500;
-            border: 1px solid rgba(190, 150, 240, 0.5);
+            letter-spacing: -0.2px;
+            border: 1px solid rgba(190, 150, 240, 0.4);
+            transition: all 0.2s;
         }
 
-        /* Decorative elements */
-        .cute-divider {
-            text-align: center;
-            margin: 2rem 0;
-            font-size: 1.2rem;
-            letter-spacing: 8px;
-            color: #c8a8f0;
-        }
-
-        /* Footer */
         .footer-info {
             margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 2px dashed #dac5ff;
+            padding-top: 1.8rem;
+            border-top: 1px solid #dac5ff;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            align-items: center;
-            gap: 1.5rem;
+            align-items: flex-end;
+            gap: 2rem;
         }
 
-        .footer-badge {
-            background: rgba(252, 247, 255, 0.8);
+        .download-block {
+            background: rgba(252, 247, 255, 0.85);
+            backdrop-filter: blur(4px);
             border-radius: 36px;
-            padding: 0.5rem 1.2rem;
-            font-size: 0.8rem;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #decbff;
+        }
+
+        .download-block p {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #472e62;
+        }
+
+        .badge-demo {
+            background: linear-gradient(110deg, #6f43a3, #9b5ad0);
+            color: white;
+            padding: 0.3rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .contact-email {
+            background: rgba(240, 230, 255, 0.8);
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
         }
 
         .contact-email a {
             color: #9b4dca;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .contact-email a:hover {
+            color: #7647b0;
+            text-decoration: underline;
+        }
+
+        .rights-side {
+            text-align: right;
         }
 
         .inreadably-word {
             font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            font-weight: 700;
             background: linear-gradient(145deg, #dcc9ff, #efe3ff);
-            padding: 0.25rem 1rem;
+            display: inline-block;
+            padding: 0.25rem 1.2rem;
             border-radius: 40px;
-            font-size: 0.8rem;
+            letter-spacing: -0.2px;
+            color: #5a3791;
+            border: 1px solid #cfb4f5;
         }
 
-        /* Modal remains functional */
+        .copyright-line {
+            font-size: 0.7rem;
+            color: #8f6eb0;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* ENHANCED SIGNUP PAGE MODAL - FULL WORKING FORM */
         .modal-pop {
             display: none;
             position: fixed;
@@ -407,7 +544,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(50, 30, 70, 0.7);
+            background: rgba(50, 30, 70, 0.8);
             backdrop-filter: blur(8px);
             align-items: center;
             justify-content: center;
@@ -416,338 +553,556 @@
 
         .modal-card {
             background: #fffbfe;
-            max-width: 400px;
+            max-width: 450px;
             width: 90%;
-            border-radius: 56px;
-            padding: 2rem;
+            border-radius: 48px;
+            padding: 2rem 1.8rem;
             text-align: center;
-            border: 2px solid #e0c8ff;
+            box-shadow: 0 30px 45px rgba(68, 34, 102, 0.4);
+            border: 1px solid #d9befa;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-card h3 {
+            font-weight: 800;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #8055b5, #b87de0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-card p {
+            color: #4f3a6b;
         }
 
         .modal-card input, .modal-card select {
             width: 100%;
-            padding: 0.8rem;
-            margin: 0.5rem 0;
+            padding: 0.8rem 1rem;
             border-radius: 60px;
             border: 1px solid #e3d2ff;
+            margin: 0.7rem 0;
+            font-family: inherit;
+            background: white;
+            outline: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .modal-card input:focus, .modal-card select:focus {
+            border-color: #b77ce0;
+            box-shadow: 0 0 0 3px rgba(183, 124, 224, 0.2);
+        }
+
+        .modal-card input.error {
+            border-color: #ff6b6b;
+            background: #fff0f0;
         }
 
         .modal-buttons {
             display: flex;
             gap: 0.8rem;
             justify-content: center;
+            margin-top: 0.8rem;
+        }
+
+        .modal-buttons button {
+            padding: 0.65rem 1.6rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+
+        .close-modal-btn {
+            background: #ede3ff;
+            color: #593a83;
+        }
+
+        .close-modal-btn:hover {
+            background: #e0d0ff;
+            transform: scale(0.96);
+        }
+
+        .confirm-modal-btn {
+            background: linear-gradient(95deg, #8b5cc9, #b075df);
+            color: white;
+            box-shadow: 0 2px 8px rgba(139, 92, 201, 0.3);
+        }
+
+        .confirm-modal-btn:hover {
+            transform: scale(0.96);
+            background: linear-gradient(95deg, #9f6bd9, #c58cf5);
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #d4edc9, #c8e6b5);
+            color: #2d5a1e;
+            padding: 0.8rem;
+            border-radius: 60px;
             margin-top: 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .error-message-local {
+            color: #e74c3c;
+            font-size: 0.7rem;
+            margin-top: -0.4rem;
+            margin-bottom: 0.5rem;
+            text-align: left;
+            padding-left: 1rem;
+        }
+
+        .info-content {
+            text-align: left;
+            margin: 1rem 0;
+            max-height: 280px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+            font-size: 0.85rem;
+            color: #2d1b3e;
+        }
+        
+        .info-content p {
+            margin-bottom: 0.6rem;
+            line-height: 1.5;
         }
 
         @media (max-width: 760px) {
-            .container { padding: 1rem; }
-            .hero-title { font-size: 2.2rem; }
+            .container { padding: 1.2rem; }
+            .hero-title h1 { font-size: 2.4rem; }
+            .drama-line { font-size: 1.4rem; }
             .big-you { font-size: 2rem; }
-            .category-card { width: 150px; }
+            .footer-info { flex-direction: column; align-items: flex-start; }
+            .rights-side { text-align: left; }
+            .story-title { font-size: 1.2rem; }
+            .tab-button { padding: 0.5rem 1.2rem; font-size: 0.85rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Floating artistic elements -->
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-    <div class="orb orb-4"></div>
-    <div class="star" style="top: 10%; left: 15%;">✦</div>
-    <div class="star" style="top: 20%; right: 12%;">✧</div>
-    <div class="star" style="bottom: 15%; left: 20%;">✦</div>
-    <div class="star" style="bottom: 30%; right: 18%;">✧</div>
-    <div class="star" style="top: 40%; left: 85%;">✦</div>
-
 <div class="container">
-    <!-- Gorgeous header -->
     <div class="top-flex">
         <div class="nav-left">
-            <span class="logo-icon">🌙✨</span>
-            <a href="#" id="homeNavLink"><i class="fas fa-home"></i> Home</a>
-            <a href="#" id="storiesNavLink" style="display:none;"><i class="fas fa-book-open"></i> My Stories</a>
+            <a href="#" id="homeNavLink">Home</a>
+            <a href="#" id="searchNavLink">Search</a>
+            <a href="#" id="qInfoNavLink">QInfo</a>
         </div>
         <div class="right-welcome">
-            <div class="welcome-badge" id="welcomeBadge">✨ Welcome to “thoughts @2am” ✨</div>
-            <button class="auth-btn" id="authBtn"><i class="fas fa-feather-alt"></i> Sign up for free</button>
-            <div id="userMenu" style="display:none;"></div>
+            <div class="welcome-badge">✨ Welcome to "thoughts @2am" ✨</div>
+            <button class="signup-btn" id="openSignupModalBtn">Sign up for free</button>
         </div>
     </div>
 
-    <!-- Hero with dreamy glow -->
-    <div class="hero-section">
-        <div class="hero-glow"></div>
-        <h1 class="hero-title">where your secrets<br>transform to stories</h1>
+    <div class="hero-title">
+        <h1>Where your secrets transform to stories</h1>
         <div class="hero-sub">purple echoes · midnight confessions · raw pages</div>
-        <div class="floating-quote">✩ 2am thoughts find their wings here ✩</div>
     </div>
 
-    <!-- Main artistic card -->
     <div class="drama-card">
         <div class="drama-line">All the drama. <span>All the tropes.</span></div>
-        <div class="big-you">It's all YOU!</div>
+        <div class="big-you">Its all YOU!</div>
         <div class="small-credit">✧ your truth, your stage, your purple hour ✧</div>
     </div>
 
-    <!-- Cute category cards -->
-    <div class="category-showcase">
-        <div class="category-card" data-genre="fantasy">
-            <div class="category-icon">✨🦄</div>
-            <div class="category-name">Fantasy</div>
-            <div class="category-desc">magic · dragons · dreams</div>
+    <div class="search-section-compact">
+        <div class="search-bar-container">
+            <div class="search-input-group">
+                <input type="text" id="searchInputField" placeholder="search midnight whispers...">
+                <button id="searchActionBtn">search</button>
+            </div>
         </div>
-        <div class="category-card" data-genre="romance">
-            <div class="category-icon">💜🌹</div>
-            <div class="category-name">Romance</div>
-            <div class="category-desc">love · letters · midnight</div>
+        
+        <div class="genre-tabs">
+            <button class="tab-button active" data-tab="fantasy">✨ Fantasy</button>
+            <button class="tab-button" data-tab="thriller">🌙 Thriller</button>
+            <button class="tab-button" data-tab="romance">💜 Romance</button>
         </div>
-        <div class="category-card" data-genre="thriller">
-            <div class="category-icon">🌙🔪</div>
-            <div class="category-name">Thriller</div>
-            <div class="category-desc">mystery · shadows · secrets</div>
+
+        <div id="storyShowcase" class="story-showcase">
+            <div class="story-category-icon" id="categoryIcon">✨</div>
+            <div class="story-title" id="categoryTitle">Fantasy Realms</div>
+            <div id="storyListContainer" class="story-grid"></div>
+            <div class="refresh-tab" id="refreshTabBtn">⟳ refresh stories</div>
         </div>
+
+        <div class="genre-row">
+            <div class="genre-badge" data-genre="Romance">💜 Romance</div>
+            <div class="genre-badge" data-genre="Thriller">🌙 Thriller</div>
+            <div class="genre-badge" data-genre="Fantasy">✨ Fantasy</div>
+        </div>
+        <div class="more-row">
+            <span class="more-click" id="moreTrigger">MORE...</span>
+        </div>
+        <div id="dynamicFeedback" class="feedback-message">🌙 purple thoughts — pick a genre or search your soul</div>
     </div>
 
-    <!-- Cozy search -->
-    <div class="search-wrapper">
-        <div class="search-input-group">
-            <input type="text" id="searchInput" placeholder="🔍 search midnight whispers...">
-            <button id="searchBtn">search</button>
-        </div>
-    </div>
-
-    <!-- Feedback message -->
-    <div id="feedbackMessage" class="feedback-message">
-        💜 purple dreams & midnight ink — let your secret bloom.
-    </div>
-
-    <div class="cute-divider">✧ ༺ ♡ ༻ ✧</div>
-
-    <!-- Footer -->
     <div class="footer-info">
-        <div class="footer-badge">📱 download our app <span style="font-weight:700;">coming soon</span></div>
-        <div class="contact-email">✉️ <a href="mailto:thoughtsat2am@gmail.com">thoughtsat2am@gmail.com</a></div>
-        <div class="inreadably-word">inreadably +76894532</div>
+        <div class="download-block">
+            <p>📱 for more information <strong>download our app</strong></p>
+            <div class="badge-demo">coming soon on iOS & Android</div>
+        </div>
+        <div class="contact-email">
+            ✉️ or reach out at <a href="mailto:thoughtsat2am@gmail.com">thoughtsat2am@gmail.com</a>
+        </div>
+        <div class="rights-side">
+            <div class="inreadably-word">inreadably</div>
+            <div class="copyright-line">+76894532 &nbsp;|&nbsp; all rights reserved</div>
+        </div>
     </div>
 </div>
 
-<!-- Auth Modal -->
-<div id="authModal" class="modal-pop">
+<!-- ENHANCED SIGNUP MODAL - FULL WORKING FORM -->
+<div id="signupModalOverlay" class="modal-pop">
     <div class="modal-card">
-        <h3 id="modalTitle">💜 join the 2am coven</h3>
-        <input type="text" id="authName" placeholder="your pen name">
-        <input type="email" id="authEmail" placeholder="your email">
-        <input type="password" id="authPassword" placeholder="password (min 6)">
-        <select id="authGenre">
-            <option value="Fantasy">✨ Fantasy lover</option>
-            <option value="Romance">💜 Romance heart</option>
-            <option value="Thriller">🌙 Thriller seeker</option>
+        <h3>💜 join the 2am coven</h3>
+        <p style="margin: 0.2rem 0 0.8rem;">turn your secrets into spellbinding stories.</p>
+        
+        <input type="text" id="signupName" placeholder="your name" autocomplete="off">
+        <input type="email" id="signupEmail" placeholder="your email" autocomplete="off">
+        <input type="password" id="signupPassword" placeholder="create a password (min 6 characters)">
+        <select id="signupFavoriteGenre">
+            <option value="" disabled selected>✨ your favorite genre ✨</option>
+            <option value="Fantasy">Fantasy & Magic</option>
+            <option value="Romance">Romance & Heart</option>
+            <option value="Thriller">Thriller & Mystery</option>
+            <option value="All">All of them 💜</option>
         </select>
-        <div id="authError" style="color:#e74c3c; font-size:0.75rem;"></div>
+        
+        <div id="formError" class="error-message-local" style="color:#e74c3c; font-size:0.75rem; text-align:center;"></div>
+        
         <div class="modal-buttons">
-            <button class="close-modal-btn" id="closeAuthBtn">close</button>
-            <button class="confirm-modal-btn" id="submitAuthBtn">sign up</button>
+            <button class="close-modal-btn" id="closeModalButton">Close</button>
+            <button class="confirm-modal-btn" id="confirmModalSignup">✨ Sign up free ✨</button>
         </div>
-        <p style="margin-top:1rem; font-size:0.7rem;"><a href="#" id="toggleAuthMode">already have an account? log in</a></p>
+        <p style="font-size: 0.65rem; margin-top: 1rem;">we guard your moonlit words with care. no spam, just stories.</p>
+    </div>
+</div>
+
+<div id="infoModalOverlay" class="modal-pop">
+    <div class="modal-card" style="max-width: 480px;">
+        <h3>📖 QInfo · purple archives</h3>
+        <div class="info-content">
+            <p><strong>thoughts @2am</strong> is a sanctuary for untold secrets, half‑lit confessions, and stories born from the hollow hours.</p>
+            <p><strong>✦ how it works ✦</strong><br>→ Use Fantasy, Thriller, Romance tabs for curated story collections.<br>→ Click the genre buttons below to get random story whispers!<br>→ Search any word or tap genre badges.<br>→ Click MORE... to discover hidden genres.<br>→ <strong>Sign up for free</strong> to unlock personalized story recommendations!</p>
+            <p><strong>🌙 why purple?</strong> Purple bridges waking and dreaming — where real stories begin.</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="close-modal-btn" id="closeInfoModalBtn">return to whispers</button>
+        </div>
     </div>
 </div>
 
 <script>
-    // ========== AUTH & STORY SYSTEM ==========
-    let currentUser = null;
-    let isLoginMode = false;
-
-    // DOM elements
-    const authModal = document.getElementById('authModal');
-    const authBtn = document.getElementById('authBtn');
-    const closeAuthBtn = document.getElementById('closeAuthBtn');
-    const submitAuthBtn = document.getElementById('submitAuthBtn');
-    const authName = document.getElementById('authName');
-    const authEmail = document.getElementById('authEmail');
-    const authPassword = document.getElementById('authPassword');
-    const authGenre = document.getElementById('authGenre');
-    const authError = document.getElementById('authError');
-    const modalTitle = document.getElementById('modalTitle');
-    const toggleModeLink = document.getElementById('toggleAuthMode');
-    const welcomeBadge = document.getElementById('welcomeBadge');
-    const userMenu = document.getElementById('userMenu');
-    const storiesNavLink = document.getElementById('storiesNavLink');
-    const feedbackDiv = document.getElementById('feedbackMessage');
-    const searchInput = document.getElementById('searchInput');
-    const searchBtn = document.getElementById('searchBtn');
-
-    // Story collections for random whispers
-    const storyDb = {
-        fantasy: ["✨ The lavender moon whispered my true name, and a hidden door appeared.", "🦄 A unicorn made of stardust carried my secret across the galaxy.", "🔮 I found a quill that writes stories that haven't happened yet.", "🌙 The dream market sells bottled wishes — I bought one that tasted like hope."],
-        romance: ["💌 We never met, but his voice echoes in my 2am poetry.", "💜 Two strangers, purple rain, and a confession on a napkin.", "🌹 The love letter I never sent turned into a wildflower.", "✨ 'I dreamt of you again' — that's how our story begins."],
-        thriller: ["🔪 My reflection blinked a second too late.", "🕯️ At 2am, a note appeared: 'Stop writing about me.'", "🌑 Every deleted draft reappears under my pillow.", "🎭 Someone is editing my memories — I forgot purple, but remember the scream."]
+    // Story Database
+    const genreStories = {
+        fantasy: [
+            "📖 The lavender moon whispered my true name, and suddenly I could see the hidden door behind the bookshelf.",
+            "✨ In a realm of forgotten ink, every secret written at 2am turns into a constellation.",
+            "🐉 The last dreamer of the purple hour tamed a dragon made of midnight regret.",
+            "🔮 I found a quill that writes stories before they happen — my future is a romance and a mystery.",
+            "🌙 The ghost of a story not yet told offered me a deal: one wish for one honest tear."
+        ],
+        thriller: [
+            "🔪 My reflection blinked a second too late — now I know something else lives inside the glass.",
+            "🕯️ At 2:00 AM, a note appeared: 'Stop writing about me.' The ink was still wet.",
+            "🌑 Every deleted draft reappears under my pillow, each version darker than the last.",
+            "📜 The librarian at the midnight archive handed me a book with my name on it — and it's still being written.",
+            "🎭 Someone is editing my memories: last night I forgot the color purple, but I remember the scream."
+        ],
+        romance: [
+            "💌 We never met, but his voice echoes in my 2am poetry. One day, I'll read it to him.",
+            "💜 Two strangers, purple rain, and a confession scribbled on a napkin.",
+            "🌹 The love letter I never sent turned into a wildflower blooming under the moonlight.",
+            "✨ 'I dreamt of you again' — that's how every chapter of our unwritten story begins.",
+            "🥀 He said 'see you in the next timeline' and I've been writing him back ever since."
+        ]
     };
 
-    function getRandomStory(genre) {
-        const arr = storyDb[genre.toLowerCase()] || storyDb.fantasy;
-        return arr[Math.floor(Math.random() * arr.length)];
-    }
+    // DOM Elements
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const storyListContainer = document.getElementById('storyListContainer');
+    const categoryTitle = document.getElementById('categoryTitle');
+    const categoryIcon = document.getElementById('categoryIcon');
+    const refreshBtn = document.getElementById('refreshTabBtn');
+    const feedbackDiv = document.getElementById('dynamicFeedback');
+    const searchField = document.getElementById('searchInputField');
+    const searchBtn = document.getElementById('searchActionBtn');
+    const genreChips = document.querySelectorAll('.genre-badge');
+    const moreButton = document.getElementById('moreTrigger');
+    
+    let currentActiveTab = 'fantasy';
 
-    function updateFeedback(text) {
-        feedbackDiv.innerHTML = text;
-    }
-
-    // Auth functions (simple localStorage)
-    function loadUsers() { return JSON.parse(localStorage.getItem('purple_users') || '[]'); }
-    function saveUsers(users) { localStorage.setItem('purple_users', JSON.stringify(users)); }
-
-    function signup(name, email, password, favGenre) {
-        let users = loadUsers();
-        if (users.find(u => u.email === email)) { authError.innerText = '❌ Email already exists'; return false; }
-        if (password.length < 6) { authError.innerText = '❌ Password must be 6+ chars'; return false; }
-        users.push({ name, email, password, favGenre });
-        saveUsers(users);
-        currentUser = { name, email, favGenre };
-        localStorage.setItem('purple_current', JSON.stringify(currentUser));
-        return true;
-    }
-
-    function login(email, password) {
-        let users = loadUsers();
-        let user = users.find(u => u.email === email && u.password === password);
-        if (user) {
-            currentUser = { name: user.name, email: user.email, favGenre: user.favGenre };
-            localStorage.setItem('purple_current', JSON.stringify(currentUser));
-            return true;
-        }
-        return false;
-    }
-
-    function logout() {
-        currentUser = null;
-        localStorage.removeItem('purple_current');
-        updateUI();
-    }
-
-    function updateUI() {
-        if (currentUser) {
-            welcomeBadge.innerHTML = `💜 Welcome back, ${currentUser.name} 💜`;
-            authBtn.style.display = 'none';
-            userMenu.style.display = 'inline-flex';
-            userMenu.innerHTML = `<div style="display:flex; align-items:center; gap:0.8rem; background:rgba(210,180,255,0.4); padding:0.2rem 1rem; border-radius:50px;"><span style="font-weight:600;">${currentUser.name}</span><button id="logoutBtn" style="background:none; border:none; color:#9b4dca; cursor:pointer; font-weight:600;">🚪</button></div>`;
-            storiesNavLink.style.display = 'inline-flex';
-            document.getElementById('logoutBtn')?.addEventListener('click', () => { logout(); });
-            updateFeedback(`✨ Hello ${currentUser.name}! Your purple library awaits. Click "My Stories" to write your own midnight tales. ✨`);
-        } else {
-            welcomeBadge.innerHTML = '✨ Welcome to "thoughts @2am" ✨';
-            authBtn.style.display = 'block';
-            userMenu.style.display = 'none';
-            storiesNavLink.style.display = 'none';
-            updateFeedback('💜 purple dreams & midnight ink — let your secret bloom. Sign up to write your own stories!');
+    function renderStoriesForTab(tabId) {
+        const storiesArray = genreStories[tabId] || genreStories.fantasy;
+        storyListContainer.innerHTML = '';
+        storiesArray.forEach((storyText, idx) => {
+            const storyDiv = document.createElement('div');
+            storyDiv.className = 'story-card-item';
+            storyDiv.innerHTML = `
+                <div class="story-quote">“${storyText}”</div>
+                <div class="story-meta">✦ purple whisper #${idx+1} ✦</div>
+            `;
+            storyListContainer.appendChild(storyDiv);
+        });
+        
+        if(tabId === 'fantasy') {
+            categoryIcon.innerText = '✨';
+            categoryTitle.innerText = 'Fantasy Realms';
+        } else if(tabId === 'thriller') {
+            categoryIcon.innerText = '🌙';
+            categoryTitle.innerText = 'Thriller Veil';
+        } else if(tabId === 'romance') {
+            categoryIcon.innerText = '💜';
+            categoryTitle.innerText = 'Romance Echoes';
         }
     }
 
-    // Modal handling
-    function openAuthModal() { authModal.style.display = 'flex'; authError.innerText = ''; authName.value = ''; authEmail.value = ''; authPassword.value = ''; updateAuthMode(); }
-    function closeAuthModal() { authModal.style.display = 'none'; }
-    function updateAuthMode() {
-        if (isLoginMode) {
-            modalTitle.innerText = '🔐 log in to continue';
-            submitAuthBtn.innerText = 'Log in';
-            authName.style.display = 'none';
-            authGenre.style.display = 'none';
-            toggleModeLink.innerText = '✨ sign up instead';
-        } else {
-            modalTitle.innerText = '💜 join the 2am coven';
-            submitAuthBtn.innerText = 'Sign up';
-            authName.style.display = 'block';
-            authGenre.style.display = 'block';
-            toggleModeLink.innerText = 'already have an account? log in';
-        }
-    }
-
-    function handleAuth() {
-        const email = authEmail.value.trim();
-        const password = authPassword.value.trim();
-        if (!email || !password) { authError.innerText = '❌ email & password required'; return; }
-        if (isLoginMode) {
-            if (login(email, password)) {
-                closeAuthModal();
-                updateUI();
-            } else { authError.innerText = '❌ invalid email or password'; }
-        } else {
-            const name = authName.value.trim();
-            if (!name) { authError.innerText = '❌ please enter your name'; return; }
-            const genre = authGenre.value;
-            if (signup(name, email, password, genre)) {
-                closeAuthModal();
-                updateUI();
+    function setActiveTab(tabId) {
+        tabButtons.forEach(btn => {
+            if(btn.getAttribute('data-tab') === tabId) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
             }
-        }
+        });
+        currentActiveTab = tabId;
+        renderStoriesForTab(tabId);
+        updatePurpleFeedback(`💫 exploring ${tabId} whispers — stories from the purple dimension.`);
     }
 
-    authBtn.addEventListener('click', openAuthModal);
-    closeAuthBtn.addEventListener('click', closeAuthModal);
-    submitAuthBtn.addEventListener('click', handleAuth);
-    toggleModeLink.addEventListener('click', (e) => { e.preventDefault(); isLoginMode = !isLoginMode; updateAuthMode(); });
-    window.addEventListener('click', (e) => { if (e.target === authModal) closeAuthModal(); });
-
-    // Search & category interactions (cute artistic feedback)
-    function handleSearchOrGenre(query, genreHint = null) {
-        let searchTerm = query?.trim().toLowerCase() || '';
-        let genre = genreHint;
-        if (!genre && searchTerm) {
-            if (searchTerm.includes('romance') || searchTerm.includes('love')) genre = 'Romance';
-            else if (searchTerm.includes('thrill') || searchTerm.includes('mystery')) genre = 'Thriller';
-            else if (searchTerm.includes('fantasy') || searchTerm.includes('magic')) genre = 'Fantasy';
+    function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
         }
-        if (genre) {
-            const story = getRandomStory(genre.toLowerCase());
-            updateFeedback(`✨ ${genre} whisper: “${story}” ✨`);
-        } else if (searchTerm) {
-            updateFeedback(`🪄 for “${query}”: ${getRandomStory('fantasy')}`);
-        } else {
-            updateFeedback("🌙 type a secret, a word, or tap a genre card — purple stories await.");
-        }
+        return arr;
+    }
+    
+    function refreshCurrentTab() {
+        const shuffled = shuffleArray([...genreStories[currentActiveTab]]);
+        genreStories[currentActiveTab] = shuffled;
+        renderStoriesForTab(currentActiveTab);
+        updatePurpleFeedback(`🔄 ${currentActiveTab} stories refreshed — new midnight echoes appear.`);
+    }
+    
+    function updatePurpleFeedback(text) { 
+        feedbackDiv.innerHTML = text; 
     }
 
-    searchBtn.addEventListener('click', () => {
-        let val = searchInput.value;
-        if (!val) updateFeedback("💜 whisper something into the purple void...");
-        else handleSearchOrGenre(val);
-    });
-    searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') searchBtn.click(); });
+    function getRandomStory(genre) {
+        const genreKey = genre.toLowerCase();
+        const stories = genreStories[genreKey] || genreStories.fantasy;
+        return stories[Math.floor(Math.random() * stories.length)];
+    }
 
-    // Category cards
-    document.querySelectorAll('.category-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const genre = card.getAttribute('data-genre');
-            const story = getRandomStory(genre);
-            updateFeedback(`✨ ${genre.charAt(0).toUpperCase() + genre.slice(1)} magic: “${story}” ✨`);
+    // Tab events
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabValue = btn.getAttribute('data-tab');
+            setActiveTab(tabValue);
         });
     });
 
-    // Navigation for home and my stories (protected)
-    const homeNav = document.getElementById('homeNavLink');
-    const storiesNav = document.getElementById('storiesNavLink');
-    
-    homeNav.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        if (currentUser) updateFeedback(`💜 Welcome back, ${currentUser.name}. Your purple sanctuary is here.`);
-        else updateFeedback("💜 purple dreams & midnight ink — sign up to write stories!");
-    });
-    
-    storiesNav.addEventListener('click', () => {
-        if (!currentUser) {
-            updateFeedback("💜 Sign up first to unlock your personal story library and write your own midnight tales!");
-            openAuthModal();
-            return;
+    refreshBtn.addEventListener('click', refreshCurrentTab);
+
+    // Search
+    searchBtn.addEventListener('click', () => {
+        let value = searchField.value.trim();
+        if(!value) {
+            updatePurpleFeedback("💜 whisper something into the purple void...");
+        } else {
+            let lowerValue = value.toLowerCase();
+            if(lowerValue.includes("romance") || lowerValue.includes("love") || lowerValue.includes("crush")) {
+                updatePurpleFeedback(`💜 Romance whisper: “${getRandomStory('romance')}”`);
+            } else if(lowerValue.includes("thrill") || lowerValue.includes("mystery") || lowerValue.includes("dark")) {
+                updatePurpleFeedback(`🌙 Thriller whisper: “${getRandomStory('thriller')}”`);
+            } else if(lowerValue.includes("fantasy") || lowerValue.includes("magic") || lowerValue.includes("dream")) {
+                updatePurpleFeedback(`✨ Fantasy whisper: “${getRandomStory('fantasy')}”`);
+            } else {
+                updatePurpleFeedback(`🪄 for “${value}”: ${getRandomStory('fantasy')}`);
+            }
         }
-        // For demo: show a sweet message about story writing page
-        updateFeedback(`📖 ${currentUser.name}, your story journal is ready! (Full writing dashboard would open here — you can write, save, and share your purple tales!)`);
-        // In a full version, you'd redirect to a dashboard. Here we just give artistic response.
-        alert(`✨ ${currentUser.name}, welcome to your writing sanctuary! ✨\n\nIn the full version, you could:\n• Write & save your own stories\n• Choose genres, add titles\n• Keep a collection of your 2am thoughts\n\nSigning up was the first step! 💜`);
     });
 
-    // Check existing session
-    const saved = localStorage.getItem('purple_current');
-    if (saved) { currentUser = JSON.parse(saved); updateUI(); }
-    else updateUI();
+    searchField.addEventListener('keypress', (e) => {
+        if(e.key === 'Enter') searchBtn.click();
+    });
+
+    // Genre badges
+    genreChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            const genre = chip.getAttribute('data-genre');
+            const randomStory = getRandomStory(genre);
+            let icon = genre === "Romance" ? "💜" : (genre === "Thriller" ? "🌙" : "✨");
+            updatePurpleFeedback(`${icon} ${genre} secret: “${randomStory}” ${icon}`);
+            chip.style.transform = "scale(0.95)";
+            setTimeout(() => chip.style.transform = "scale(1)", 120);
+        });
+    });
+
+    moreButton.addEventListener('click', () => {
+        updatePurpleFeedback("🌌 MORE genres: dark academia · gothic romance · magical realism · noir confessions.");
+    });
+
+    // ============ ENHANCED SIGNUP MODAL - FULLY WORKING ============
+    const modalOverlay = document.getElementById('signupModalOverlay');
+    const openSignup = document.getElementById('openSignupModalBtn');
+    const closeModal = document.getElementById('closeModalButton');
+    const confirmSign = document.getElementById('confirmModalSignup');
+    const nameInput = document.getElementById('signupName');
+    const emailInput = document.getElementById('signupEmail');
+    const passwordInput = document.getElementById('signupPassword');
+    const genreSelect = document.getElementById('signupFavoriteGenre');
+    const formError = document.getElementById('formError');
+
+    function openModalFunc() { 
+        formError.innerHTML = '';
+        modalOverlay.style.display = 'flex'; 
+    }
+    function closeModalFunc() { modalOverlay.style.display = 'none'; }
+
+    function validateEmail(email) {
+        const re = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+        return re.test(email);
+    }
+
+    function handleSignup() {
+        // Clear previous error
+        formError.innerHTML = '';
+        formError.style.color = '#e74c3c';
+        
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+        const genre = genreSelect.value;
+        
+        // Validation
+        if(!name) {
+            formError.innerHTML = "💜 Please tell us your name (even a pen name!)";
+            nameInput.classList.add('error');
+            setTimeout(() => nameInput.classList.remove('error'), 2000);
+            return;
+        }
+        if(!email) {
+            formError.innerHTML = "💌 Your email, please — so we can send you midnight stories.";
+            emailInput.classList.add('error');
+            setTimeout(() => emailInput.classList.remove('error'), 2000);
+            return;
+        }
+        if(!validateEmail(email)) {
+            formError.innerHTML = "✨ That doesn't look like a real email... try again?";
+            emailInput.classList.add('error');
+            setTimeout(() => emailInput.classList.remove('error'), 2000);
+            return;
+        }
+        if(!password || password.length < 6) {
+            formError.innerHTML = "🔮 Password must be at least 6 characters (keep your secrets safe!)";
+            passwordInput.classList.add('error');
+            setTimeout(() => passwordInput.classList.remove('error'), 2000);
+            return;
+        }
+        if(!genre || genre === "") {
+            formError.innerHTML = "📖 Pick your favorite genre — we'll fill your world with purple magic!";
+            genreSelect.classList.add('error');
+            setTimeout(() => genreSelect.classList.remove('error'), 2000);
+            return;
+        }
+        
+        // SUCCESS! Store in localStorage to simulate account creation
+        const userData = {
+            name: name,
+            email: email,
+            favoriteGenre: genre,
+            joinedDate: new Date().toISOString()
+        };
+        localStorage.setItem('thoughtsAt2am_user', JSON.stringify(userData));
+        
+        // Show beautiful success message inside modal before closing
+        formError.style.color = '#2d6a4f';
+        formError.innerHTML = `🎉✨ Welcome to the coven, ${name}! ✨🎉<br>Your purple journey begins now.`;
+        
+        // Update welcome badge to show logged-in state
+        const welcomeBadge = document.querySelector('.welcome-badge');
+        welcomeBadge.innerHTML = `✨ Welcome back, ${name} ✨`;
+        welcomeBadge.style.background = "rgba(183, 124, 224, 0.5)";
+        
+        // Clear form
+        nameInput.value = '';
+        emailInput.value = '';
+        passwordInput.value = '';
+        genreSelect.value = '';
+        
+        // Close modal after 2 seconds
+        setTimeout(() => {
+            closeModalFunc();
+            formError.innerHTML = '';
+            updatePurpleFeedback(`💜 Welcome, ${name}! Your stories have found a home at thoughts @2am.`);
+        }, 2000);
+    }
+
+    openSignup.addEventListener('click', openModalFunc);
+    closeModal.addEventListener('click', closeModalFunc);
+    confirmSign.addEventListener('click', handleSignup);
+    
+    // Close on overlay click
+    window.addEventListener('click', (e) => { 
+        if(e.target === modalOverlay) closeModalFunc();
+        if(e.target === infoModal) closeInfoModal();
+    });
+    
+    // Enter key in any input triggers signup
+    const modalInputs = [nameInput, emailInput, passwordInput, genreSelect];
+    modalInputs.forEach(input => {
+        if(input) input.addEventListener('keypress', (e) => {
+            if(e.key === 'Enter') handleSignup();
+        });
+    });
+
+    // QInfo Modal
+    const infoModal = document.getElementById('infoModalOverlay');
+    const qInfoLink = document.getElementById('qInfoNavLink');
+    const closeInfoBtn = document.getElementById('closeInfoModalBtn');
+    const homeLink = document.getElementById('homeNavLink');
+    const searchNav = document.getElementById('searchNavLink');
+    
+    function openInfoModal() { infoModal.style.display = 'flex'; }
+    function closeInfoModal() { infoModal.style.display = 'none'; }
+    
+    qInfoLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        openInfoModal();
+    });
+    closeInfoBtn.addEventListener('click', closeInfoModal);
+    homeLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        updatePurpleFeedback("🏠 home — back to the purple doorway.");
+    });
+    searchNav.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('searchInputField').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        document.getElementById('searchInputField').focus();
+    });
+
+    // Initialize
+    renderStoriesForTab('fantasy');
+    updatePurpleFeedback("💜 purple dreams & midnight ink — let your secret bloom.");
 </script>
 </body>
 </html>
