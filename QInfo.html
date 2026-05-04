@@ -3,834 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>thoughts @2am — purple whispers | stories at midnight</title>
-    <!-- Google Fonts: elegant modern look + purple palette -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <title>thoughts @2am — purple whispers | community story garden</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background: linear-gradient(145deg, #f8f3ff 0%, #f1eaff 100%);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 25%, #f1e5ff 50%, #faf0ff 100%);
+            font-family: 'Inter', sans-serif;
             color: #2d1b36;
-            line-height: 1.4;
+            min-height: 100vh;
             position: relative;
+            overflow-x: hidden;
         }
+        .orb { position: fixed; border-radius: 50%; filter: blur(60px); opacity: 0.4; pointer-events: none; z-index: 0; animation: float 20s infinite; }
+        @keyframes float { 0%,100% { transform: translate(0,0); } 50% { transform: translate(30px,-20px); } }
+        .orb-1 { width: 400px; height: 400px; background: #c8a8f0; top: -100px; left: -100px; }
+        .orb-2 { width: 500px; height: 500px; background: #e0b0ff; bottom: -150px; right: -100px; opacity: 0.3; }
+        .orb-3 { width: 300px; height: 300px; background: #b87de0; top: 50%; left: 70%; opacity: 0.25; }
+        .star { position: fixed; color: rgba(183,124,224,0.5); font-size: 12px; pointer-events: none; animation: twinkle 3s infinite; z-index: 0; }
+        @keyframes twinkle { 0%,100% { opacity: 0.2; } 50% { opacity: 0.8; } }
+        .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem 2rem 3rem; position: relative; z-index: 2; }
 
-        /* dreamy animated gradient orb background */
-        body::before {
-            content: "";
-            position: fixed;
-            top: -30%;
-            left: -20%;
-            width: 140%;
-            height: 140%;
-            background: radial-gradient(circle at 30% 40%, rgba(160, 120, 220, 0.12), rgba(210, 180, 255, 0.05) 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
+        /* Header */
+        .top-flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem; padding: 0.8rem 1.8rem; background: rgba(255,248,255,0.7); backdrop-filter: blur(12px); border-radius: 80px; border: 1px solid rgba(183,124,224,0.4); }
+        .nav-left { display: flex; gap: 2rem; align-items: center; }
+        .nav-left a { text-decoration: none; font-weight: 600; font-size: 0.95rem; color: #5a3a7a; transition: 0.3s; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
+        .nav-left a:hover { color: #9b4dca; transform: translateY(-2px); }
+        .logo-icon { font-size: 1.5rem; margin-right: 0.3rem; }
+        .right-welcome { display: flex; align-items: center; gap: 1.2rem; }
+        .welcome-badge { font-size: 0.85rem; background: linear-gradient(135deg, rgba(210,180,255,0.5), rgba(183,124,224,0.3)); padding: 0.4rem 1.2rem; border-radius: 60px; font-weight: 500; color: #6b3fa0; border: 1px solid rgba(183,124,224,0.4); }
+        .auth-btn { background: linear-gradient(105deg, #9b4dca, #c48aff); border: none; padding: 0.55rem 1.8rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; color: white; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(155,77,202,0.3); }
+        .auth-btn:hover { transform: scale(0.95); }
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 2rem 2rem 3rem;
-            position: relative;
-            z-index: 2;
-        }
+        /* Hero */
+        .hero-section { text-align: center; padding: 2rem 1rem 1rem; }
+        .hero-title { font-size: 3.5rem; font-weight: 800; background: linear-gradient(135deg, #4a2768, #b87de0, #9b4dca); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: gradientShift 8s ease infinite; }
+        @keyframes gradientShift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        .hero-sub { font-size: 1.1rem; color: #8b6cb0; font-weight: 500; }
+        .drama-card { background: linear-gradient(135deg, rgba(255,248,255,0.85), rgba(245,235,255,0.7)); backdrop-filter: blur(12px); border-radius: 64px; padding: 2rem; margin: 2rem 0; text-align: center; border: 1px solid rgba(183,124,224,0.5); }
+        .drama-line { font-size: 2rem; font-weight: 700; }
+        .drama-line span { background: linear-gradient(120deg, #e8d6ff, #f0e4ff); padding: 0.2rem 0.8rem; border-radius: 50px; }
+        .big-you { font-size: 3rem; font-weight: 800; background: linear-gradient(125deg, #c79aff, #9b6bcf); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
-        /* --- refined header with purple glow --- */
-        .top-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(128, 90, 180, 0.25);
-            backdrop-filter: blur(2px);
-        }
+        /* Search */
+        .search-wrapper { max-width: 550px; margin: 1.5rem auto; }
+        .search-input-group { display: flex; align-items: center; background: rgba(255,255,255,0.9); border-radius: 80px; padding: 0.3rem 0.3rem 0.3rem 1.8rem; border: 1px solid #decbff; transition: 0.3s; }
+        .search-input-group:focus-within { border-color: #b87de0; transform: scale(1.02); }
+        .search-input-group input { flex: 1; border: none; padding: 0.9rem 0; background: transparent; outline: none; }
+        .search-input-group button { background: linear-gradient(95deg, #b87de0, #d9a5ff); border: none; border-radius: 60px; padding: 0.6rem 1.8rem; color: white; font-weight: 600; cursor: pointer; }
 
-        .nav-left {
-            display: flex;
-            gap: 2.5rem;
-        }
+        /* Tabs */
+        .tabs-container { display: flex; justify-content: center; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap; }
+        .tab-btn { background: rgba(255,248,255,0.7); border: 1px solid #ddccff; padding: 0.6rem 1.8rem; border-radius: 60px; font-weight: 600; color: #6b3fa0; cursor: pointer; transition: 0.2s; }
+        .tab-btn.active { background: linear-gradient(95deg, #b87de0, #d9a5ff); color: white; border-color: transparent; }
+        .tab-btn:hover { transform: translateY(-2px); background: #b77ce0; color: white; }
 
-        .nav-left a {
-            text-decoration: none;
-            font-weight: 550;
-            font-size: 0.95rem;
-            color: #3c2a4a;
-            transition: 0.25s ease;
-            letter-spacing: -0.2px;
-            position: relative;
-            cursor: pointer;
-        }
+        /* Feed Grid */
+        .feed-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+        .story-card { background: rgba(255,255,255,0.8); backdrop-filter: blur(4px); border-radius: 32px; padding: 1.2rem; border: 1px solid #ddccff; transition: 0.3s; cursor: pointer; }
+        .story-card:hover { transform: translateY(-5px); box-shadow: 0 12px 28px rgba(108,63,158,0.15); }
+        .story-genre { display: inline-block; padding: 0.2rem 1rem; border-radius: 60px; font-size: 0.7rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .genre-fantasy { background: #e8d6ff; color: #6c3f9e; }
+        .genre-romance { background: #ffe0f0; color: #c94f8c; }
+        .genre-thriller { background: #d6e8ff; color: #2c5f8a; }
+        .story-title-card { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .story-preview { font-size: 0.8rem; color: #6b5190; margin-bottom: 0.5rem; }
+        .story-author { font-size: 0.7rem; color: #9b7abb; display: flex; align-items: center; gap: 0.3rem; margin-top: 0.5rem; }
+        .rating-stars { display: flex; gap: 0.2rem; margin: 0.5rem 0; }
+        .star { color: #ffd700; font-size: 0.8rem; cursor: pointer; transition: 0.1s; }
+        .star-gray { color: #ddd; }
+        .avg-rating { font-size: 0.7rem; color: #9b7abb; margin-left: 0.3rem; }
 
-        .nav-left a:hover {
-            color: #9b4dca;
-            transform: translateY(-1px);
-        }
+        /* Dashboard/Editor */
+        .dashboard { display: none; margin-top: 2rem; background: rgba(255,248,255,0.6); backdrop-filter: blur(8px); border-radius: 48px; padding: 2rem; border: 1px solid rgba(183,124,224,0.4); }
+        .dashboard-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
+        .new-story-btn { background: linear-gradient(105deg, #8b5cc9, #b578e3); border: none; padding: 0.7rem 1.8rem; border-radius: 60px; color: white; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
+        .story-editor { background: rgba(255,255,255,0.95); border-radius: 48px; padding: 1.8rem; margin-bottom: 2rem; border: 1px solid rgba(183,124,224,0.4); display: none; }
+        .story-editor input, .story-editor select, .story-editor textarea { width: 100%; padding: 0.8rem 1rem; margin-bottom: 1rem; border-radius: 28px; border: 1px solid #ddccff; font-family: inherit; background: white; }
+        .story-editor textarea { min-height: 180px; resize: vertical; }
+        .editor-actions { display: flex; gap: 1rem; justify-content: flex-end; }
+        .save-story-btn, .cancel-story-btn { padding: 0.6rem 1.5rem; border-radius: 60px; font-weight: 600; cursor: pointer; border: none; }
+        .save-story-btn { background: linear-gradient(95deg, #8b5cc9, #b578e3); color: white; }
+        .cancel-story-btn { background: #ede3ff; color: #593a83; }
 
-        .nav-left a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background: #b77ce0;
-            transition: 0.2s;
-        }
+        /* Modals */
+        .modal-pop { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(50,30,70,0.8); backdrop-filter: blur(10px); align-items: center; justify-content: center; z-index: 1000; }
+        .modal-card { background: linear-gradient(135deg, #fffbfe, #fef5ff); max-width: 550px; width: 90%; border-radius: 56px; padding: 2rem; text-align: center; border: 2px solid rgba(183,124,224,0.5); max-height: 85vh; overflow-y: auto; }
+        .modal-card input, .modal-card select, .modal-card textarea { width: 100%; padding: 0.8rem; margin: 0.5rem 0; border-radius: 60px; border: 1px solid #e3d2ff; }
+        .modal-card textarea { border-radius: 28px; }
+        .modal-buttons { display: flex; gap: 0.8rem; justify-content: center; margin-top: 1rem; }
+        .close-modal-btn { background: #ede3ff; color: #593a83; padding: 0.6rem 1.4rem; border-radius: 60px; border: none; cursor: pointer; }
+        .confirm-modal-btn { background: linear-gradient(95deg, #8b5cc9, #b075df); color: white; padding: 0.6rem 1.4rem; border-radius: 60px; border: none; cursor: pointer; }
+        .author-bio { text-align: left; margin: 1rem 0; padding: 1rem; background: rgba(210,180,255,0.2); border-radius: 32px; }
+        .author-stats { display: flex; justify-content: space-around; margin: 1rem 0; }
 
-        .nav-left a:hover::after {
-            width: 100%;
-        }
-
-        .right-welcome {
-            display: flex;
-            align-items: center;
-            gap: 1.8rem;
-            flex-wrap: wrap;
-        }
-
-        .welcome-badge {
-            font-size: 0.85rem;
-            background: rgba(210, 180, 255, 0.3);
-            padding: 0.3rem 1rem;
-            border-radius: 60px;
-            backdrop-filter: blur(2px);
-            font-weight: 500;
-            color: #4b2e62;
-            letter-spacing: -0.2px;
-        }
-
-        .signup-btn {
-            background: linear-gradient(105deg, #6c3f9e, #9b4dca);
-            border: none;
-            padding: 0.55rem 1.9rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: white;
-            cursor: pointer;
-            transition: all 0.25s;
-            box-shadow: 0 4px 10px rgba(108, 63, 158, 0.3);
-            font-family: inherit;
-        }
-
-        .signup-btn:hover {
-            transform: scale(0.96);
-            background: linear-gradient(105deg, #7b4bb3, #b668e0);
-            box-shadow: 0 8px 20px rgba(108, 63, 158, 0.4);
-        }
-
-        /* hero section: purple dream */
-        .hero-title {
-            text-align: center;
-            margin: 2.5rem 0 1rem;
-        }
-
-        .hero-title h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #4a2768, #ab6ed1, #6b3fa0);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            letter-spacing: -0.02em;
-            max-width: 900px;
-            margin: 0 auto;
-            line-height: 1.2;
-            text-shadow: 0 2px 5px rgba(128, 0, 255, 0.08);
-        }
-
-        .hero-sub {
-            text-align: center;
-            margin-top: 0.75rem;
-            font-size: 0.9rem;
-            color: #6b5190;
-            font-weight: 450;
-        }
-
-        /* drama & tropes card — elegant purple glassmorphism */
-        .drama-card {
-            background: rgba(255, 248, 255, 0.85);
-            backdrop-filter: blur(8px);
-            border-radius: 48px;
-            padding: 2.2rem 1.8rem;
-            margin: 2.8rem 0 2rem;
-            text-align: center;
-            border: 1px solid rgba(185, 135, 235, 0.4);
-            box-shadow: 0 20px 35px -12px rgba(78, 42, 112, 0.2);
-            transition: all 0.3s;
-        }
-
-        .drama-card:hover {
-            border-color: #c49ef0;
-            box-shadow: 0 25px 40px -14px rgba(108, 63, 158, 0.25);
-        }
-
-        .drama-line {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #2d1b3e;
-        }
-
-        .drama-line span {
-            background: linear-gradient(120deg, #efe3ff, #e8d6ff);
-            padding: 0.1rem 0.7rem;
-            border-radius: 50px;
-            display: inline-block;
-        }
-
-        .big-you {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-top: 0.6rem;
-            background: linear-gradient(125deg, #b77ce0, #8b5cc9);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            letter-spacing: -1px;
-        }
-
-        .small-credit {
-            font-size: 0.75rem;
-            margin-top: 0.8rem;
-            color: #9a7bba;
-            font-weight: 500;
-        }
-
-        /* search section + purple magic */
-        .search-section-compact {
-            margin: 2rem 0 2.5rem;
-        }
-
-        .search-bar-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1.6rem;
-        }
-
-        .search-input-group {
-            display: flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 80px;
-            padding: 0.3rem 0.3rem 0.3rem 1.8rem;
-            width: 100%;
-            max-width: 520px;
-            border: 1px solid #d6beff;
-            transition: all 0.25s;
-            box-shadow: 0 6px 14px rgba(128, 90, 180, 0.1);
-            backdrop-filter: blur(2px);
-        }
-
-        .search-input-group:focus-within {
-            border-color: #b47ce4;
-            box-shadow: 0 8px 22px rgba(128, 90, 210, 0.2);
-            transform: scale(1.01);
-        }
-
-        .search-input-group input {
-            flex: 1;
-            border: none;
-            padding: 0.8rem 0;
-            font-size: 0.95rem;
-            background: transparent;
-            outline: none;
-            font-family: 'Inter', monospace;
-            color: #2e1c3a;
-        }
-
-        .search-input-group input::placeholder {
-            color: #b59ad6;
-            font-weight: 400;
-        }
-
-        .search-input-group button {
-            background: linear-gradient(95deg, #8b5cc9, #b578e3);
-            border: none;
-            border-radius: 60px;
-            padding: 0.55rem 1.8rem;
-            color: white;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: 0.2s;
-            font-family: inherit;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
-        .search-input-group button:hover {
-            background: linear-gradient(95deg, #9f6bd9, #c58cf5);
-            transform: scale(0.96);
-        }
-
-        .genre-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.3rem;
-            margin: 1.6rem 0 0.8rem;
-        }
-
-        .genre-badge {
-            background: rgba(255, 248, 255, 0.8);
-            padding: 0.55rem 2rem;
-            border-radius: 60px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #4a2e6b;
-            border: 1px solid #ddccff;
-            cursor: pointer;
-            transition: all 0.25s;
-            backdrop-filter: blur(2px);
-            letter-spacing: -0.2px;
-        }
-
-        .genre-badge:hover {
-            background: #b77ce0;
-            color: white;
-            border-color: #b77ce0;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 18px rgba(128, 90, 200, 0.3);
-        }
-
-        .more-row {
-            text-align: right;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #9b6bcf;
-        }
-
-        .more-click {
-            border-bottom: 2px dashed #c09be8;
-            cursor: pointer;
-            transition: 0.2s;
-            display: inline-block;
-        }
-
-        .more-click:hover {
-            color: #754bb3;
-            border-bottom-color: #aa7ad6;
-        }
-
-        .feedback-message {
-            margin-top: 1.4rem;
-            font-size: 0.85rem;
-            color: #684f8b;
-            text-align: center;
-            background: rgba(225, 205, 255, 0.5);
-            padding: 0.65rem 1rem;
-            border-radius: 70px;
-            backdrop-filter: blur(4px);
-            font-weight: 500;
-            letter-spacing: -0.2px;
-            border: 1px solid rgba(190, 150, 240, 0.4);
-            transition: all 0.2s;
-        }
-
-        /* footer: purple elegance */
-        .footer-info {
-            margin-top: 4rem;
-            padding-top: 1.8rem;
-            border-top: 1px solid #dac5ff;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 2rem;
-        }
-
-        .download-block {
-            background: rgba(252, 247, 255, 0.85);
-            backdrop-filter: blur(4px);
-            border-radius: 36px;
-            padding: 0.75rem 1.5rem;
-            border: 1px solid #decbff;
-        }
-
-        .download-block p {
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 0.4rem;
-            color: #472e62;
-        }
-
-        .badge-demo {
-            background: linear-gradient(110deg, #6f43a3, #9b5ad0);
-            color: white;
-            padding: 0.3rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.7rem;
-            display: inline-block;
-            font-weight: 600;
-        }
-
-        .contact-email {
-            background: rgba(240, 230, 255, 0.8);
-            padding: 0.6rem 1.5rem;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .contact-email a {
-            color: #9b4dca;
-            text-decoration: none;
-            font-weight: 700;
-            transition: 0.2s;
-        }
-
-        .contact-email a:hover {
-            color: #7647b0;
-            text-decoration: underline;
-        }
-
-        .rights-side {
-            text-align: right;
-        }
-
-        .inreadably-word {
-            font-family: 'Courier New', monospace;
-            font-size: 1rem;
-            font-weight: 700;
-            background: linear-gradient(145deg, #dcc9ff, #efe3ff);
-            display: inline-block;
-            padding: 0.25rem 1.2rem;
-            border-radius: 40px;
-            letter-spacing: -0.2px;
-            color: #5a3791;
-            border: 1px solid #cfb4f5;
-        }
-
-        .copyright-line {
-            font-size: 0.7rem;
-            color: #8f6eb0;
-            margin-top: 0.5rem;
-            font-weight: 500;
-        }
-
-        /* elegant purple modal */
-        .modal-pop {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(50, 30, 70, 0.7);
-            backdrop-filter: blur(6px);
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-
-        .modal-card {
-            background: #fffbfe;
-            max-width: 380px;
-            width: 90%;
-            border-radius: 48px;
-            padding: 2rem 1.8rem;
-            text-align: center;
-            box-shadow: 0 30px 45px rgba(68, 34, 102, 0.3);
-            border: 1px solid #d9befa;
-        }
-
-        .modal-card h3 {
-            font-weight: 800;
-            font-size: 1.6rem;
-            background: linear-gradient(135deg, #8055b5, #b87de0);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        .modal-card p {
-            color: #4f3a6b;
-        }
-
-        .modal-card input {
-            width: 100%;
-            padding: 0.8rem;
-            border-radius: 60px;
-            border: 1px solid #e3d2ff;
-            margin: 1.2rem 0;
-            font-family: inherit;
-            background: white;
-            outline: none;
-        }
-
-        .modal-card input:focus {
-            border-color: #b77ce0;
-        }
-
-        .modal-buttons {
-            display: flex;
-            gap: 0.8rem;
-            justify-content: center;
-        }
-
-        .modal-buttons button {
-            padding: 0.55rem 1.4rem;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            transition: 0.2s;
-        }
-
-        .close-modal-btn {
-            background: #ede3ff;
-            color: #593a83;
-        }
-
-        .confirm-modal-btn {
-            background: linear-gradient(95deg, #8b5cc9, #b075df);
-            color: white;
-        }
-
-        /* info specific modal with scroll */
-        .info-content {
-            text-align: left;
-            margin: 1rem 0;
-            max-height: 280px;
-            overflow-y: auto;
-            padding-right: 0.5rem;
-            font-size: 0.85rem;
-            color: #2d1b3e;
-        }
-        .info-content p {
-            margin-bottom: 0.6rem;
-            line-height: 1.5;
-        }
-        .info-content ul {
-            margin-left: 1.2rem;
-            margin-bottom: 0.6rem;
-        }
-        .info-content li {
-            margin: 0.3rem 0;
-        }
-        .info-badge {
-            background: #efe3ff;
-            display: inline-block;
-            padding: 0.2rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: #7b4aaa;
-        }
-
-        @media (max-width: 760px) {
-            .container {
-                padding: 1.2rem;
-            }
-            .hero-title h1 {
-                font-size: 2.4rem;
-            }
-            .drama-line {
-                font-size: 1.4rem;
-            }
-            .big-you {
-                font-size: 2rem;
-            }
-            .footer-info {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .rights-side {
-                text-align: left;
-            }
-        }
+        .footer-info { margin-top: 3rem; padding-top: 1.5rem; border-top: 2px dashed #dac5ff; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+        @media (max-width: 760px) { .container { padding: 1rem; } .hero-title { font-size: 2rem; } .big-you { font-size: 2rem; } }
     </style>
 </head>
 <body>
+    <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+    <div class="star" style="top: 10%; left: 15%;">✦</div><div class="star" style="top: 20%; right: 12%;">✧</div>
+
 <div class="container">
-    <!-- navigation exactly as required: Home Search QInfo + Welcome + signup for free -->
     <div class="top-flex">
         <div class="nav-left">
-            <a href="#" id="homeNavLink">Home</a>
-            <a href="#" id="searchNavLink">Search</a>
-            <a href="#" id="qInfoNavLink">QInfo</a>
+            <span class="logo-icon">🌙✨</span>
+            <a href="#" id="homeNavBtn"><i class="fas fa-home"></i> Home</a>
+            <a href="#" id="searchNavBtn"><i class="fas fa-search"></i> Search</a>
+            <a href="#" id="infoNavBtn"><i class="fas fa-info-circle"></i> Info</a>
         </div>
         <div class="right-welcome">
-            <div class="welcome-badge">✨ Welcome to “thoughts @2am” ✨</div>
-            <button class="signup-btn" id="openSignupModalBtn">Sign up for free</button>
+            <div class="welcome-badge" id="welcomeBadge">✨ Welcome to “thoughts @2am” ✨</div>
+            <button class="auth-btn" id="signupHeaderBtn"><i class="fas fa-feather-alt"></i> Sign up</button>
+            <div id="userMenu" style="display:none;"></div>
         </div>
     </div>
 
-    <!-- main catchphrase: where your secrets transform to stories -->
-    <div class="hero-title">
-        <h1>Where your secrets transform to stories</h1>
-        <div class="hero-sub">purple echoes · midnight confessions · raw pages</div>
+    <div class="hero-section"><h1 class="hero-title">where your secrets<br>transform to stories</h1><div class="hero-sub">purple echoes · midnight confessions · raw pages</div></div>
+    <div class="drama-card"><div class="drama-line">All the drama. <span>All the tropes.</span></div><div class="big-you">It's all YOU!</div><div class="small-credit" style="margin-top:0.5rem; color:#aa8acf;">✧ your truth, your stage, your purple hour ✧</div></div>
+
+    <div class="search-wrapper" id="searchSection"><div class="search-input-group"><input type="text" id="searchInputField" placeholder="🔍 search stories, poems, or authors..."><button id="executeSearchBtn">search</button></div></div>
+
+    <!-- Community Feed Tabs -->
+    <div class="tabs-container">
+        <button class="tab-btn active" data-tab="community">📖 Community Stories</button>
+        <button class="tab-btn" data-tab="poems">🌸 Community Poems</button>
+        <button class="tab-btn" data-tab="myworks">✨ My Works</button>
+    </div>
+    <div id="communityFeed" class="feed-grid"></div>
+    <div id="myWorksFeed" class="feed-grid" style="display:none;"></div>
+
+    <!-- Writing Dashboard -->
+    <div id="dashboard" class="dashboard">
+        <div class="dashboard-header"><h2><i class="fas fa-book-open"></i> Your Writing Corner</h2><button class="new-story-btn" id="newStoryBtn"><i class="fas fa-feather-alt"></i> Write New Story/Poem</button></div>
+        <div id="storyEditor" class="story-editor">
+            <h3 id="editorTitle">✨ Write Your Midnight Tale</h3>
+            <input type="text" id="storyTitle" placeholder="Title...">
+            <select id="storyTypeSelect"><option value="Story">📖 Story</option><option value="Poem">🌸 Poem</option></select>
+            <select id="storyGenreSelect"><option value="Fantasy">✨ Fantasy</option><option value="Romance">💜 Romance</option><option value="Thriller">🌙 Thriller</option></select>
+            <textarea id="storyContent" placeholder="Write your story or poem here... Let your secrets flow..."></textarea>
+            <div class="editor-actions"><button class="cancel-story-btn" id="cancelEditorBtn">Cancel</button><button class="save-story-btn" id="saveStoryBtn">Publish to Community</button></div>
+        </div>
     </div>
 
-    <!-- All the drama / All the troupes / It's all YOU! -->
-    <div class="drama-card">
-        <div class="drama-line">All the drama. <span>All the troupes.</span></div>
-        <div class="big-you">Its all YOU!</div>
-        <div class="small-credit">✧ your truth, your stage, your purple hour ✧</div>
-    </div>
-
-    <!-- search + romance/thriller/fantasy pills + more.. -->
-    <div class="search-section-compact">
-        <div class="search-bar-container">
-            <div class="search-input-group">
-                <input type="text" id="searchInputField" placeholder="search midnight whispers...">
-                <button id="searchActionBtn">search</button>
-            </div>
-        </div>
-        <div class="genre-row">
-            <div class="genre-badge" data-genre="Romance">Romance</div>
-            <div class="genre-badge" data-genre="Thriller">Thriller</div>
-            <div class="genre-badge" data-genre="Fantasy">Fantasy</div>
-        </div>
-        <div class="more-row">
-            <span class="more-click" id="moreTrigger">MORE...</span>
-        </div>
-        <div id="dynamicFeedback" class="feedback-message">🌙 purple thoughts — pick a genre or search your soul</div>
-    </div>
-
-    <!-- footer area: download app / reach out / inreadably + all rights reserved -->
-    <div class="footer-info">
-        <div class="download-block">
-            <p>📱 for more information <strong>download our app</strong></p>
-            <div class="badge-demo">coming soon on iOS & Android</div>
-        </div>
-        <div class="contact-email">
-            ✉️ or reach out at <a href="mailto:thoughtsat2am@gmail.com">thoughtsat2am@gmail.com</a>
-        </div>
-        <div class="rights-side">
-            <div class="inreadably-word">inreadably</div>
-            <div class="copyright-line">+76894532 &nbsp;|&nbsp; all rights reserved</div>
-        </div>
-    </div>
+    <div class="footer-info"><div class="footer-badge">📱 download our app <span style="font-weight:700;">coming soon</span></div><div class="contact-email">✉️ <a href="mailto:thoughtsat2am@gmail.com">thoughtsat2am@gmail.com</a></div><div class="inreadably-word">inreadably +76894532</div></div>
 </div>
 
-<!-- signup modal purple elegance -->
-<div id="signupModalOverlay" class="modal-pop">
-    <div class="modal-card">
-        <h3>💜 join the 2am coven</h3>
-        <p style="margin: 0.6rem 0;">turn your secrets into spellbinding stories.</p>
-        <input type="email" id="modalEmailInput" placeholder="your email">
-        <div class="modal-buttons">
-            <button class="close-modal-btn" id="closeModalButton">Close</button>
-            <button class="confirm-modal-btn" id="confirmModalSignup">Sign up free</button>
-        </div>
-        <p style="font-size: 0.65rem; margin-top: 1rem;">we guard your moonlit words with care.</p>
-    </div>
-</div>
+<!-- Signup Modal -->
+<div id="signupModal" class="modal-pop"><div class="modal-card"><h3>💜 join the 2am coven</h3><p style="margin-bottom:0.8rem;">turn your secrets into spellbinding stories.</p>
+    <input type="text" id="signupName" placeholder="your pen name"><input type="email" id="signupEmail" placeholder="your email"><input type="password" id="signupPassword" placeholder="password (min 6 chars)">
+    <textarea id="signupBio" placeholder="Tell us about yourself (optional)..." rows="2" style="border-radius:28px;"></textarea>
+    <select id="signupGenre"><option value="Fantasy">✨ Fantasy lover</option><option value="Romance">💜 Romance heart</option><option value="Thriller">🌙 Thriller seeker</option></select>
+    <div id="signupError" style="color:#e74c3c; font-size:0.75rem;"></div><div class="modal-buttons"><button class="close-modal-btn" id="closeModalBtn">Close</button><button class="confirm-modal-btn" id="submitSignupBtn">✨ Sign up free ✨</button></div>
+</div></div>
 
-<!-- QInfo Modal (working info tab) -->
-<div id="infoModalOverlay" class="modal-pop">
-    <div class="modal-card" style="max-width: 480px;">
-        <h3>📖 QInfo · purple archives</h3>
-        <div class="info-content">
-            <p><span class="info-badge">✧ midnight essence ✧</span></p>
-            <p><strong>thoughts @2am</strong> is a sanctuary for untold secrets, half‑lit confessions, and stories born from the hollow hours. Every whisper becomes prose — every purple thought, a door.</p>
-            <p><strong>✦ how it works ✦</strong><br>
-            → Search any word, mood or feeling (love, fear, dream...)<br>
-            → Tap a genre badge (Romance, Thriller, Fantasy) for a random purple story.<br>
-            → Click <strong>MORE...</strong> to discover even darker & dreamier genres.<br>
-            → Sign up (for free) to become part of the 2am coven — future features include saving your stories, writing your own midnight entries, and unlocking hidden tales.</p>
-            <p><strong>🌙 why purple?</strong><br> Purple bridges the gap between waking and dreaming. It’s the color of intuition, mystery, and 2am courage — exactly where real stories begin.</p>
-            <p><strong>🔮 upcoming corners:</strong> dark academia whispers · gothic romance vault · noir confessions and magical realism portals. Your secrets shape our library.</p>
-            <p style="font-size:0.7rem; opacity:0.7; margin-top:0.5rem;">💜 every story you generate is a unique echo of our collective night thoughts.</p>
-        </div>
-        <div class="modal-buttons">
-            <button class="close-modal-btn" id="closeInfoModalBtn">return to whispers</button>
-        </div>
-    </div>
-</div>
+<!-- Info Modal -->
+<div id="infoModal" class="modal-pop"><div class="modal-card"><h3>📖 purple archives · info</h3><div style="text-align:left; margin:1rem 0; line-height:1.6;">
+    <p>✨ <strong>thoughts @2am</strong> is a community garden for stories, poems, and purple thoughts.</p><p>🌙 <strong>how it works:</strong><br>→ <strong>Home/Search/Info</strong> navigation works!<br>→ <strong>Sign up</strong> to write and publish.<br>→ Read <strong>Community Stories/Poems</strong> from other authors.<br>→ <strong>Rate creations</strong> using the star ratings!<br>→ Click any author name to see their profile & bio!<br>→ Share your own midnight creations.</p>
+    <p>💜 <strong>why purple?</strong> Purple bridges waking and dreaming — where real stories begin.</p>
+</div><div class="modal-buttons"><button class="close-modal-btn" id="closeInfoBtn">return to whispers</button></div></div></div>
+
+<!-- Author Profile Modal -->
+<div id="authorModal" class="modal-pop"><div class="modal-card" id="authorModalContent"></div></div>
+
+<!-- Story Detail Modal with Rating -->
+<div id="storyDetailModal" class="modal-pop"><div class="modal-card" id="storyDetailContent"></div></div>
 
 <script>
-    // ----- MODAL LOGIC (signup) -----
-    const modalOverlay = document.getElementById('signupModalOverlay');
-    const openSignup = document.getElementById('openSignupModalBtn');
-    const closeModal = document.getElementById('closeModalButton');
-    const confirmSign = document.getElementById('confirmModalSignup');
-    const emailModal = document.getElementById('modalEmailInput');
+    // ========== DATA STORAGE WITH RATINGS ==========
+    let currentUser = null;
+    let editingStoryId = null;
+    let currentSearchTerm = "";
+    let currentTab = "community";
 
-    function openModalFunc() { modalOverlay.style.display = 'flex'; }
-    function closeModalFunc() { modalOverlay.style.display = 'none'; }
-    openSignup.addEventListener('click', openModalFunc);
-    closeModal.addEventListener('click', closeModalFunc);
-    window.addEventListener('click', (e) => { if(e.target === modalOverlay) closeModalFunc(); });
-    confirmSign.addEventListener('click', () => {
-        let email = emailModal.value.trim();
-        if(email === "") alert("💜 drop your email — your story is waiting.");
-        else { alert(`Thank you ${email}! Your secrets find a home at thoughts @2am 💜`); }
-        emailModal.value = "";
-        closeModalFunc();
-    });
+    // Sample pre-existing stories/poems for demo
+    const sampleStories = [
+        { id: 1001, authorEmail: "moonlight@gmail.com", title: "The Lavender Door", type: "Story", genre: "Fantasy", content: "Behind the old oak tree, I found a door painted lavender. When I opened it, my deepest secret turned into a constellation.", createdAt: Date.now() - 86400000, ratings: { 1001: { 101: 5, 102: 4, 103: 5 } } },
+        { id: 1002, authorEmail: "stardust@gmail.com", title: "Midnight Rain", type: "Poem", genre: "Romance", content: "Purple raindrops fall / On my window at 2am / Your voice echoes still.", createdAt: Date.now() - 172800000, ratings: {} },
+        { id: 1003, authorEmail: "shadow@gmail.com", title: "The Mirror's Secret", type: "Story", genre: "Thriller", content: "Every night at 2am, my reflection writes a new ending to my life. Last night, it smiled.", createdAt: Date.now() - 259200000, ratings: {} }
+    ];
+    const sampleUsers = [
+        { name: "Luna Moonlight", email: "moonlight@gmail.com", password: "pass123", favGenre: "Fantasy", bio: "Dreamer of stars and keeper of forgotten stories. I write when the moon is high.", joinedAt: Date.now() - 86400000 },
+        { name: "Stardust Weaver", email: "stardust@gmail.com", password: "pass123", favGenre: "Romance", bio: "Collecting heartbeats and turning them into poetry. Purple soul forever.", joinedAt: Date.now() - 172800000 },
+        { name: "Shadow Whisper", email: "shadow@gmail.com", password: "pass123", favGenre: "Thriller", bio: "I write what lurks in the corners of midnight. Fear is just another story.", joinedAt: Date.now() - 259200000 }
+    ];
 
-    // ----- QINFO MODAL (fully functional info tab) -----
-    const infoModal = document.getElementById('infoModalOverlay');
-    const qInfoLink = document.getElementById('qInfoNavLink');
-    const closeInfoBtn = document.getElementById('closeInfoModalBtn');
+    function initData() { if (!localStorage.getItem('purple_stories')) { saveStories(sampleStories); } if (!localStorage.getItem('purple_coven_users')) { saveUsers(sampleUsers); } }
+    function saveUsers(users) { localStorage.setItem('purple_coven_users', JSON.stringify(users)); }
+    function loadUsers() { return JSON.parse(localStorage.getItem('purple_coven_users') || '[]'); }
+    function saveStories(stories) { localStorage.setItem('purple_stories', JSON.stringify(stories)); }
+    function loadStories() { return JSON.parse(localStorage.getItem('purple_stories') || '[]'); }
+    function getUserStories() { return loadStories().filter(s => s.authorEmail === currentUser?.email); }
+    function getAllPublicStories() { return loadStories(); }
 
-    function openInfoModal() {
-        infoModal.style.display = 'flex';
-    }
-    function closeInfoModal() {
-        infoModal.style.display = 'none';
-    }
-    qInfoLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        openInfoModal();
-    });
-    closeInfoBtn.addEventListener('click', closeInfoModal);
-    window.addEventListener('click', (e) => {
-        if(e.target === infoModal) closeInfoModal();
-    });
+    function getStoryRatings(storyId) { let stories = loadStories(); let story = stories.find(s => s.id === storyId); return story?.ratings || {}; }
+    function getAverageRating(storyId) { let ratings = getStoryRatings(storyId); let values = Object.values(ratings); if (values.length === 0) return 0; return (values.reduce((a,b)=>a+b,0) / values.length).toFixed(1); }
+    function getUserRating(storyId, userEmail) { let ratings = getStoryRatings(storyId); return ratings[userEmail] || 0; }
+    function rateStory(storyId, userEmail, rating) { let stories = loadStories(); let storyIdx = stories.findIndex(s => s.id === storyId); if (storyIdx !== -1) { if (!stories[storyIdx].ratings) stories[storyIdx].ratings = {}; stories[storyIdx].ratings[userEmail] = rating; saveStories(stories); } }
 
-    // ----- home & search nav visual feedback (soft scroll / placeholder) -----
-    const homeLink = document.getElementById('homeNavLink');
-    const searchNav = document.getElementById('searchNavLink');
-    homeLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        updatePurpleFeedback("🏠 home — back to the purple doorway. Write your next whisper.");
-        setTimeout(() => {
-            if(feedbackDiv.innerHTML.includes("home — back to the purple doorway"))
-                setTimeout(() => updatePurpleFeedback("💜 purple dreams & midnight ink — let your secret bloom."), 2500);
-        }, 100);
-    });
-    searchNav.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.getElementById('searchInputField').scrollIntoView({ behavior: 'smooth', block: 'center' });
-        document.getElementById('searchInputField').focus();
-        updatePurpleFeedback("🔍 search the midnight archive — type a feeling, a word, a ghost memory.");
-    });
-
-    // ----- story engine -----
-    const storyCollection = {
-        romance: [
-            "In every timeline, I find you. But this one, I finally write it down.",
-            "The love letter I burned at 2am — the smoke smelled like forgiveness.",
-            "Romance trope: enemies to lovers in a purple-lit library.",
-            "Your name on my lips tastes like 2am honesty and lavender."
-        ],
-        thriller: [
-            "Someone left a note under my pillow: 'I know your 2am thoughts'.",
-            "The mirror whispers my secrets before I do. Tonight, it smiled.",
-            "Thriller: my reflection started writing stories without me.",
-            "At midnight, the ink bleeds backwards — revealing what I tried to forget."
-        ],
-        fantasy: [
-            "The purple moon grants one wish: to remember every forgotten dream.",
-            "Fantasy: ink that writes itself, stories that bleed violets.",
-            "I borrowed magic from the night market — now my secrets have wings.",
-            "A dragon of regret turned into a butterfly of prose. fantasy becomes truth."
-        ],
-        general: [
-            "maybe the story we needed was the one we never dared to tell.",
-            "Purple hour: between regret and release, we become art.",
-            "Secret: i write down all the things i'll never say, just so they exist.",
-            "2am thoughts don't need punctuation, only courage."
-        ]
-    };
-
-    const feedbackDiv = document.getElementById('dynamicFeedback');
-    const searchField = document.getElementById('searchInputField');
-    const searchBtn = document.getElementById('searchActionBtn');
-    const genreChips = document.querySelectorAll('.genre-badge');
-
-    function getRandomEntry(categoryKey) {
-        let arr = storyCollection[categoryKey];
-        if(arr && arr.length) return arr[Math.floor(Math.random() * arr.length)];
-        return "A hidden story pulses in the dark...";
+    function saveStory(story) {
+        let all = loadStories();
+        if (editingStoryId) { let idx = all.findIndex(s => s.id === editingStoryId); if (idx !== -1) all[idx] = { ...story, id: editingStoryId, updatedAt: Date.now() }; editingStoryId = null; } 
+        else { all.push(story); }
+        saveStories(all);
+        renderCurrentFeed();
+        if (currentUser) renderMyWorks();
     }
 
-    function updatePurpleFeedback(text) {
-        feedbackDiv.innerHTML = text;
-        feedbackDiv.style.transition = "0.2s";
+    function deleteStory(storyId, isUserOwner = true) {
+        if (isUserOwner && currentUser) { let all = loadStories().filter(s => !(s.id === storyId && s.authorEmail === currentUser.email)); saveStories(all); renderCurrentFeed(); renderMyWorks(); }
     }
 
-    function handleSearchOrGenre(rawQuery, forcedGenre = null) {
-        let query = (rawQuery || "").trim().toLowerCase();
-        let selectedGenre = forcedGenre;
-        if (!selectedGenre && query !== "") {
-            if (query.includes("romance") || query.includes("love") || query.includes("crush") || query.includes("heart") || query.includes("kiss")) selectedGenre = "romance";
-            else if (query.includes("thrill") || query.includes("mystery") || query.includes("dark") || query.includes("fear") || query.includes("shadow")) selectedGenre = "thriller";
-            else if (query.includes("fantasy") || query.includes("magic") || query.includes("dream") || query.includes("witch") || query.includes("myth")) selectedGenre = "fantasy";
-        }
+    function getAuthorInfo(email) { return loadUsers().find(u => u.email === email) || { name: "Anonymous Soul", bio: "This mysterious writer keeps their secrets hidden in the purple mist." }; }
+
+    function renderCurrentFeed() {
+        let stories = getAllPublicStories();
+        if (currentSearchTerm) { stories = stories.filter(s => s.title.toLowerCase().includes(currentSearchTerm) || s.content.toLowerCase().includes(currentSearchTerm) || getAuthorInfo(s.authorEmail).name.toLowerCase().includes(currentSearchTerm)); }
+        if (currentTab === "poems") stories = stories.filter(s => s.type === "Poem");
         
-        if (selectedGenre) {
-            let genreKey = "";
-            if (selectedGenre === "Romance") genreKey = "romance";
-            else if (selectedGenre === "Thriller") genreKey = "thriller";
-            else if (selectedGenre === "Fantasy") genreKey = "fantasy";
-            else genreKey = "general";
-            const story = getRandomEntry(genreKey);
-            if (rawQuery && rawQuery.trim() !== "" && !forcedGenre) {
-                updatePurpleFeedback(`💜 “${rawQuery}” · ${selectedGenre} whisper: “${story}”`);
-            } else {
-                updatePurpleFeedback(`✨ ${selectedGenre} secret: “${story}” ✨`);
-            }
-        } 
-        else if (query !== "") {
-            const fallbackStory = getRandomEntry("general");
-            updatePurpleFeedback(`🪄 for “${rawQuery}”: ${fallbackStory}`);
-        } 
-        else {
-            updatePurpleFeedback("🌙 type a secret, a word, or tap a genre — purple stories await.");
-        }
+        const container = document.getElementById('communityFeed');
+        if (stories.length === 0) { container.innerHTML = '<div class="empty-feed">✨ No stories yet. Be the first to share your purple thoughts! ✨</div>'; return; }
+        container.innerHTML = stories.map(s => { let author = getAuthorInfo(s.authorEmail); let genreClass = s.genre === 'Fantasy' ? 'genre-fantasy' : (s.genre === 'Romance' ? 'genre-romance' : 'genre-thriller'); let preview = s.content.length > 100 ? s.content.substring(0,100)+'...' : s.content; let avgRating = getAverageRating(s.id);
+            return `<div class="story-card" data-id="${s.id}"><span class="story-genre ${genreClass}">${s.type} · ${s.genre}</span><div class="story-title-card">${escapeHtml(s.title)}</div><div class="story-preview">${escapeHtml(preview)}</div><div class="rating-stars" data-id="${s.id}">${renderStars(s.id, currentUser?.email)}</div><div class="story-author"><i class="fas fa-user-circle"></i> <span class="author-name" data-email="${s.authorEmail}" style="cursor:pointer; color:#9b4dca;">${escapeHtml(author.name)}</span> <span style="font-size:0.6rem;">✨ ${new Date(s.createdAt).toLocaleDateString()}</span></div></div>`;
+        }).join('');
+        document.querySelectorAll('.author-name').forEach(el => { el.addEventListener('click', (e) => { e.stopPropagation(); showAuthorProfile(el.getAttribute('data-email')); }); });
+        document.querySelectorAll('.story-card').forEach(card => { card.addEventListener('click', (e) => { if (!e.target.closest('.star') && !e.target.closest('.author-name')) { let id = parseInt(card.dataset.id); showStoryDetail(id); } }); });
+        attachStarEvents();
     }
 
-    searchBtn.addEventListener('click', () => {
-        let value = searchField.value;
-        if(!value.trim()) updatePurpleFeedback("💜 whisper something into the purple void...");
-        else handleSearchOrGenre(value, null);
-    });
-    searchField.addEventListener('keypress', (e) => {
-        if(e.key === 'Enter') {
-            let val = searchField.value;
-            if(!val.trim()) updatePurpleFeedback("✨ midnight search — let the ink flow ✨");
-            else handleSearchOrGenre(val, null);
-        }
-    });
+    function renderStars(storyId, userEmail) { let avg = getAverageRating(storyId); let userRating = (userEmail && getUserRating(storyId, userEmail)) || 0; let stars = ''; for (let i = 1; i <= 5; i++) { let isActive = (userRating >= i); stars += `<span class="star ${isActive ? '' : 'star-gray'}" data-value="${i}" data-story="${storyId}">${isActive ? '★' : '☆'}</span>`; } return `${stars} <span class="avg-rating">(${avg} avg from ${Object.keys(getStoryRatings(storyId)).length} ratings)</span>`; }
+    
+    function attachStarEvents() { document.querySelectorAll('.star').forEach(star => { star.addEventListener('click', (e) => { e.stopPropagation(); if (!currentUser) { alert('💜 Please sign up or log in to rate stories!'); return; } let storyId = parseInt(star.dataset.story); let rating = parseInt(star.dataset.value); rateStory(storyId, currentUser.email, rating); renderCurrentFeed(); if (currentTab === 'myworks') renderMyWorks(); }); }); }
 
-    genreChips.forEach(chip => {
-        chip.addEventListener('click', () => {
-            const genreAttr = chip.getAttribute('data-genre');
-            const currentQuery = searchField.value;
-            if(currentQuery && currentQuery.trim() !== "") {
-                handleSearchOrGenre(currentQuery, genreAttr);
-            } else {
-                let storyResult = "";
-                if (genreAttr === "Romance") storyResult = getRandomEntry("romance");
-                else if (genreAttr === "Thriller") storyResult = getRandomEntry("thriller");
-                else storyResult = getRandomEntry("fantasy");
-                updatePurpleFeedback(`💜 ${genreAttr} magic: “${storyResult}”`);
-            }
-            chip.style.transform = "scale(0.96)";
-            setTimeout(() => chip.style.transform = "", 120);
-        });
-    });
+    function renderMyWorks() { if (!currentUser) return; let stories = getUserStories(); const container = document.getElementById('myWorksFeed'); if (stories.length === 0) { container.innerHTML = '<div class="empty-feed">✨ You haven\'t written anything yet. Click "Write New Story" to begin! ✨</div>'; return; }
+        container.innerHTML = stories.map(s => { let genreClass = s.genre === 'Fantasy' ? 'genre-fantasy' : (s.genre === 'Romance' ? 'genre-romance' : 'genre-thriller'); let preview = s.content.length > 100 ? s.content.substring(0,100)+'...' : s.content;
+            return `<div class="story-card" data-id="${s.id}"><span class="story-genre ${genreClass}">${s.type} · ${s.genre}</span><div class="story-title-card">${escapeHtml(s.title)}</div><div class="story-preview">${escapeHtml(preview)}</div><div style="display:flex; justify-content:space-between; margin-top:0.5rem;"><span class="story-author"><i class="fas fa-pen-fancy"></i> Your creation</span><button class="delete-story-btn" data-id="${s.id}" style="background:none; border:none; color:#e74c3c; cursor:pointer;"><i class="fas fa-trash-alt"></i></button></div></div>`;
+        }).join('');
+        document.querySelectorAll('#myWorksFeed .story-card').forEach(card => { card.addEventListener('click', (e) => { if (!e.target.closest('.delete-story-btn')) { let id = parseInt(card.dataset.id); editStoryById(id); } }); });
+        document.querySelectorAll('#myWorksFeed .delete-story-btn').forEach(btn => { btn.addEventListener('click', (e) => { e.stopPropagation(); let id = parseInt(btn.dataset.id); if(confirm('Delete this creation forever?')) deleteStory(id, true); }); });
+    }
 
-    const moreButton = document.getElementById('moreTrigger');
-    moreButton.addEventListener('click', () => {
-        updatePurpleFeedback("🌌 MORE genres: dark academia · gothic romance · magical realism · noir confessions. every purple thought becomes prose.");
-        setTimeout(() => {
-            if(feedbackDiv.innerHTML.includes("MORE genres") && !searchField.value && !document.querySelector('.genre-badge:hover')) {
-                setTimeout(() => {
-                    if(feedbackDiv.innerHTML.includes("MORE genres"))
-                        updatePurpleFeedback("💜 pick a genre or pour your heart into search.");
-                }, 3200);
-            }
-        }, 100);
-    });
+    function editStoryById(id) { let story = getUserStories().find(s => s.id === id); if (story) { editingStoryId = id; document.getElementById('storyTitle').value = story.title; document.getElementById('storyTypeSelect').value = story.type; document.getElementById('storyGenreSelect').value = story.genre; document.getElementById('storyContent').value = story.content; document.getElementById('editorTitle').innerHTML = '✏️ Edit Your Creation'; document.getElementById('storyEditor').style.display = 'block'; document.getElementById('storyEditor').scrollIntoView({ behavior: 'smooth' }); } }
+    function closeEditor() { editingStoryId = null; document.getElementById('storyTitle').value = ''; document.getElementById('storyTypeSelect').value = 'Story'; document.getElementById('storyGenreSelect').value = 'Fantasy'; document.getElementById('storyContent').value = ''; document.getElementById('editorTitle').innerHTML = '✨ Write Your Midnight Tale'; document.getElementById('storyEditor').style.display = 'none'; }
+    function saveCurrentStory() { let title = document.getElementById('storyTitle').value.trim(); let type = document.getElementById('storyTypeSelect').value; let genre = document.getElementById('storyGenreSelect').value; let content = document.getElementById('storyContent').value.trim(); if (!title) { alert('💜 Please give your story a title'); return; } if (!content) { alert('📖 Please write something...'); return; }
+        let story = { id: editingStoryId || Date.now(), authorEmail: currentUser.email, title, type, genre, content, ratings: editingStoryId ? (getUserStories().find(s=>s.id===editingStoryId)?.ratings || {}) : {}, createdAt: editingStoryId ? (getUserStories().find(s=>s.id===editingStoryId)?.createdAt || Date.now()) : Date.now(), updatedAt: Date.now() };
+        saveStory(story); closeEditor(); }
 
-    // initial mood
-    updatePurpleFeedback("💜 purple dreams & midnight ink — let your secret bloom.");
+    function showStoryDetail(id) { let story = getAllPublicStories().find(s => s.id === id); if (!story) return; let author = getAuthorInfo(story.authorEmail); let avgRating = getAverageRating(id); let userRating = currentUser ? getUserRating(id, currentUser.email) : 0;
+        let ratingDisplay = ''; for (let i = 1; i <= 5; i++) { ratingDisplay += `<span style="font-size:1.2rem; color:#ffd700;">${userRating >= i ? '★' : '☆'}</span>`; }
+        document.getElementById('storyDetailContent').innerHTML = `<h3>📖 ${escapeHtml(story.title)}</h3><p style="color:#9b7abb;">By ${escapeHtml(author.name)} · ${story.type} · ${story.genre}</p><div style="margin:1rem 0; padding:1rem; background:rgba(210,180,255,0.2); border-radius:32px; text-align:left; white-space:pre-wrap;">${escapeHtml(story.content)}</div><div class="rating-stars" style="justify-content:center;">${ratingDisplay} <span style="margin-left:0.5rem;">(${avgRating} avg from ${Object.keys(getStoryRatings(id)).length} ratings)</span></div><div class="modal-buttons"><button class="close-modal-btn" id="closeStoryBtn">Close</button></div>`;
+        document.getElementById('storyDetailModal').style.display = 'flex';
+        document.getElementById('closeStoryBtn').addEventListener('click', () => { document.getElementById('storyDetailModal').style.display = 'none'; });
+    }
+
+    function showAuthorProfile(email) { let author = getAuthorInfo(email); let userStories = loadStories().filter(s => s.authorEmail === email); let poemCount = userStories.filter(s => s.type === 'Poem').length; let storyCount = userStories.filter(s => s.type === 'Story').length; let totalRatings = userStories.reduce((sum, s) => sum + Object.keys(s.ratings || {}).length, 0);
+        document.getElementById('authorModalContent').innerHTML = `<h3><i class="fas fa-user-astronaut"></i> ${escapeHtml(author.name)}</h3><div class="author-bio"><strong>🌙 about them:</strong><br>${escapeHtml(author.bio || "This mysterious soul wanders the purple hour, collecting secrets and turning them into starlight.")}</div><div class="author-stats"><div>📖 Stories: ${storyCount}</div><div>🌸 Poems: ${poemCount}</div><div>⭐ Total ratings: ${totalRatings}</div></div><div class="modal-buttons"><button class="close-modal-btn" id="closeAuthorBtn">Close</button></div>`;
+        document.getElementById('authorModal').style.display = 'flex';
+        document.getElementById('closeAuthorBtn').addEventListener('click', () => { document.getElementById('authorModal').style.display = 'none'; });
+    }
+
+    // Auth
+    function signup(name, email, password, favGenre, bio) { let users = loadUsers(); if (users.find(u => u.email === email)) { document.getElementById('signupError').innerText = '❌ Email already exists'; return false; } if (password.length < 6) { document.getElementById('signupError').innerText = '❌ Password min 6 chars'; return false; } users.push({ name, email, password, favGenre, bio, joinedAt: Date.now() }); saveUsers(users); currentUser = { name, email, favGenre, bio }; localStorage.setItem('purple_current', JSON.stringify(currentUser)); return true; }
+    function updateUIAfterLogin() { document.getElementById('welcomeBadge').innerHTML = `💜 Welcome, ${currentUser.name}! ✨`; document.getElementById('signupHeaderBtn').style.display = 'none'; document.getElementById('userMenu').style.display = 'inline-flex'; document.getElementById('userMenu').innerHTML = `<div style="display:flex; align-items:center; gap:0.8rem; background:rgba(210,180,255,0.4); padding:0.3rem 1rem 0.3rem 1.5rem; border-radius:50px;"><span style="font-weight:600;">${currentUser.name}</span><button id="logoutBtn" style="background:none; border:none; color:#9b4dca; cursor:pointer;"><i class="fas fa-sign-out-alt"></i></button></div>`; document.getElementById('logoutBtn')?.addEventListener('click', () => { logout(); }); document.getElementById('dashboard').style.display = 'block'; renderCurrentFeed(); renderMyWorks(); }
+    function logout() { currentUser = null; localStorage.removeItem('purple_current'); document.getElementById('dashboard').style.display = 'none'; document.getElementById('signupHeaderBtn').style.display = 'block'; document.getElementById('userMenu').style.display = 'none'; document.getElementById('welcomeBadge').innerHTML = '✨ Welcome to "thoughts @2am" ✨'; closeEditor(); renderCurrentFeed(); document.getElementById('myWorksFeed').style.display = 'none'; document.getElementById('communityFeed').style.display = 'grid'; currentTab = 'community'; document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active')); document.querySelector('.tab-btn[data-tab="community"]').classList.add('active'); }
+
+    function switchTab(tab) { currentTab = tab; document.getElementById('communityFeed').style.display = (tab === 'myworks' ? 'none' : 'grid'); document.getElementById('myWorksFeed').style.display = (tab === 'myworks' ? 'grid' : 'none'); if (tab === 'myworks' && currentUser) renderMyWorks(); else renderCurrentFeed(); }
+    document.querySelectorAll('.tab-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); switchTab(btn.dataset.tab); }); });
+
+    // Navigation
+    document.getElementById('homeNavBtn').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    document.getElementById('searchNavBtn').addEventListener('click', () => { document.getElementById('searchSection').scrollIntoView({ behavior: 'smooth' }); document.getElementById('searchInputField').focus(); });
+    document.getElementById('executeSearchBtn').addEventListener('click', () => { currentSearchTerm = document.getElementById('searchInputField').value.trim().toLowerCase(); renderCurrentFeed(); });
+    document.getElementById('searchInputField').addEventListener('keypress', (e) => { if (e.key === 'Enter') document.getElementById('executeSearchBtn').click(); });
+    document.getElementById('infoNavBtn').addEventListener('click', () => { document.getElementById('infoModal').style.display = 'flex'; });
+    document.getElementById('closeInfoBtn').addEventListener('click', () => { document.getElementById('infoModal').style.display = 'none'; });
+
+    // Signup Modal
+    const signupModal = document.getElementById('signupModal'); const signupHeaderBtn = document.getElementById('signupHeaderBtn'); const closeModalBtn = document.getElementById('closeModalBtn'); const submitSignup = document.getElementById('submitSignupBtn');
+    function openSignupModal() { signupModal.style.display = 'flex'; document.getElementById('signupError').innerText = ''; }
+    function closeSignupModal() { signupModal.style.display = 'none'; }
+    signupHeaderBtn.addEventListener('click', openSignupModal); closeModalBtn.addEventListener('click', closeSignupModal);
+    submitSignup.addEventListener('click', () => { let name = document.getElementById('signupName').value.trim(); let email = document.getElementById('signupEmail').value.trim(); let password = document.getElementById('signupPassword').value.trim(); let favGenre = document.getElementById('signupGenre').value; let bio = document.getElementById('signupBio').value.trim(); if (signup(name, email, password, favGenre, bio)) { closeSignupModal(); updateUIAfterLogin(); } });
+    window.addEventListener('click', (e) => { if (e.target === signupModal) closeSignupModal(); if (e.target === document.getElementById('infoModal')) document.getElementById('infoModal').style.display = 'none'; if (e.target === document.getElementById('authorModal')) document.getElementById('authorModal').style.display = 'none'; if (e.target === document.getElementById('storyDetailModal')) document.getElementById('storyDetailModal').style.display = 'none'; });
+
+    document.getElementById('newStoryBtn').addEventListener('click', () => { closeEditor(); document.getElementById('storyEditor').style.display = 'block'; });
+    document.getElementById('saveStoryBtn').addEventListener('click', saveCurrentStory);
+    document.getElementById('cancelEditorBtn').addEventListener('click', closeEditor);
+    function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function(m) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m]; }); }
+
+    initData();
+    const saved = localStorage.getItem('purple_current'); if (saved) { currentUser = JSON.parse(saved); updateUIAfterLogin(); } else { document.getElementById('dashboard').style.display = 'none'; renderCurrentFeed(); }
 </script>
 </body>
 </html>
