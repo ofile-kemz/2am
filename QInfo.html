@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>thoughts @2am — purple whispers | community story garden</title>
+    <title>thoughts @2am — purple whispers | cozy story garden</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -16,100 +16,121 @@
             position: relative;
             overflow-x: hidden;
         }
-        .orb { position: fixed; border-radius: 50%; filter: blur(60px); opacity: 0.4; pointer-events: none; z-index: 0; animation: float 20s infinite; }
-        @keyframes float { 0%,100% { transform: translate(0,0); } 50% { transform: translate(30px,-20px); } }
+        /* Floating magical orbs */
+        .orb { position: fixed; border-radius: 50%; filter: blur(60px); opacity: 0.4; pointer-events: none; z-index: 0; animation: float 20s infinite ease-in-out; }
+        @keyframes float { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(30px,-20px) scale(1.1); } }
         .orb-1 { width: 400px; height: 400px; background: #c8a8f0; top: -100px; left: -100px; }
         .orb-2 { width: 500px; height: 500px; background: #e0b0ff; bottom: -150px; right: -100px; opacity: 0.3; }
         .orb-3 { width: 300px; height: 300px; background: #b87de0; top: 50%; left: 70%; opacity: 0.25; }
-        .star { position: fixed; color: rgba(183,124,224,0.5); font-size: 12px; pointer-events: none; animation: twinkle 3s infinite; z-index: 0; }
-        @keyframes twinkle { 0%,100% { opacity: 0.2; } 50% { opacity: 0.8; } }
+        .orb-4 { width: 200px; height: 200px; background: #d9b8ff; bottom: 20%; left: 15%; opacity: 0.35; animation-duration: 15s; }
+        /* Twinkling stars */
+        .star { position: fixed; color: rgba(183,124,224,0.6); font-size: 10px; pointer-events: none; animation: twinkle 3s infinite; z-index: 0; }
+        @keyframes twinkle { 0%,100% { opacity: 0.2; transform: scale(1); } 50% { opacity: 0.9; transform: scale(1.3); } }
         .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem 2rem 3rem; position: relative; z-index: 2; }
 
-        /* Header */
-        .top-flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem; padding: 0.8rem 1.8rem; background: rgba(255,248,255,0.7); backdrop-filter: blur(12px); border-radius: 80px; border: 1px solid rgba(183,124,224,0.4); }
+        /* Cute Header */
+        .top-flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem; padding: 0.8rem 1.8rem; background: rgba(255,248,255,0.7); backdrop-filter: blur(12px); border-radius: 80px; border: 1px solid rgba(183,124,224,0.4); box-shadow: 0 8px 20px rgba(128,90,180,0.1); }
         .nav-left { display: flex; gap: 2rem; align-items: center; }
         .nav-left a { text-decoration: none; font-weight: 600; font-size: 0.95rem; color: #5a3a7a; transition: 0.3s; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
+        .nav-left a i { transition: 0.2s; }
         .nav-left a:hover { color: #9b4dca; transform: translateY(-2px); }
-        .logo-icon { font-size: 1.5rem; margin-right: 0.3rem; }
+        .nav-left a:hover i { transform: scale(1.1); }
+        .logo-icon { font-size: 1.6rem; margin-right: 0.3rem; animation: gentleBounce 3s infinite; }
+        @keyframes gentleBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
         .right-welcome { display: flex; align-items: center; gap: 1.2rem; }
-        .welcome-badge { font-size: 0.85rem; background: linear-gradient(135deg, rgba(210,180,255,0.5), rgba(183,124,224,0.3)); padding: 0.4rem 1.2rem; border-radius: 60px; font-weight: 500; color: #6b3fa0; border: 1px solid rgba(183,124,224,0.4); }
+        .welcome-badge { font-size: 0.85rem; background: linear-gradient(135deg, rgba(210,180,255,0.5), rgba(183,124,224,0.3)); padding: 0.4rem 1.2rem; border-radius: 60px; font-weight: 500; color: #6b3fa0; border: 1px solid rgba(183,124,224,0.4); backdrop-filter: blur(4px); }
         .auth-btn { background: linear-gradient(105deg, #9b4dca, #c48aff); border: none; padding: 0.55rem 1.8rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; color: white; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(155,77,202,0.3); }
-        .auth-btn:hover { transform: scale(0.95); }
+        .auth-btn:hover { transform: scale(0.95); box-shadow: 0 6px 20px rgba(155,77,202,0.4); }
 
-        /* Hero */
-        .hero-section { text-align: center; padding: 2rem 1rem 1rem; }
-        .hero-title { font-size: 3.5rem; font-weight: 800; background: linear-gradient(135deg, #4a2768, #b87de0, #9b4dca); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: gradientShift 8s ease infinite; }
+        /* Hero with cute sparkles */
+        .hero-section { text-align: center; padding: 2rem 1rem 1rem; position: relative; }
+        .hero-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(183,124,224,0.15), transparent 70%); border-radius: 50%; pointer-events: none; }
+        .hero-title { font-size: 3.5rem; font-weight: 800; background: linear-gradient(135deg, #4a2768, #b87de0, #9b4dca, #e0b0ff); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: gradientShift 8s ease infinite; letter-spacing: -0.02em; }
         @keyframes gradientShift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-        .hero-sub { font-size: 1.1rem; color: #8b6cb0; font-weight: 500; }
-        .drama-card { background: linear-gradient(135deg, rgba(255,248,255,0.85), rgba(245,235,255,0.7)); backdrop-filter: blur(12px); border-radius: 64px; padding: 2rem; margin: 2rem 0; text-align: center; border: 1px solid rgba(183,124,224,0.5); }
-        .drama-line { font-size: 2rem; font-weight: 700; }
-        .drama-line span { background: linear-gradient(120deg, #e8d6ff, #f0e4ff); padding: 0.2rem 0.8rem; border-radius: 50px; }
-        .big-you { font-size: 3rem; font-weight: 800; background: linear-gradient(125deg, #c79aff, #9b6bcf); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .hero-sub { font-size: 1.1rem; color: #8b6cb0; font-weight: 500; margin-top: 0.5rem; }
+        .floating-quote { display: inline-block; background: rgba(255,255,255,0.5); backdrop-filter: blur(4px); padding: 0.3rem 1.2rem; border-radius: 60px; font-size: 0.8rem; margin-top: 1rem; border: 1px solid rgba(183,124,224,0.4); }
 
-        /* Search */
+        /* Drama Card */
+        .drama-card { background: linear-gradient(135deg, rgba(255,248,255,0.85), rgba(245,235,255,0.7)); backdrop-filter: blur(12px); border-radius: 64px; padding: 2rem; margin: 2rem 0; text-align: center; border: 1px solid rgba(183,124,224,0.5); box-shadow: 0 20px 40px -12px rgba(78,42,112,0.2); transition: all 0.4s; }
+        .drama-card:hover { transform: translateY(-5px); border-color: #c49ef0; }
+        .drama-line { font-size: 2rem; font-weight: 700; color: #2d1b3e; }
+        .drama-line span { background: linear-gradient(120deg, #e8d6ff, #f0e4ff); padding: 0.2rem 0.8rem; border-radius: 50px; display: inline-block; }
+        .big-you { font-size: 3rem; font-weight: 800; margin-top: 0.6rem; background: linear-gradient(125deg, #c79aff, #9b6bcf); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .small-credit { font-size: 0.8rem; margin-top: 0.5rem; color: #aa8acf; }
+
+        /* Search Bar */
         .search-wrapper { max-width: 550px; margin: 1.5rem auto; }
-        .search-input-group { display: flex; align-items: center; background: rgba(255,255,255,0.9); border-radius: 80px; padding: 0.3rem 0.3rem 0.3rem 1.8rem; border: 1px solid #decbff; transition: 0.3s; }
-        .search-input-group:focus-within { border-color: #b87de0; transform: scale(1.02); }
-        .search-input-group input { flex: 1; border: none; padding: 0.9rem 0; background: transparent; outline: none; }
-        .search-input-group button { background: linear-gradient(95deg, #b87de0, #d9a5ff); border: none; border-radius: 60px; padding: 0.6rem 1.8rem; color: white; font-weight: 600; cursor: pointer; }
+        .search-input-group { display: flex; align-items: center; background: rgba(255,255,255,0.9); border-radius: 80px; padding: 0.3rem 0.3rem 0.3rem 1.8rem; border: 1px solid #decbff; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .search-input-group:focus-within { border-color: #b87de0; transform: scale(1.02); box-shadow: 0 8px 20px rgba(128,90,180,0.15); }
+        .search-input-group input { flex: 1; border: none; padding: 0.9rem 0; background: transparent; outline: none; font-family: 'Inter', monospace; }
+        .search-input-group button { background: linear-gradient(95deg, #b87de0, #d9a5ff); border: none; border-radius: 60px; padding: 0.6rem 1.8rem; color: white; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        .search-input-group button:hover { transform: scale(0.96); }
 
         /* Tabs */
         .tabs-container { display: flex; justify-content: center; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap; }
-        .tab-btn { background: rgba(255,248,255,0.7); border: 1px solid #ddccff; padding: 0.6rem 1.8rem; border-radius: 60px; font-weight: 600; color: #6b3fa0; cursor: pointer; transition: 0.2s; }
-        .tab-btn.active { background: linear-gradient(95deg, #b87de0, #d9a5ff); color: white; border-color: transparent; }
+        .tab-btn { background: rgba(255,248,255,0.7); border: 1px solid #ddccff; padding: 0.6rem 1.8rem; border-radius: 60px; font-weight: 600; color: #6b3fa0; cursor: pointer; transition: 0.2s; backdrop-filter: blur(4px); }
+        .tab-btn.active { background: linear-gradient(95deg, #b87de0, #d9a5ff); color: white; border-color: transparent; box-shadow: 0 4px 12px rgba(155,77,202,0.3); }
         .tab-btn:hover { transform: translateY(-2px); background: #b77ce0; color: white; }
 
         /* Feed Grid */
         .feed-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
-        .story-card { background: rgba(255,255,255,0.8); backdrop-filter: blur(4px); border-radius: 32px; padding: 1.2rem; border: 1px solid #ddccff; transition: 0.3s; cursor: pointer; }
-        .story-card:hover { transform: translateY(-5px); box-shadow: 0 12px 28px rgba(108,63,158,0.15); }
+        .story-card { background: rgba(255,255,255,0.8); backdrop-filter: blur(4px); border-radius: 32px; padding: 1.2rem; border: 1px solid #ddccff; transition: all 0.3s; cursor: pointer; }
+        .story-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(108,63,158,0.15); border-color: #c49ef0; background: rgba(255,255,255,0.95); }
         .story-genre { display: inline-block; padding: 0.2rem 1rem; border-radius: 60px; font-size: 0.7rem; font-weight: 600; margin-bottom: 0.5rem; }
         .genre-fantasy { background: #e8d6ff; color: #6c3f9e; }
         .genre-romance { background: #ffe0f0; color: #c94f8c; }
         .genre-thriller { background: #d6e8ff; color: #2c5f8a; }
-        .story-title-card { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; }
-        .story-preview { font-size: 0.8rem; color: #6b5190; margin-bottom: 0.5rem; }
-        .story-author { font-size: 0.7rem; color: #9b7abb; display: flex; align-items: center; gap: 0.3rem; margin-top: 0.5rem; }
-        .rating-stars { display: flex; gap: 0.2rem; margin: 0.5rem 0; }
-        .star { color: #ffd700; font-size: 0.8rem; cursor: pointer; transition: 0.1s; }
+        .story-title-card { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; color: #2d1b36; }
+        .story-preview { font-size: 0.8rem; color: #6b5190; line-height: 1.4; margin-bottom: 0.5rem; }
+        .rating-stars { display: flex; gap: 0.2rem; margin: 0.5rem 0; align-items: center; flex-wrap: wrap; }
+        .star { color: #ffd700; font-size: 0.85rem; cursor: pointer; transition: 0.1s; text-shadow: 0 0 2px rgba(0,0,0,0.1); }
         .star-gray { color: #ddd; }
         .avg-rating { font-size: 0.7rem; color: #9b7abb; margin-left: 0.3rem; }
+        .story-author { font-size: 0.7rem; color: #9b7abb; display: flex; align-items: center; gap: 0.3rem; margin-top: 0.5rem; }
+        .author-name { cursor: pointer; color: #9b4dca; font-weight: 500; transition: 0.2s; }
+        .author-name:hover { text-decoration: underline; transform: translateX(2px); display: inline-block; }
 
-        /* Dashboard/Editor */
+        /* Dashboard */
         .dashboard { display: none; margin-top: 2rem; background: rgba(255,248,255,0.6); backdrop-filter: blur(8px); border-radius: 48px; padding: 2rem; border: 1px solid rgba(183,124,224,0.4); }
         .dashboard-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
-        .new-story-btn { background: linear-gradient(105deg, #8b5cc9, #b578e3); border: none; padding: 0.7rem 1.8rem; border-radius: 60px; color: white; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
+        .new-story-btn { background: linear-gradient(105deg, #8b5cc9, #b578e3); border: none; padding: 0.7rem 1.8rem; border-radius: 60px; color: white; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: 0.2s; }
+        .new-story-btn:hover { transform: scale(0.96); box-shadow: 0 4px 12px rgba(139,92,201,0.3); }
         .story-editor { background: rgba(255,255,255,0.95); border-radius: 48px; padding: 1.8rem; margin-bottom: 2rem; border: 1px solid rgba(183,124,224,0.4); display: none; }
-        .story-editor input, .story-editor select, .story-editor textarea { width: 100%; padding: 0.8rem 1rem; margin-bottom: 1rem; border-radius: 28px; border: 1px solid #ddccff; font-family: inherit; background: white; }
+        .story-editor input, .story-editor select, .story-editor textarea { width: 100%; padding: 0.8rem 1rem; margin-bottom: 1rem; border-radius: 28px; border: 1px solid #ddccff; font-family: inherit; background: white; transition: 0.2s; }
+        .story-editor input:focus, .story-editor select:focus, .story-editor textarea:focus { border-color: #b87de0; outline: none; box-shadow: 0 0 0 3px rgba(183,124,224,0.2); }
         .story-editor textarea { min-height: 180px; resize: vertical; }
         .editor-actions { display: flex; gap: 1rem; justify-content: flex-end; }
-        .save-story-btn, .cancel-story-btn { padding: 0.6rem 1.5rem; border-radius: 60px; font-weight: 600; cursor: pointer; border: none; }
+        .save-story-btn, .cancel-story-btn { padding: 0.6rem 1.5rem; border-radius: 60px; font-weight: 600; cursor: pointer; border: none; transition: 0.2s; }
         .save-story-btn { background: linear-gradient(95deg, #8b5cc9, #b578e3); color: white; }
+        .save-story-btn:hover { transform: scale(0.96); }
         .cancel-story-btn { background: #ede3ff; color: #593a83; }
+        .delete-story-btn { background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 0.8rem; transition: 0.2s; }
+        .delete-story-btn:hover { transform: scale(1.1); }
 
         /* Modals */
         .modal-pop { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(50,30,70,0.8); backdrop-filter: blur(10px); align-items: center; justify-content: center; z-index: 1000; }
-        .modal-card { background: linear-gradient(135deg, #fffbfe, #fef5ff); max-width: 550px; width: 90%; border-radius: 56px; padding: 2rem; text-align: center; border: 2px solid rgba(183,124,224,0.5); max-height: 85vh; overflow-y: auto; }
-        .modal-card input, .modal-card select, .modal-card textarea { width: 100%; padding: 0.8rem; margin: 0.5rem 0; border-radius: 60px; border: 1px solid #e3d2ff; }
+        .modal-card { background: linear-gradient(135deg, #fffbfe, #fef5ff); max-width: 550px; width: 90%; border-radius: 56px; padding: 2rem; text-align: center; border: 2px solid rgba(183,124,224,0.5); max-height: 85vh; overflow-y: auto; box-shadow: 0 25px 45px rgba(68,34,102,0.3); }
+        .modal-card input, .modal-card select, .modal-card textarea { width: 100%; padding: 0.8rem; margin: 0.5rem 0; border-radius: 60px; border: 1px solid #e3d2ff; font-family: inherit; }
         .modal-card textarea { border-radius: 28px; }
         .modal-buttons { display: flex; gap: 0.8rem; justify-content: center; margin-top: 1rem; }
         .close-modal-btn { background: #ede3ff; color: #593a83; padding: 0.6rem 1.4rem; border-radius: 60px; border: none; cursor: pointer; }
         .confirm-modal-btn { background: linear-gradient(95deg, #8b5cc9, #b075df); color: white; padding: 0.6rem 1.4rem; border-radius: 60px; border: none; cursor: pointer; }
         .author-bio { text-align: left; margin: 1rem 0; padding: 1rem; background: rgba(210,180,255,0.2); border-radius: 32px; }
-        .author-stats { display: flex; justify-content: space-around; margin: 1rem 0; }
+        .author-stats { display: flex; justify-content: space-around; margin: 1rem 0; flex-wrap: wrap; gap: 0.5rem; }
 
-        .footer-info { margin-top: 3rem; padding-top: 1.5rem; border-top: 2px dashed #dac5ff; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+        .footer-info { margin-top: 3rem; padding-top: 1.5rem; border-top: 2px dashed #dac5ff; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; }
+        .cute-divider { text-align: center; margin: 2rem 0 1rem; font-size: 1rem; letter-spacing: 6px; color: #c8a8f0; }
         @media (max-width: 760px) { .container { padding: 1rem; } .hero-title { font-size: 2rem; } .big-you { font-size: 2rem; } }
     </style>
 </head>
 <body>
-    <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
-    <div class="star" style="top: 10%; left: 15%;">✦</div><div class="star" style="top: 20%; right: 12%;">✧</div>
+    <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div><div class="orb orb-4"></div>
+    <div class="star" style="top: 8%; left: 12%;">✦</div><div class="star" style="top: 15%; right: 10%;">✧</div><div class="star" style="bottom: 20%; left: 8%;">✦</div><div class="star" style="bottom: 30%; right: 15%;">✧</div><div class="star" style="top: 45%; left: 85%;">✦</div>
 
 <div class="container">
     <div class="top-flex">
         <div class="nav-left">
-            <span class="logo-icon">🌙✨</span>
+            <span class="logo-icon">🌙✨💜</span>
             <a href="#" id="homeNavBtn"><i class="fas fa-home"></i> Home</a>
             <a href="#" id="searchNavBtn"><i class="fas fa-search"></i> Search</a>
             <a href="#" id="infoNavBtn"><i class="fas fa-info-circle"></i> Info</a>
@@ -121,12 +142,22 @@
         </div>
     </div>
 
-    <div class="hero-section"><h1 class="hero-title">where your secrets<br>transform to stories</h1><div class="hero-sub">purple echoes · midnight confessions · raw pages</div></div>
-    <div class="drama-card"><div class="drama-line">All the drama. <span>All the tropes.</span></div><div class="big-you">It's all YOU!</div><div class="small-credit" style="margin-top:0.5rem; color:#aa8acf;">✧ your truth, your stage, your purple hour ✧</div></div>
+    <div class="hero-section"><div class="hero-glow"></div>
+        <h1 class="hero-title">where your secrets<br>transform to stories</h1>
+        <div class="hero-sub">purple echoes · midnight confessions · raw pages</div>
+        <div class="floating-quote">✩ 2am thoughts find their wings here ✩</div>
+    </div>
 
-    <div class="search-wrapper" id="searchSection"><div class="search-input-group"><input type="text" id="searchInputField" placeholder="🔍 search stories, poems, or authors..."><button id="executeSearchBtn">search</button></div></div>
+    <div class="drama-card">
+        <div class="drama-line">All the drama. <span>All the tropes.</span></div>
+        <div class="big-you">It's all YOU!</div>
+        <div class="small-credit">✧ your truth, your stage, your purple hour ✧</div>
+    </div>
 
-    <!-- Community Feed Tabs -->
+    <div class="search-wrapper" id="searchSection">
+        <div class="search-input-group"><input type="text" id="searchInputField" placeholder="🔍 search stories, poems, or authors..."><button id="executeSearchBtn">search</button></div>
+    </div>
+
     <div class="tabs-container">
         <button class="tab-btn active" data-tab="community">📖 Community Stories</button>
         <button class="tab-btn" data-tab="poems">🌸 Community Poems</button>
@@ -135,7 +166,6 @@
     <div id="communityFeed" class="feed-grid"></div>
     <div id="myWorksFeed" class="feed-grid" style="display:none;"></div>
 
-    <!-- Writing Dashboard -->
     <div id="dashboard" class="dashboard">
         <div class="dashboard-header"><h2><i class="fas fa-book-open"></i> Your Writing Corner</h2><button class="new-story-btn" id="newStoryBtn"><i class="fas fa-feather-alt"></i> Write New Story/Poem</button></div>
         <div id="storyEditor" class="story-editor">
@@ -148,6 +178,7 @@
         </div>
     </div>
 
+    <div class="cute-divider">✧ ༺ ♡ ༻ ✧</div>
     <div class="footer-info"><div class="footer-badge">📱 download our app <span style="font-weight:700;">coming soon</span></div><div class="contact-email">✉️ <a href="mailto:thoughtsat2am@gmail.com">thoughtsat2am@gmail.com</a></div><div class="inreadably-word">inreadably +76894532</div></div>
 </div>
 
@@ -161,140 +192,114 @@
 
 <!-- Info Modal -->
 <div id="infoModal" class="modal-pop"><div class="modal-card"><h3>📖 purple archives · info</h3><div style="text-align:left; margin:1rem 0; line-height:1.6;">
-    <p>✨ <strong>thoughts @2am</strong> is a community garden for stories, poems, and purple thoughts.</p><p>🌙 <strong>how it works:</strong><br>→ <strong>Home/Search/Info</strong> navigation works!<br>→ <strong>Sign up</strong> to write and publish.<br>→ Read <strong>Community Stories/Poems</strong> from other authors.<br>→ <strong>Rate creations</strong> using the star ratings!<br>→ Click any author name to see their profile & bio!<br>→ Share your own midnight creations.</p>
+    <p>✨ <strong>thoughts @2am</strong> is a cozy community garden for stories, poems, and purple thoughts.</p><p>🌙 <strong>how it works:</strong><br>→ <strong>Home/Search/Info</strong> navigation works!<br>→ <strong>Sign up</strong> to write, publish, and rate creations.<br>→ Read <strong>Community Stories/Poems</strong> from other authors (sample stories included!).<br>→ <strong>Rate creations</strong> using the star ratings!<br>→ Click any author name to see their profile & bio!<br>→ Share your own midnight creations.</p>
     <p>💜 <strong>why purple?</strong> Purple bridges waking and dreaming — where real stories begin.</p>
 </div><div class="modal-buttons"><button class="close-modal-btn" id="closeInfoBtn">return to whispers</button></div></div></div>
 
 <!-- Author Profile Modal -->
 <div id="authorModal" class="modal-pop"><div class="modal-card" id="authorModalContent"></div></div>
-
-<!-- Story Detail Modal with Rating -->
+<!-- Story Detail Modal -->
 <div id="storyDetailModal" class="modal-pop"><div class="modal-card" id="storyDetailContent"></div></div>
 
 <script>
-    // ========== DATA STORAGE WITH RATINGS ==========
-    let currentUser = null;
-    let editingStoryId = null;
-    let currentSearchTerm = "";
-    let currentTab = "community";
-
-    // Sample pre-existing stories/poems for demo
+    // Pre-existing sample stories and users
     const sampleStories = [
-        { id: 1001, authorEmail: "moonlight@gmail.com", title: "The Lavender Door", type: "Story", genre: "Fantasy", content: "Behind the old oak tree, I found a door painted lavender. When I opened it, my deepest secret turned into a constellation.", createdAt: Date.now() - 86400000, ratings: { 1001: { 101: 5, 102: 4, 103: 5 } } },
-        { id: 1002, authorEmail: "stardust@gmail.com", title: "Midnight Rain", type: "Poem", genre: "Romance", content: "Purple raindrops fall / On my window at 2am / Your voice echoes still.", createdAt: Date.now() - 172800000, ratings: {} },
-        { id: 1003, authorEmail: "shadow@gmail.com", title: "The Mirror's Secret", type: "Story", genre: "Thriller", content: "Every night at 2am, my reflection writes a new ending to my life. Last night, it smiled.", createdAt: Date.now() - 259200000, ratings: {} }
+        { id: 1001, authorEmail: "moonlight@gmail.com", title: "The Lavender Door", type: "Story", genre: "Fantasy", content: "Behind the old oak tree, I found a door painted lavender. When I opened it, my deepest secret turned into a constellation that still watches over me every night.", createdAt: Date.now() - 86400000, ratings: { "moonlight@gmail.com": 5, "stardust@gmail.com": 4 } },
+        { id: 1002, authorEmail: "stardust@gmail.com", title: "Midnight Rain", type: "Poem", genre: "Romance", content: "Purple raindrops fall / On my window at 2am / Your voice echoes still / In the hollow of my chest / Where dreams go to rest.", createdAt: Date.now() - 172800000, ratings: { "moonlight@gmail.com": 5 } },
+        { id: 1003, authorEmail: "shadow@gmail.com", title: "The Mirror's Secret", type: "Story", genre: "Thriller", content: "Every night at 2am, my reflection writes a new ending to my life. Last night, it smiled and whispered 'we're just getting started.'", createdAt: Date.now() - 259200000, ratings: {} },
+        { id: 1004, authorEmail: "moonlight@gmail.com", title: "Stardust Lullaby", type: "Poem", genre: "Fantasy", content: "The moon braids my hair with silver threads / While purple butterflies dance in my bed / Sleep comes wrapped in velvet dreams / Nothing is as real as it seems.", createdAt: Date.now() - 345600000, ratings: {} }
     ];
     const sampleUsers = [
-        { name: "Luna Moonlight", email: "moonlight@gmail.com", password: "pass123", favGenre: "Fantasy", bio: "Dreamer of stars and keeper of forgotten stories. I write when the moon is high.", joinedAt: Date.now() - 86400000 },
-        { name: "Stardust Weaver", email: "stardust@gmail.com", password: "pass123", favGenre: "Romance", bio: "Collecting heartbeats and turning them into poetry. Purple soul forever.", joinedAt: Date.now() - 172800000 },
-        { name: "Shadow Whisper", email: "shadow@gmail.com", password: "pass123", favGenre: "Thriller", bio: "I write what lurks in the corners of midnight. Fear is just another story.", joinedAt: Date.now() - 259200000 }
+        { name: "Luna Moonlight", email: "moonlight@gmail.com", password: "pass123", favGenre: "Fantasy", bio: "Dreamer of stars and keeper of forgotten stories. I write when the moon is high and the world is quiet. ✨", joinedAt: Date.now() - 86400000 },
+        { name: "Stardust Weaver", email: "stardust@gmail.com", password: "pass123", favGenre: "Romance", bio: "Collecting heartbeats and turning them into poetry. Purple soul forever. 💜", joinedAt: Date.now() - 172800000 },
+        { name: "Shadow Whisper", email: "shadow@gmail.com", password: "pass123", favGenre: "Thriller", bio: "I write what lurks in the corners of midnight. Fear is just another story waiting to be told. 🌙", joinedAt: Date.now() - 259200000 }
     ];
 
-    function initData() { if (!localStorage.getItem('purple_stories')) { saveStories(sampleStories); } if (!localStorage.getItem('purple_coven_users')) { saveUsers(sampleUsers); } }
+    let currentUser = null, editingStoryId = null, currentSearchTerm = "", currentTab = "community";
     function saveUsers(users) { localStorage.setItem('purple_coven_users', JSON.stringify(users)); }
     function loadUsers() { return JSON.parse(localStorage.getItem('purple_coven_users') || '[]'); }
     function saveStories(stories) { localStorage.setItem('purple_stories', JSON.stringify(stories)); }
     function loadStories() { return JSON.parse(localStorage.getItem('purple_stories') || '[]'); }
+    function initData() { if (!localStorage.getItem('purple_stories')) saveStories(sampleStories); if (!localStorage.getItem('purple_coven_users')) saveUsers(sampleUsers); }
     function getUserStories() { return loadStories().filter(s => s.authorEmail === currentUser?.email); }
     function getAllPublicStories() { return loadStories(); }
-
-    function getStoryRatings(storyId) { let stories = loadStories(); let story = stories.find(s => s.id === storyId); return story?.ratings || {}; }
-    function getAverageRating(storyId) { let ratings = getStoryRatings(storyId); let values = Object.values(ratings); if (values.length === 0) return 0; return (values.reduce((a,b)=>a+b,0) / values.length).toFixed(1); }
-    function getUserRating(storyId, userEmail) { let ratings = getStoryRatings(storyId); return ratings[userEmail] || 0; }
-    function rateStory(storyId, userEmail, rating) { let stories = loadStories(); let storyIdx = stories.findIndex(s => s.id === storyId); if (storyIdx !== -1) { if (!stories[storyIdx].ratings) stories[storyIdx].ratings = {}; stories[storyIdx].ratings[userEmail] = rating; saveStories(stories); } }
-
-    function saveStory(story) {
-        let all = loadStories();
-        if (editingStoryId) { let idx = all.findIndex(s => s.id === editingStoryId); if (idx !== -1) all[idx] = { ...story, id: editingStoryId, updatedAt: Date.now() }; editingStoryId = null; } 
-        else { all.push(story); }
-        saveStories(all);
-        renderCurrentFeed();
-        if (currentUser) renderMyWorks();
-    }
-
-    function deleteStory(storyId, isUserOwner = true) {
-        if (isUserOwner && currentUser) { let all = loadStories().filter(s => !(s.id === storyId && s.authorEmail === currentUser.email)); saveStories(all); renderCurrentFeed(); renderMyWorks(); }
-    }
-
+    function getStoryRatings(storyId) { let story = loadStories().find(s => s.id === storyId); return story?.ratings || {}; }
+    function getAverageRating(storyId) { let ratings = getStoryRatings(storyId); let vals = Object.values(ratings); return vals.length ? (vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(1) : 0; }
+    function rateStory(storyId, userEmail, rating) { let stories = loadStories(); let idx = stories.findIndex(s => s.id === storyId); if (idx !== -1) { if (!stories[idx].ratings) stories[idx].ratings = {}; stories[idx].ratings[userEmail] = rating; saveStories(stories); renderCurrentFeed(); } }
+    function saveStory(story) { let all = loadStories(); if (editingStoryId) { let idx = all.findIndex(s => s.id === editingStoryId); if (idx !== -1) all[idx] = { ...story, id: editingStoryId, updatedAt: Date.now() }; editingStoryId = null; } else { all.push(story); } saveStories(all); renderCurrentFeed(); if (currentUser) renderMyWorks(); }
+    function deleteStory(storyId) { let all = loadStories().filter(s => !(s.id === storyId && s.authorEmail === currentUser?.email)); saveStories(all); renderCurrentFeed(); if (currentUser) renderMyWorks(); }
     function getAuthorInfo(email) { return loadUsers().find(u => u.email === email) || { name: "Anonymous Soul", bio: "This mysterious writer keeps their secrets hidden in the purple mist." }; }
+
+    function renderStars(storyId, userEmail) { let avg = getAverageRating(storyId); let userRating = (userEmail && getStoryRatings(storyId)[userEmail]) || 0; let stars = ''; for (let i=1;i<=5;i++) stars += `<span class="star ${userRating>=i ? '' : 'star-gray'}" data-value="${i}" data-story="${storyId}">${userRating>=i ? '★' : '☆'}</span>`; return `${stars} <span class="avg-rating">(${avg} avg)</span>`; }
+    function attachStarEvents() { document.querySelectorAll('.star').forEach(star => { star.addEventListener('click', (e) => { e.stopPropagation(); if (!currentUser) { alert('💜 Please sign up to rate stories!'); return; } rateStory(parseInt(star.dataset.story), currentUser.email, parseInt(star.dataset.value)); }); }); }
 
     function renderCurrentFeed() {
         let stories = getAllPublicStories();
-        if (currentSearchTerm) { stories = stories.filter(s => s.title.toLowerCase().includes(currentSearchTerm) || s.content.toLowerCase().includes(currentSearchTerm) || getAuthorInfo(s.authorEmail).name.toLowerCase().includes(currentSearchTerm)); }
+        if (currentSearchTerm) stories = stories.filter(s => s.title.toLowerCase().includes(currentSearchTerm) || s.content.toLowerCase().includes(currentSearchTerm) || getAuthorInfo(s.authorEmail).name.toLowerCase().includes(currentSearchTerm));
         if (currentTab === "poems") stories = stories.filter(s => s.type === "Poem");
-        
         const container = document.getElementById('communityFeed');
-        if (stories.length === 0) { container.innerHTML = '<div class="empty-feed">✨ No stories yet. Be the first to share your purple thoughts! ✨</div>'; return; }
-        container.innerHTML = stories.map(s => { let author = getAuthorInfo(s.authorEmail); let genreClass = s.genre === 'Fantasy' ? 'genre-fantasy' : (s.genre === 'Romance' ? 'genre-romance' : 'genre-thriller'); let preview = s.content.length > 100 ? s.content.substring(0,100)+'...' : s.content; let avgRating = getAverageRating(s.id);
-            return `<div class="story-card" data-id="${s.id}"><span class="story-genre ${genreClass}">${s.type} · ${s.genre}</span><div class="story-title-card">${escapeHtml(s.title)}</div><div class="story-preview">${escapeHtml(preview)}</div><div class="rating-stars" data-id="${s.id}">${renderStars(s.id, currentUser?.email)}</div><div class="story-author"><i class="fas fa-user-circle"></i> <span class="author-name" data-email="${s.authorEmail}" style="cursor:pointer; color:#9b4dca;">${escapeHtml(author.name)}</span> <span style="font-size:0.6rem;">✨ ${new Date(s.createdAt).toLocaleDateString()}</span></div></div>`;
+        if (!stories.length) { container.innerHTML = '<div class="empty-feed">✨ No stories yet. Be the first to share your purple thoughts! ✨</div>'; return; }
+        container.innerHTML = stories.map(s => { let author = getAuthorInfo(s.authorEmail); let genreClass = s.genre === 'Fantasy' ? 'genre-fantasy' : (s.genre === 'Romance' ? 'genre-romance' : 'genre-thriller'); let preview = s.content.length > 100 ? s.content.substring(0,100)+'...' : s.content;
+            return `<div class="story-card" data-id="${s.id}"><span class="story-genre ${genreClass}">${s.type} · ${s.genre}</span><div class="story-title-card">${escapeHtml(s.title)}</div><div class="story-preview">${escapeHtml(preview)}</div><div class="rating-stars" data-id="${s.id}">${renderStars(s.id, currentUser?.email)}</div><div class="story-author"><i class="fas fa-user-circle"></i> <span class="author-name" data-email="${s.authorEmail}">${escapeHtml(author.name)}</span> <span style="font-size:0.6rem;">✨ ${new Date(s.createdAt).toLocaleDateString()}</span></div></div>`;
         }).join('');
-        document.querySelectorAll('.author-name').forEach(el => { el.addEventListener('click', (e) => { e.stopPropagation(); showAuthorProfile(el.getAttribute('data-email')); }); });
-        document.querySelectorAll('.story-card').forEach(card => { card.addEventListener('click', (e) => { if (!e.target.closest('.star') && !e.target.closest('.author-name')) { let id = parseInt(card.dataset.id); showStoryDetail(id); } }); });
+        document.querySelectorAll('.author-name').forEach(el => el.addEventListener('click', (e) => { e.stopPropagation(); showAuthorProfile(el.dataset.email); }));
+        document.querySelectorAll('.story-card').forEach(card => card.addEventListener('click', (e) => { if (!e.target.closest('.star') && !e.target.closest('.author-name')) showStoryDetail(parseInt(card.dataset.id)); }));
         attachStarEvents();
     }
 
-    function renderStars(storyId, userEmail) { let avg = getAverageRating(storyId); let userRating = (userEmail && getUserRating(storyId, userEmail)) || 0; let stars = ''; for (let i = 1; i <= 5; i++) { let isActive = (userRating >= i); stars += `<span class="star ${isActive ? '' : 'star-gray'}" data-value="${i}" data-story="${storyId}">${isActive ? '★' : '☆'}</span>`; } return `${stars} <span class="avg-rating">(${avg} avg from ${Object.keys(getStoryRatings(storyId)).length} ratings)</span>`; }
-    
-    function attachStarEvents() { document.querySelectorAll('.star').forEach(star => { star.addEventListener('click', (e) => { e.stopPropagation(); if (!currentUser) { alert('💜 Please sign up or log in to rate stories!'); return; } let storyId = parseInt(star.dataset.story); let rating = parseInt(star.dataset.value); rateStory(storyId, currentUser.email, rating); renderCurrentFeed(); if (currentTab === 'myworks') renderMyWorks(); }); }); }
-
-    function renderMyWorks() { if (!currentUser) return; let stories = getUserStories(); const container = document.getElementById('myWorksFeed'); if (stories.length === 0) { container.innerHTML = '<div class="empty-feed">✨ You haven\'t written anything yet. Click "Write New Story" to begin! ✨</div>'; return; }
+    function renderMyWorks() { if (!currentUser) return; let stories = getUserStories(); const container = document.getElementById('myWorksFeed'); if (!stories.length) { container.innerHTML = '<div class="empty-feed">✨ You haven\'t written anything yet. Click "Write New Story" to begin! ✨</div>'; return; }
         container.innerHTML = stories.map(s => { let genreClass = s.genre === 'Fantasy' ? 'genre-fantasy' : (s.genre === 'Romance' ? 'genre-romance' : 'genre-thriller'); let preview = s.content.length > 100 ? s.content.substring(0,100)+'...' : s.content;
-            return `<div class="story-card" data-id="${s.id}"><span class="story-genre ${genreClass}">${s.type} · ${s.genre}</span><div class="story-title-card">${escapeHtml(s.title)}</div><div class="story-preview">${escapeHtml(preview)}</div><div style="display:flex; justify-content:space-between; margin-top:0.5rem;"><span class="story-author"><i class="fas fa-pen-fancy"></i> Your creation</span><button class="delete-story-btn" data-id="${s.id}" style="background:none; border:none; color:#e74c3c; cursor:pointer;"><i class="fas fa-trash-alt"></i></button></div></div>`;
+            return `<div class="story-card" data-id="${s.id}"><span class="story-genre ${genreClass}">${s.type} · ${s.genre}</span><div class="story-title-card">${escapeHtml(s.title)}</div><div class="story-preview">${escapeHtml(preview)}</div><div style="display:flex; justify-content:space-between; margin-top:0.5rem;"><span class="story-author"><i class="fas fa-pen-fancy"></i> Your creation</span><button class="delete-story-btn" data-id="${s.id}"><i class="fas fa-trash-alt"></i> Delete</button></div></div>`;
         }).join('');
-        document.querySelectorAll('#myWorksFeed .story-card').forEach(card => { card.addEventListener('click', (e) => { if (!e.target.closest('.delete-story-btn')) { let id = parseInt(card.dataset.id); editStoryById(id); } }); });
-        document.querySelectorAll('#myWorksFeed .delete-story-btn').forEach(btn => { btn.addEventListener('click', (e) => { e.stopPropagation(); let id = parseInt(btn.dataset.id); if(confirm('Delete this creation forever?')) deleteStory(id, true); }); });
+        document.querySelectorAll('#myWorksFeed .story-card').forEach(card => card.addEventListener('click', (e) => { if (!e.target.closest('.delete-story-btn')) editStoryById(parseInt(card.dataset.id)); }));
+        document.querySelectorAll('.delete-story-btn').forEach(btn => btn.addEventListener('click', (e) => { e.stopPropagation(); if(confirm('Delete forever?')) deleteStory(parseInt(btn.dataset.id)); }));
     }
 
     function editStoryById(id) { let story = getUserStories().find(s => s.id === id); if (story) { editingStoryId = id; document.getElementById('storyTitle').value = story.title; document.getElementById('storyTypeSelect').value = story.type; document.getElementById('storyGenreSelect').value = story.genre; document.getElementById('storyContent').value = story.content; document.getElementById('editorTitle').innerHTML = '✏️ Edit Your Creation'; document.getElementById('storyEditor').style.display = 'block'; document.getElementById('storyEditor').scrollIntoView({ behavior: 'smooth' }); } }
     function closeEditor() { editingStoryId = null; document.getElementById('storyTitle').value = ''; document.getElementById('storyTypeSelect').value = 'Story'; document.getElementById('storyGenreSelect').value = 'Fantasy'; document.getElementById('storyContent').value = ''; document.getElementById('editorTitle').innerHTML = '✨ Write Your Midnight Tale'; document.getElementById('storyEditor').style.display = 'none'; }
-    function saveCurrentStory() { let title = document.getElementById('storyTitle').value.trim(); let type = document.getElementById('storyTypeSelect').value; let genre = document.getElementById('storyGenreSelect').value; let content = document.getElementById('storyContent').value.trim(); if (!title) { alert('💜 Please give your story a title'); return; } if (!content) { alert('📖 Please write something...'); return; }
+    function saveCurrentStory() { let title = document.getElementById('storyTitle').value.trim(); let type = document.getElementById('storyTypeSelect').value; let genre = document.getElementById('storyGenreSelect').value; let content = document.getElementById('storyContent').value.trim(); if (!title || !content) { alert('💜 Please fill in title and content!'); return; }
         let story = { id: editingStoryId || Date.now(), authorEmail: currentUser.email, title, type, genre, content, ratings: editingStoryId ? (getUserStories().find(s=>s.id===editingStoryId)?.ratings || {}) : {}, createdAt: editingStoryId ? (getUserStories().find(s=>s.id===editingStoryId)?.createdAt || Date.now()) : Date.now(), updatedAt: Date.now() };
         saveStory(story); closeEditor(); }
 
-    function showStoryDetail(id) { let story = getAllPublicStories().find(s => s.id === id); if (!story) return; let author = getAuthorInfo(story.authorEmail); let avgRating = getAverageRating(id); let userRating = currentUser ? getUserRating(id, currentUser.email) : 0;
-        let ratingDisplay = ''; for (let i = 1; i <= 5; i++) { ratingDisplay += `<span style="font-size:1.2rem; color:#ffd700;">${userRating >= i ? '★' : '☆'}</span>`; }
-        document.getElementById('storyDetailContent').innerHTML = `<h3>📖 ${escapeHtml(story.title)}</h3><p style="color:#9b7abb;">By ${escapeHtml(author.name)} · ${story.type} · ${story.genre}</p><div style="margin:1rem 0; padding:1rem; background:rgba(210,180,255,0.2); border-radius:32px; text-align:left; white-space:pre-wrap;">${escapeHtml(story.content)}</div><div class="rating-stars" style="justify-content:center;">${ratingDisplay} <span style="margin-left:0.5rem;">(${avgRating} avg from ${Object.keys(getStoryRatings(id)).length} ratings)</span></div><div class="modal-buttons"><button class="close-modal-btn" id="closeStoryBtn">Close</button></div>`;
+    function showStoryDetail(id) { let story = getAllPublicStories().find(s => s.id === id); if (!story) return; let author = getAuthorInfo(story.authorEmail); let avg = getAverageRating(id);
+        document.getElementById('storyDetailContent').innerHTML = `<h3>📖 ${escapeHtml(story.title)}</h3><p style="color:#9b7abb;">By ${escapeHtml(author.name)} · ${story.type} · ${story.genre}</p><div style="margin:1rem 0; padding:1rem; background:rgba(210,180,255,0.2); border-radius:32px; text-align:left; white-space:pre-wrap;">${escapeHtml(story.content)}</div><div style="margin:0.5rem 0;"><span class="avg-rating">⭐ ${avg} average rating</span></div><div class="modal-buttons"><button class="close-modal-btn" id="closeStoryBtn">Close</button></div>`;
         document.getElementById('storyDetailModal').style.display = 'flex';
-        document.getElementById('closeStoryBtn').addEventListener('click', () => { document.getElementById('storyDetailModal').style.display = 'none'; });
+        document.getElementById('closeStoryBtn').addEventListener('click', () => document.getElementById('storyDetailModal').style.display = 'none');
     }
 
-    function showAuthorProfile(email) { let author = getAuthorInfo(email); let userStories = loadStories().filter(s => s.authorEmail === email); let poemCount = userStories.filter(s => s.type === 'Poem').length; let storyCount = userStories.filter(s => s.type === 'Story').length; let totalRatings = userStories.reduce((sum, s) => sum + Object.keys(s.ratings || {}).length, 0);
+    function showAuthorProfile(email) { let author = getAuthorInfo(email); let userStories = loadStories().filter(s => s.authorEmail === email); let poemCount = userStories.filter(s => s.type === 'Poem').length; let storyCount = userStories.filter(s => s.type === 'Story').length; let totalRatings = userStories.reduce((sum,s) => sum + Object.keys(s.ratings || {}).length, 0);
         document.getElementById('authorModalContent').innerHTML = `<h3><i class="fas fa-user-astronaut"></i> ${escapeHtml(author.name)}</h3><div class="author-bio"><strong>🌙 about them:</strong><br>${escapeHtml(author.bio || "This mysterious soul wanders the purple hour, collecting secrets and turning them into starlight.")}</div><div class="author-stats"><div>📖 Stories: ${storyCount}</div><div>🌸 Poems: ${poemCount}</div><div>⭐ Total ratings: ${totalRatings}</div></div><div class="modal-buttons"><button class="close-modal-btn" id="closeAuthorBtn">Close</button></div>`;
         document.getElementById('authorModal').style.display = 'flex';
-        document.getElementById('closeAuthorBtn').addEventListener('click', () => { document.getElementById('authorModal').style.display = 'none'; });
+        document.getElementById('closeAuthorBtn').addEventListener('click', () => document.getElementById('authorModal').style.display = 'none');
     }
 
-    // Auth
-    function signup(name, email, password, favGenre, bio) { let users = loadUsers(); if (users.find(u => u.email === email)) { document.getElementById('signupError').innerText = '❌ Email already exists'; return false; } if (password.length < 6) { document.getElementById('signupError').innerText = '❌ Password min 6 chars'; return false; } users.push({ name, email, password, favGenre, bio, joinedAt: Date.now() }); saveUsers(users); currentUser = { name, email, favGenre, bio }; localStorage.setItem('purple_current', JSON.stringify(currentUser)); return true; }
+    function signup(name, email, password, favGenre, bio) { let users = loadUsers(); if (users.find(u => u.email === email)) { document.getElementById('signupError').innerText = '❌ Email exists'; return false; } if (password.length < 6) { document.getElementById('signupError').innerText = '❌ Password min 6 chars'; return false; } users.push({ name, email, password, favGenre, bio, joinedAt: Date.now() }); saveUsers(users); currentUser = { name, email, favGenre, bio }; localStorage.setItem('purple_current', JSON.stringify(currentUser)); return true; }
     function updateUIAfterLogin() { document.getElementById('welcomeBadge').innerHTML = `💜 Welcome, ${currentUser.name}! ✨`; document.getElementById('signupHeaderBtn').style.display = 'none'; document.getElementById('userMenu').style.display = 'inline-flex'; document.getElementById('userMenu').innerHTML = `<div style="display:flex; align-items:center; gap:0.8rem; background:rgba(210,180,255,0.4); padding:0.3rem 1rem 0.3rem 1.5rem; border-radius:50px;"><span style="font-weight:600;">${currentUser.name}</span><button id="logoutBtn" style="background:none; border:none; color:#9b4dca; cursor:pointer;"><i class="fas fa-sign-out-alt"></i></button></div>`; document.getElementById('logoutBtn')?.addEventListener('click', () => { logout(); }); document.getElementById('dashboard').style.display = 'block'; renderCurrentFeed(); renderMyWorks(); }
-    function logout() { currentUser = null; localStorage.removeItem('purple_current'); document.getElementById('dashboard').style.display = 'none'; document.getElementById('signupHeaderBtn').style.display = 'block'; document.getElementById('userMenu').style.display = 'none'; document.getElementById('welcomeBadge').innerHTML = '✨ Welcome to "thoughts @2am" ✨'; closeEditor(); renderCurrentFeed(); document.getElementById('myWorksFeed').style.display = 'none'; document.getElementById('communityFeed').style.display = 'grid'; currentTab = 'community'; document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active')); document.querySelector('.tab-btn[data-tab="community"]').classList.add('active'); }
+    function logout() { currentUser = null; localStorage.removeItem('purple_current'); document.getElementById('dashboard').style.display = 'none'; document.getElementById('signupHeaderBtn').style.display = 'block'; document.getElementById('userMenu').style.display = 'none'; document.getElementById('welcomeBadge').innerHTML = '✨ Welcome to "thoughts @2am" ✨'; closeEditor(); renderCurrentFeed(); document.getElementById('myWorksFeed').style.display = 'none'; document.getElementById('communityFeed').style.display = 'grid'; currentTab='community'; document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); document.querySelector('.tab-btn[data-tab="community"]').classList.add('active'); }
+    function switchTab(tab) { currentTab = tab; document.getElementById('communityFeed').style.display = (tab==='myworks'?'none':'grid'); document.getElementById('myWorksFeed').style.display = (tab==='myworks'?'grid':'none'); if(tab==='myworks' && currentUser) renderMyWorks(); else renderCurrentFeed(); }
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.addEventListener('click', () => { document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); switchTab(btn.dataset.tab); }));
 
-    function switchTab(tab) { currentTab = tab; document.getElementById('communityFeed').style.display = (tab === 'myworks' ? 'none' : 'grid'); document.getElementById('myWorksFeed').style.display = (tab === 'myworks' ? 'grid' : 'none'); if (tab === 'myworks' && currentUser) renderMyWorks(); else renderCurrentFeed(); }
-    document.querySelectorAll('.tab-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); switchTab(btn.dataset.tab); }); });
-
-    // Navigation
-    document.getElementById('homeNavBtn').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    document.getElementById('homeNavBtn').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     document.getElementById('searchNavBtn').addEventListener('click', () => { document.getElementById('searchSection').scrollIntoView({ behavior: 'smooth' }); document.getElementById('searchInputField').focus(); });
     document.getElementById('executeSearchBtn').addEventListener('click', () => { currentSearchTerm = document.getElementById('searchInputField').value.trim().toLowerCase(); renderCurrentFeed(); });
-    document.getElementById('searchInputField').addEventListener('keypress', (e) => { if (e.key === 'Enter') document.getElementById('executeSearchBtn').click(); });
-    document.getElementById('infoNavBtn').addEventListener('click', () => { document.getElementById('infoModal').style.display = 'flex'; });
-    document.getElementById('closeInfoBtn').addEventListener('click', () => { document.getElementById('infoModal').style.display = 'none'; });
+    document.getElementById('searchInputField').addEventListener('keypress', (e) => { if(e.key === 'Enter') document.getElementById('executeSearchBtn').click(); });
+    document.getElementById('infoNavBtn').addEventListener('click', () => document.getElementById('infoModal').style.display = 'flex');
+    document.getElementById('closeInfoBtn').addEventListener('click', () => document.getElementById('infoModal').style.display = 'none');
 
-    // Signup Modal
     const signupModal = document.getElementById('signupModal'); const signupHeaderBtn = document.getElementById('signupHeaderBtn'); const closeModalBtn = document.getElementById('closeModalBtn'); const submitSignup = document.getElementById('submitSignupBtn');
     function openSignupModal() { signupModal.style.display = 'flex'; document.getElementById('signupError').innerText = ''; }
     function closeSignupModal() { signupModal.style.display = 'none'; }
     signupHeaderBtn.addEventListener('click', openSignupModal); closeModalBtn.addEventListener('click', closeSignupModal);
-    submitSignup.addEventListener('click', () => { let name = document.getElementById('signupName').value.trim(); let email = document.getElementById('signupEmail').value.trim(); let password = document.getElementById('signupPassword').value.trim(); let favGenre = document.getElementById('signupGenre').value; let bio = document.getElementById('signupBio').value.trim(); if (signup(name, email, password, favGenre, bio)) { closeSignupModal(); updateUIAfterLogin(); } });
-    window.addEventListener('click', (e) => { if (e.target === signupModal) closeSignupModal(); if (e.target === document.getElementById('infoModal')) document.getElementById('infoModal').style.display = 'none'; if (e.target === document.getElementById('authorModal')) document.getElementById('authorModal').style.display = 'none'; if (e.target === document.getElementById('storyDetailModal')) document.getElementById('storyDetailModal').style.display = 'none'; });
+    submitSignup.addEventListener('click', () => { let name = document.getElementById('signupName').value.trim(); let email = document.getElementById('signupEmail').value.trim(); let password = document.getElementById('signupPassword').value.trim(); let favGenre = document.getElementById('signupGenre').value; let bio = document.getElementById('signupBio').value.trim(); if(signup(name, email, password, favGenre, bio)) { closeSignupModal(); updateUIAfterLogin(); } });
+    window.addEventListener('click', (e) => { if(e.target === signupModal) closeSignupModal(); if(e.target === document.getElementById('infoModal')) document.getElementById('infoModal').style.display = 'none'; if(e.target === document.getElementById('authorModal')) document.getElementById('authorModal').style.display = 'none'; if(e.target === document.getElementById('storyDetailModal')) document.getElementById('storyDetailModal').style.display = 'none'; });
 
     document.getElementById('newStoryBtn').addEventListener('click', () => { closeEditor(); document.getElementById('storyEditor').style.display = 'block'; });
     document.getElementById('saveStoryBtn').addEventListener('click', saveCurrentStory);
     document.getElementById('cancelEditorBtn').addEventListener('click', closeEditor);
-    function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function(m) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m]; }); }
+    function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[m])); }
 
     initData();
-    const saved = localStorage.getItem('purple_current'); if (saved) { currentUser = JSON.parse(saved); updateUIAfterLogin(); } else { document.getElementById('dashboard').style.display = 'none'; renderCurrentFeed(); }
+    let saved = localStorage.getItem('purple_current'); if(saved) { currentUser = JSON.parse(saved); updateUIAfterLogin(); } else { document.getElementById('dashboard').style.display = 'none'; renderCurrentFeed(); }
 </script>
 </body>
 </html>
